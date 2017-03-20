@@ -1,0 +1,7 @@
+<template name='schoolEdit'>
+	<h1 class="page-header">
+		Edit School Profile
+  </h1>
+  {{> breadcrumb link='/admin/schools' baseView='Schools' currentView='Schools Edit'}}
+	{{> quickForm collection='Schools' id='updateSchoolForm' doc=school }}
+</template>

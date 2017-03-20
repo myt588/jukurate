@@ -1,0 +1,17 @@
+<template name='schoolList'>
+  <h1 class="page-header">
+      Schools 
+      <a href='/admin/schools/create' class='btn btn-primary'>
+      	<i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+  </h1>
+  {{> breadcrumb link='/admin' baseView='Dashboard' currentView='Schools'}}
+
+  {{#if $not schools}}
+    {{> empty name='schools' link='/admin/schools/create'}}
+  {{else}}
+    <div class="table-responsive">
+      {{> reactiveTable collection=schools settings=settings}}
+    </div>
+  {{/if}}
+</template>
