@@ -1,0 +1,17 @@
+<template name='tutorList'>
+  <h1 class="page-header">
+      Tutors 
+      <a href='/admin/tutors/create' class='btn btn-primary'>
+      	<i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+  </h1>
+  {{> breadcrumb link='/admin' baseView='Dashboard' currentView='Tutors'}}
+
+  {{#if $not tutors}}
+    {{> empty name='tutors' link='/admin/tutors/create'}}
+  {{else}}
+    <div class="table-responsive">
+      {{> reactiveTable collection=tutors settings=settings}}
+    </div>
+  {{/if}}
+</template>

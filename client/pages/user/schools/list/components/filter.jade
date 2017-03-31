@@ -1,0 +1,80 @@
+template(name='schoolFilter')
+  .container-fluid.listing-block
+    .row.listing-results
+      .results-count
+        span.counter 85
+        |  results
+      // Start Listings Filter
+      .listing-filter
+        form
+          a.grid-icon.icon-icons(href='#')
+          a.grid-icon.icon-list4(href='#')
+          a.grid-icon.icon-enter-right2(href='#')
+          a.grid-icon.icon-dial(href='#')
+          a.grid-icon.icon-menu2(href='#')
+          select.selectpicker(multiple='', data-max-options='5', data-live-search='true')
+            optgroup(label='Cities')
+              option.placeholder(hidden='', selected='', disabled='', value='') Filters
+              option(data-icon='icon-city') Boston
+              option(data-icon='icon-city') Chicago
+              option(data-icon='icon-city') Miami
+              option(data-icon='icon-city') New Orleans
+              option(data-icon='icon-city') New York City
+              option(data-icon='icon-city') San Francisco
+              option(data-icon='icon-city') Washington
+            optgroup(label='Categories')
+              option(data-icon='icon-theater') Entertaiment
+              option(data-icon='icon-palette child') Art Gallery
+              option(data-icon='icon-clapboard-play child') Movie Theather
+              option(data-icon='icon-library2 child') Museum
+              option(data-icon='icon-trophy2 child') Stadium
+              option(data-icon='icon-paw child') Zoo
+              option(data-icon='icon-dinner') Food
+              option(data-icon='icon-chef child') Bakery
+              option(data-icon='icon-teacup child') Café
+              option(data-icon='icon-pizza child') Pizza
+              option(data-icon='icon-platter child') Restaurant
+              option(data-icon='icon-glass child') Winery
+              option(data-icon='icon-moon') Nightlife
+              option(data-icon='icon-glass-cocktail child') Bar
+              option(data-icon='icon-bottle2 child') Brewery
+              option(data-icon='icon-cake child') Lounge
+              option(data-icon='icon-spotlights child') Nightclub
+              option(data-icon='icon-landscape') Outdoor Recreation
+              option(data-icon='icon-construction child') Bridge
+              option(data-icon='icon-tree child') Park
+              option(data-icon='icon-alarm') Service
+              option(data-icon='icon-car child') Car Dealer
+              option(data-icon='icon-pencil-ruler2 child') Design
+              option(data-icon='icon-bench-press child') Gim
+              option(data-icon='icon-saw child') Home Service
+              option(data-icon='icon-laundry child') Laundry
+              option(data-icon='icon-bag') Shop
+              option(data-icon='icon-bag-dollar child') Bank
+              option(data-icon='icon-library child') Bookstore
+              option(data-icon='icon-hanger child') Clothing
+              option(data-icon='icon-chair child') Furniture
+              option(data-icon='icon-home') Lodging
+              option(data-icon='icon-bed child') Hotel
+              option(data-icon='icon-bed child') Apartment
+              option(data-icon='icon-bed child') Villa
+              option(data-icon='icon-bed child') Hostel
+            optgroup(label='Amenities')
+              option(data-icon='icon-credit-card') Accepts Credit Cards
+              option(data-icon='icon-bicycle') Bike Parking
+              option(data-icon='icon-envelope') Contact Form
+              option(data-icon='icon-receipt') Coupons
+              option(data-icon='icon-baby2') Family/Kids Friendly
+              option(data-icon='icon-hand-waving') Free Entrance
+              option(data-icon='icon-lan2') Online Order
+              option(data-icon='icon-parking') Parking Street
+              option(data-icon='icon-paw') Pets Friendly
+              option(data-icon='icon-phone-wave') Phone
+              option(data-icon='icon-contacts') Reservations
+              option(data-icon='icon-pipe') Smoking Allowed
+              option(data-icon='icon-wheelchair') Wheelchair Accessible
+              option(data-icon='icon-bubble-dots') Whatsapp
+              option(data-icon='icon-wifi') Wireless Internet
+          input(type='submit')
+      // End Listings Filter
+  // End Listings Counter and Filter

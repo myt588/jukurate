@@ -1,0 +1,92 @@
+template(name='schoolDescriptionList')
+  #desc.container.listing-description
+    .pg-header-icon.icon-copy
+    .row
+      .col-sm-3.text-center
+        .listing-avatar
+          if school.claimed
+            a.verified-data(title='Verifyed Listing', data-toggle='tooltip', data-placement='right')
+          img.center-block(alt='', src='{{school.logo_url}}')
+        .claimed.text-center
+          if school.claimed
+            .ribbon Claimed
+          else 
+            .ribbon Unclaimed
+        .listing-social
+          .social-networks
+            a.fa.fa-facebook(href='#')
+            a.fa.fa-twitter(href='#')
+            a.fa.fa-instagram(href='#')
+            a.fa.fa-pinterest(href='#')
+        .list-data
+          .list-address 
+            | {{school.address}}
+          .list-phones
+            .list-phone
+              | {{school.phone}}
+            .list-fax
+              | {{school.fax}}
+            .list-mobile
+              | {{school.mobile}}
+          .list-online-data
+            .list-email
+              a(href='mailto:{{school.email}}')
+                | {{school.email}}
+            .list-website
+              a(href='{{school.site}}', target='_blank')
+                | {{school.site}}
+      .col-sm-9
+        div
+          .description-container
+            table.description-text.table
+              tr
+                td.description
+                  h4.listing-subtitle.text-left
+                    | {{school.ribbon}}
+                  p.capitalize-initial
+                    | {{school.description}}
+                td.listing-opening
+                  h5.opening-title.text-left
+                    | Opening
+                  p
+                    | Mon-Sat 
+                    span 11am-11pm
+                  p
+                    | Sun 
+                    span 12noon-10pm
+          .listing-amenities
+            h5.amenities-title.text-left
+              | Amenities
+            .amenities
+              a.icon-credit-card(href='#') Accepts Credit Cards
+              a.icon-parking(href='#') Parking
+              a.icon-bicycle(href='#') Bike Parking
+              a.icon-wheelchair(href='#') Wheelchair Accessible
+              a.icon-wifi(href='#') Wi-fi
+              a.icon-screen(href='#') Tv
+              a.icon-pipe(href='#') Smoking Allowed
+              a.icon-accessibility(href='#') Special
+              a.icon-alarm-ringing(href='#') Balcony
+              a.icon-calendar-insert(href='#') Reservations
+              a.icon-glass(href='#') Alcohol
+          .listing-amenities
+            h5.amenities-title.text-left
+              | Target Audience
+            .amenities
+              a.icon-man(href='#') Solo
+              a.icon-users2(href='#') Couple
+              a.icon-users(href='#') Families
+              a.icon-group-work(href='#') Friends
+              a.icon-cake(href='#') Parties
+              a.icon-tie(href='#') Business
+          .listing-amenities
+            h5.amenities-title.text-left
+              | Tags
+            .amenities.tags
+              a(href='#') Lunch
+              a(href='#') Breakfast
+              a(href='#') Bar
+              a(href='#') Pub
+              a(href='#') Drinks
+              a(href='#') Wine
+              a(href='#') Dinner

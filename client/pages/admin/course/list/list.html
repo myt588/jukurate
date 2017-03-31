@@ -1,0 +1,17 @@
+<template name='courseList'>
+  <h1 class="page-header">
+      Courses 
+      <a href='/admin/courses/create' class='btn btn-primary'>
+      	<i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+  </h1>
+  {{> breadcrumb link='/admin' baseView='Dashboard' currentView='Courses'}}
+
+  {{#if $not courses}}
+    {{> empty name='courses' link='/admin/courses/create'}}
+  {{else}}
+    <div class="table-responsive">
+      {{> reactiveTable collection=courses settings=settings}}
+    </div>
+  {{/if}}
+</template>

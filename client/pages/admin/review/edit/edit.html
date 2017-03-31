@@ -1,0 +1,8 @@
+<template name='reviewEdit'>
+	<h1 class="page-header">
+		Edit Review Profile
+  </h1>
+  {{> breadcrumb link='/admin/reviews' baseView='Reviews' currentView='Reviews Edit'}}
+	{{> quickForm collection='Reviews' id='updateReviewForm' doc=review }}
+	{{log review}}
+</template>

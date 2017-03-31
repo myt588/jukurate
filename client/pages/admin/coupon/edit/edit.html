@@ -1,0 +1,8 @@
+<template name='couponEdit'>
+	<h1 class="page-header">
+		Edit Coupon Profile
+  </h1>
+  {{> breadcrumb link='/admin/coupons' baseView='Coupons' currentView='Coupons Edit'}}
+	{{> quickForm collection='Coupons' id='updateCouponForm' doc=coupon }}
+	{{log coupon}}
+</template>

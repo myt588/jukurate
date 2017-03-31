@@ -1,0 +1,23 @@
+template(name='frontLayout')
+  .body-wrapper
+    +header
+    +yield
+    +footer
+  // Lightbox
+  script(src='/assets/lib/lightbox2-master/dist/js/lightbox.min.js')
+  // Typing Effect
+  script(src='/assets/lib/typed.js-master/dist/typed.min.js')
+  // Dragging Scroll to Listing Gallery
+  script(src='/assets/lib/jquery.dragscroll.js')
+  // Horizontal Mousewheel Scroll to Listing Gallery
+  script(src='/assets/lib/jquery-mousewheel-master/jquery.mousewheel.min.js')
+  // Listing Filter
+  script(src='/assets/lib/bootstrap-select-master/js/bootstrap-select.js')
+  // To Self Hosted Hero Video
+  script(src='/assets/lib/bideo.js-master/bideo.js')
+  // Map
+  //- script(src='assets/lib/Leaflet-1.0.2/build/deps.js')
+  //- script(src='assets/lib/Leaflet-1.0.2/debug/leaflet-include.js')
+  //- script(src='assets/js/map-markers-samples/sampleMapSingleListingMarker.js')
+  // Main Javascript
+  script(src='/assets/js/main.js')

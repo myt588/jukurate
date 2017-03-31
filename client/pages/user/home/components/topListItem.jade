@@ -1,0 +1,15 @@
+template(name='schoolTopListItem')
+  .feat-post
+    a(href='#')
+      .feat-post-icon.icon-dinner
+      .ribbon {{ribbon}}
+      .listing-item-rating {{rate}}
+      .feat-post-pic
+        div(style="background-image:url('{{image_url}}')")
+      .feat-post-data
+        .feat-post-title
+          | {{name}}
+        .feat-post-category
+          | {{district}}
+        .feat-post-city
+          | {{station}}

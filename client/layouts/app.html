@@ -1,8 +1,22 @@
-<template name='app_layout'>
-	<div id='wrapper'>
-		{{> nav}}
-		<div id="page-wrapper">
-			{{> yield}}
+<template name='dashboardLayout'>
+	<style type="text/css">
+    body {
+	    margin-top: 100px;
+	    background-color: #222;
+		}
+
+		@media(min-width:768px) {
+	    body {
+	        margin-top: 50px;
+	    }
+		}
+  </style>
+	<div class='dashboardLayout'>
+		<div id='wrapper'>
+			{{> nav}}
+			<div id="page-wrapper">
+				{{> yield}}
+			</div>
 		</div>
 	</div>
 </template>

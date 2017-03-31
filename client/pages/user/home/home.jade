@@ -1,0 +1,30 @@
+template(name='home')
+  .container-fluid.hero-header.masked
+    // Start Header Centralizer
+    .header-centralizer
+      .content-centralized
+        // Start Hero Search
+        .hero-search
+          form
+            fieldset
+              input.form-control(type='text', data-placeholder='Explore and Enjoy...')
+              span.typingEffect(data-title='Explore and Enjoy//Find New Places//Discover Tasty Goodies//Do Memorable Check-ins//Go Beyond Horizon')
+            // End Search Cities
+            .search-submit
+              input(type='submit', value=' ')
+              i.hero-search-icon
+        // End Hero Search
+        // Start Search Categories
+        .search-categories
+          .categories
+            a.icon-platter.child(href='#') 日语
+            a.icon-teacup.child(href='#') 英语
+            a.icon-moon(href='#') 数学
+            a.icon-landscape(href='#') 化学
+            a.icon-home(href='#') 物理
+            a.icon-car.child(href='#') 面试
+            a.icon-hanger.child(href='#') 一对一
+            a.icon-bench-press.child(href='#') 大学院
+        // End Search Categories
+        +schoolTopList
+

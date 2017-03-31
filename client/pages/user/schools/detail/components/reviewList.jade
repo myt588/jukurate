@@ -1,0 +1,145 @@
+template(name='schoolReviewList')
+  #rev.container.listing-review
+    .pg-header-icon.icon-star
+    .row
+      .col-sm-3.text-center
+        .average-review
+          .mood-icon.icon-happy
+          .rating 4.3
+          .stars
+            i.fa.fa-star
+            i.fa.fa-star
+            i.fa.fa-star
+            i.fa.fa-star
+            i.fa.fa-star-half-o
+          .review-stats
+            .review-counter 14
+            div Reviews
+          img(alt='', src='/assets/images/miscellaneous/review-background-mask.png')
+        .review-reputation.text-center
+          div
+            h4 Excellent
+        .write-review
+          a.button(href='#')
+            | Write a Review
+      .col-sm-9
+        // Start Review Author Block
+        .row.author-block
+          .col-sm-12.text-left
+            a.author-avatar.pull-left(href='#', style='background-image: url(/assets/images/users/1.jpg)')
+              .author-stats
+                .post-counter 14
+                div Reviews
+            a.author-name(href='#') John Doe
+            .author-vote-mood.icon-happy
+            .author-vote
+              | Excellent
+              .stars
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+            span.data.icon-calendar-full 05/02/2017
+            .clear
+            .author-title
+              | Excellent quiet spot for business or meeting a friend
+            .author-description
+              | The food is excellent. The service is quite good, and the atmosphere is quiet and enjoyable. This is always a place that you can count on for a good meal... of course I wish the portions were larger... but that is a very minor issue, kudos to the service, the meal, and the ambience.
+        // End Review Author Block
+        // Start Review Author Block
+        .row.author-block
+          .col-sm-12.text-left
+            a.author-avatar.pull-left(href='#', style='background-image: url(/assets/images/users/2.jpg)')
+              .author-stats
+                .post-counter 14
+                div Reviews
+            a.author-name(href='#') Maria Doe
+            .author-vote-mood.icon-smile
+            .author-vote
+              | Good
+              .stars
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star-o
+            span.data.icon-calendar-full 05/02/2017
+            .clear
+            .author-title
+              | Overpriced but pretty and food fine
+            .author-description
+              | We have eaten on the Bistro a couple of times. The service, food and view are good to very good. Nothing will blow your socks off, but they don't usually disappoint either. Wine list very expensive (AKA overpriced).
+        // End Review Author Block
+        // Start Review Author Block
+        .row.author-block
+          .col-sm-12.text-left
+            a.author-avatar.pull-left(href='#', style='background-image: url(/assets/images/users/3.jpg)')
+              .author-stats
+                .post-counter 14
+                div Reviews
+            a.author-name(href='#') Paul Doe
+            .author-vote-mood.icon-neutral
+            .author-vote
+              | Regular
+              .stars
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star-o
+                i.fa.fa-star-o
+            span.data.icon-calendar-full 05/02/2017
+            .clear
+            .author-title
+              | Almost perfect birthday dinner
+            .author-description
+              | We loved our bay window-side table, and the overall ambiance of the restaurant was elegant, relaxed and warm. Our food was delicious. Roast brussel sprouts with mushrooms and balsamic over a chickpea spread was savory and rich.
+        // End Review Author Block
+        // Start Review Author Block
+        .row.author-block
+          .col-sm-12.text-left
+            a.author-avatar.pull-left(href='#', style='background-image: url(/assets/images/users/4.jpg)')
+              .author-stats
+                .post-counter 14
+                div Reviews
+            a.author-name(href='#') Joane Doe
+            .author-vote-mood.icon-wondering
+            .author-vote
+              | Not Good
+              .stars
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star-o
+                i.fa.fa-star-o
+                i.fa.fa-star-o
+            span.data.icon-calendar-full 05/02/2017
+            .clear
+            .author-title
+              | Good products but non imaginative cuisine. The claimed french touch is discrete
+            .author-description
+              | Setting is OK. Seating is comfortable and not packed. The wine list is impressive Good products but non imaginative cuisine. The claimed french touch is discrete. Fish was correctly cooked. The catastrophy came with the dessert. My soufflé was served flat!. This is inacceptable in such a place. The manager excuses were as flat as the soufflé. Not professional!
+        // End Review Author Block
+        // Start Review Author Block
+        .row.author-block
+          .col-sm-12.text-left
+            a.author-avatar.pull-left(href='#', style='background-image: url(/assets/images/users/5.jpg)')
+              .author-stats
+                .post-counter 14
+                div Reviews
+            a.author-name(href='#') Lynda Doe
+            .author-vote-mood.icon-mad
+            .author-vote
+              | Bad
+              .stars
+                i.fa.fa-star
+                i.fa.fa-star-o
+                i.fa.fa-star-o
+                i.fa.fa-star-o
+                i.fa.fa-star-o
+            span.data.icon-calendar-full 05/02/2017
+            .clear
+              | Disappointing and Expensive Dinner
+            .author-description
+              | I want to preface this review by saying that our waiter Jonathan and the maitre were very nice and tried hard, but they were not in the kitchen and that is where the problems lay. I also want to say that I rarely write such poor reviews but this was a terrible meal.
+        // End Review Author Block
+    .more-listing.icon-plus(title='More Reviews', data-toggle='tooltip', data-placement='top')

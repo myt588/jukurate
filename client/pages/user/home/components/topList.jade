@@ -1,0 +1,9 @@
+template(name='schoolTopList')
+  .feat-posts
+    .helper
+      .feat-posts-title
+        | Top Rated
+      .feat-posts-list
+        each items
+          +schoolTopListItem
+        a.more-map-listing.icon-plus(href='#', title='More Listings', data-toggle='tooltip', data-placement='top')

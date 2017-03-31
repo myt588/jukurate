@@ -1,0 +1,17 @@
+<template name='reviewList'>
+  <h1 class="page-header">
+      Reviews 
+      <a href='/admin/reviews/create' class='btn btn-primary'>
+      	<i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+  </h1>
+  {{> breadcrumb link='/admin' baseView='Dashboard' currentView='Reviews'}}
+
+  {{#if $not reviews}}
+    {{> empty name='reviews' link='/admin/reviews/create'}}
+  {{else}}
+    <div class="table-responsive">
+      {{> reactiveTable collection=reviews settings=settings}}
+    </div>
+  {{/if}}
+</template>

@@ -1,0 +1,25 @@
+template(name='schoolListView')
+  .container-fluid.map-listing.map-hidden
+    .row.page-head
+      .current-page-info
+        .breadcrumbs.text-left
+          ul
+            li
+              a(href='#') Home
+            li
+              a(href='#') Listings
+            li
+              a(href='#') Food
+            li
+              a(href='#') Restaurants
+        .current-category
+          i.current-page-icon.icon-platter
+          a(href='#') Restaurants
+        .listing-flag.icon-flag
+      .map-buttom
+        .map-button-text
+          | Show Map View
+    #map
+    .mapList
+  +schoolFilter
+  +schoolListStyle1

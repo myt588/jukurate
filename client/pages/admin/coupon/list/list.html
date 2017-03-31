@@ -1,0 +1,17 @@
+<template name='couponList'>
+  <h1 class="page-header">
+      Coupons 
+      <a href='/admin/coupons/create' class='btn btn-primary'>
+      	<i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+  </h1>
+  {{> breadcrumb link='/admin' baseView='Dashboard' currentView='Coupons'}}
+
+  {{#if $not coupons}}
+    {{> empty name='coupons' link='/admin/coupons/create'}}
+  {{else}}
+    <div class="table-responsive">
+      {{> reactiveTable collection=coupons settings=settings}}
+    </div>
+  {{/if}}
+</template>

@@ -1,0 +1,7 @@
+<template name='courseCreate'>
+	<h1 class="page-header">
+      Create Course Profile 
+  </h1>
+  {{> breadcrumb link='/admin/courses' baseView='Courses' currentView='Courses Create'}}
+	{{> quickForm collection='Courses' id='insertCourseForm'}}
+</template>

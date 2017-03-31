@@ -1,0 +1,18 @@
+template(name='schoolListStyleItem1')
+  .col-sm-3
+    .listing-item
+      a.category-icon.icon-dinner(href='#')
+      .listing-item-rating {{rate}}
+      a.listing-item-link(href='#')
+        .listing-item-title-centralizer
+          .listing-item-title
+            | Area Four
+            .ribbon {{ribbon}}
+        img(alt='', src='{{image_url}}')
+      .listing-item-data
+        a.listing-item-address(href='#')
+          | {{address}}
+        .listing-item-excerpt
+          | Excellent wood-fired pizzas, salads, and croissants
+      .listing-category-name
+        a(href='#') Restaurant
