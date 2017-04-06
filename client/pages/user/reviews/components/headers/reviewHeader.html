@@ -1,0 +1,30 @@
+<template name="reviewHeader">
+	<div class="review-school-section">
+		<div class="row">
+			<div class="col-sm-3 text-center">
+				<div class="listing-avatar">
+          <a class="verified-data" title="Verifyed Listing" data-toggle="tooltip" data-placement="right"></a>
+          <img alt="" src="{{logo_url}}" class="center-block" />
+        </div>
+			</div>
+			<div class="col-sm-9 align-middle-parent">
+				<div class="align-middle-child review-school-description">
+					<div class="">
+						<a href=""><span>{{title}}</span></a>
+					</div>
+					<div class="">
+						<span class="">
+							<span class="">{{subtitle}}</span>
+						</span>
+						<span class="">
+							<a href="#">{{note}} min</a>
+						</span>
+					</div>
+					<address>
+						{{zipcode}}<br>{{address}}
+					</address>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

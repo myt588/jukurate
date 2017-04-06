@@ -1310,6 +1310,7 @@ function onPlayerStateChange(e) {
     $(".quick-menu a").on("click", function(e){
       e.preventDefault();
       e.stopPropagation();
+      console.log('tt');
       var _ = $(this);
       var qMenu = $(".quick-menu a");
       var show = $(".quick-menu a.show-menu");

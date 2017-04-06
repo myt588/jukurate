@@ -1,0 +1,10 @@
+.review-star-title {
+	font-family: 'Capriola', sans-serif;
+  color: rgb(38,163,135);
+  text-align: center;
+  padding-top: 5px;
+}
+
+.review-star-title:first-letter {
+  text-transform: uppercase;
+}

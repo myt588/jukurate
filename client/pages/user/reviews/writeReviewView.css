@@ -1,0 +1,33 @@
+.writeReviewView {
+	height: 100%;
+	padding-top: 100px;
+}
+
+.underline {
+	padding-top: 20px;
+	border-bottom: 2px solid #ccc;
+} 
+
+.review-school-section {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.review-school-rounded-corner-logo {
+	border:1px solid #;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;  
+}
+
+.align-middle-parent {
+	padding: 1% 0;
+}
+
+.align-middle-child {
+	padding: 2% 0;
+}
+
+.review-school-description {
+	padding-left: 20px;
+}

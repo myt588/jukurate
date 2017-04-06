@@ -1,0 +1,22 @@
+<template name="reviewBlock">
+	{{> reviewMood rating=rating}}
+	<div class="author-vote">
+		{{> reviewLabel rating=rating}}
+	  {{> reviewStars rating=rating}}
+  </div>
+</template>
+
+<template name='reviewMood'>
+	<div class="author-vote-mood {{mood}}"></div>
+</template>
+
+<template name="reviewStars">
+	<div class="stars">
+	  {{{stars}}}
+	</div>
+</template>
+
+<template name="reviewLabel">
+	{{ratingLabel}}
+</template>
+

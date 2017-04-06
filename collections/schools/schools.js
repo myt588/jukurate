@@ -16,7 +16,7 @@ class SchoolsCollection extends Mongo.Collection {
   }
 }
 
-this.Schools = new SchoolsCollection('schools');
+Schools = new SchoolsCollection('schools');
 
 Schools.deny({
   insert: function() {
@@ -44,7 +44,7 @@ SchoolsSchema = new SimpleSchema({
 		label: 'Top',
 		optional: true,
 	},
-	rate: {
+	rating: {
 		type: Number,
 		optional: true,
 		autoform: {
@@ -83,6 +83,16 @@ SchoolsSchema = new SimpleSchema({
 	station: {
 		type: String,
 		label: 'Station',
+		optional: true,
+	},
+	walking_distance: {
+		type: Number,
+		label: 'Walking Distance',
+		optional: true,
+	},
+	zipcode: {
+		type: String,
+		label: 'Zipcode',
 		optional: true,
 	},
 	address: {
@@ -158,7 +168,7 @@ Schools.publicFields = {
   name: 1,
   description: 1,
   top: 1,
-	rate: 1,
+	rating: 1,
 	ribbon: 1,
   claimed: 1,
   logo_url: 1,
@@ -171,6 +181,8 @@ Schools.publicFields = {
   mobile: 1,
   email: 1,
   site: 1,
+  walking_distance: 1,
+	zipcode: 1,
   created_by: 1,
   created_at: 1,
   updated_at: 1

@@ -16,7 +16,7 @@ class CoursesCollection extends Mongo.Collection {
   }
 }
 
-this.Courses = new CoursesCollection('courses');
+Courses = new CoursesCollection('courses');
 
 Courses.deny({
   insert: function() {

@@ -1,0 +1,16 @@
+<template name='reviewStarRating'>
+	<div class="form-group row">
+		<div class="row">
+			<label class="col-sm-6 review-star-title">{{name}}</label>
+			<div class="col-sm-6 star-rating text-center">
+				<fieldset>
+					<input type="radio" id="{{name}}_star5" name="{{name}}" value=5 /><label for="{{name}}_star5" title="Outstanding">5 stars</label>
+					<input type="radio" id="{{name}}_star4" name="{{name}}" value=4 /><label for="{{name}}_star4" title="Very Good">4 stars</label>
+					<input type="radio" id="{{name}}_star3" name="{{name}}" value=3 /><label for="{{name}}_star3" title="Good">3 stars</label>
+					<input type="radio" id="{{name}}_star2" name="{{name}}" value=2 /><label for="{{name}}_star2" title="Poor">2 stars</label>
+					<input type="radio" id="{{name}}_star1" name="{{name}}" value=1 /><label for="{{name}}_star1" title="Very Poor">1 star</label>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</template>

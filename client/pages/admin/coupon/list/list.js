@@ -13,26 +13,26 @@ Template.couponList.events({
 });
 
 Template.couponList.helpers({
-   coupons: function() {
+  coupons: function() {
     let coupons = Coupons.find({});
     if (coupons.count() == 0) {
       return null
     } else {
       return coupons;
     }
-   },
-   settings : function () {
-      return {
-          fields: [
-            { key: 'name', label: 'Name' },
-            { key: 'description', label: 'Discription' },
-            { key: 'created_at', label: 'Created Date' },
-            { key: '_id', label: 'Actions', 
-              fn: function (value) {
-                return new Spacebars.SafeString(adminActions('coupons', value));
-            }}
-          ]
-      };
-    },
+  },
+  settings : function () {
+    return {
+      fields: [
+        { key: 'name', label: 'Name' },
+        { key: 'description', label: 'Discription' },
+        { key: 'created_at', label: 'Created Date' },
+        { key: '_id', label: 'Actions', 
+          fn: function (value) {
+            return new Spacebars.SafeString(adminActions('coupons', value));
+        }}
+      ]
+    };
+  },
 
 });

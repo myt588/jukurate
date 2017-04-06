@@ -16,7 +16,7 @@ class CouponsCollection extends Mongo.Collection {
   }
 }
 
-this.Coupons = new CouponsCollection('coupons');
+Coupons = new CouponsCollection('coupons');
 
 Coupons.deny({
   insert: function() {

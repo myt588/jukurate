@@ -14,3 +14,11 @@ Meteor.publish('reviews.id', function(_id) {
 	});
 });
 
+Meteor.publish('reviews.limit', function(limit=4) {
+  const options = {
+  	sort: {createdAt: -1}, 
+  	limit: limit
+	};
+  return Reviews.find({}, options, { fields: Reviews.publicFields });
+});
+

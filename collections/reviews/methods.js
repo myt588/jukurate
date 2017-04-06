@@ -4,7 +4,7 @@
 // #   create a new review
 // # PARAMS
 // #   {Object}      review
-// #     {String}    name
+// #     {String}    title
 // #     {String}    description -> optional
 // #     {bool}      checked -> optional
 // #

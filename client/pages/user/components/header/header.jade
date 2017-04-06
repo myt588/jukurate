@@ -2,33 +2,45 @@ template(name='header')
   header.header
     // Start Logo
     .logo
-      a.logo-color-bg(href='#')
+      a.logo-color-bg(href='{{pathFor route="home"}}')
         img(alt='', src='/assets/images/logo.png')
-    // End Logo
-    // Start User Buttons
-    .user-buttons
-      a.user-login(href='#')
-    // End User Buttons
     // Start Navbar
     #slide-nav.navbar.navbar-inverse(role='navigation')
       .container
         #slidemenu
           ul.nav.navbar-nav.navbar-right
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown')
+            li
+              a(href='{{pathFor route="home"}}')
                 | Home
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown')
+            li
+              a(href='{{pathFor route="school_list_view"}}')
                 | Schools
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown')
+            li
+              a(href='{{pathFor route="course_list_view"}}')
                 | Courses
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown')
+            li
+              a(href='{{pathFor route="coupon_list_view"}}')
                 | Coupons
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown')
-                | Login
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown')
+            li
+              a(href='{{pathFor route="contact_view"}}')
                 | Contact
+            if currentUser
+              li.dropdown
+                a(href='#')
+                  | {{currentUser.profile.name}}
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    a(href='{{pathFor route="user_profile"}}') Profile
+                  li
+                    a(href='#') Pricing
+                  li
+                    a#logout(href='#') Logout
+            else 
+              li
+                a(href='{{pathFor route="register"}}')
+                  | Sign Up
+              li
+                a(href='{{pathFor route="login"}}')
+                  | Log In
+

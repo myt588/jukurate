@@ -16,7 +16,7 @@ class TutorsCollection extends Mongo.Collection {
   }
 }
 
-this.Tutors = new TutorsCollection('tutors');
+Tutors = new TutorsCollection('tutors');
 
 Tutors.deny({
   insert: function() {
@@ -35,9 +35,36 @@ TutorsSchema = new SimpleSchema({
 		type: String,
 		label: 'Name'
 	},
+	avatar_url: {
+		type: String,
+		label: 'Profile Photo',
+		optional: true,
+	},
 	description: {
 		type: String,
 		label: 'Description'
+	},
+	graduated_school: {
+		type: String,
+		label: 'Graduated School',
+		optional: true,
+	},
+	current_school: {
+		type: String,
+		label: 'Current School',
+		optional: true,
+	},
+	tutor_subjects: {
+		type: [String],
+		label: 'Tutor Subjects',
+		optional: true,
+	},
+	overall: {
+		type: Number,
+		decimal:true,
+		autoform: {
+			type: 'hidden'
+		}
 	},
 	created_by: {
 		type: String,
@@ -81,25 +108,12 @@ Tutors.attachSchema( TutorsSchema );
 Tutors.publicFields = {
   name: 1,
   description: 1,
+  graduated_school: 1,
+	current_school: 1,
+	tutor_subjects: 1,
+	overall: 1,
+	avatar_url: 1,
   created_by: 1,
   created_at: 1,
   updated_at: 1
 };
-
-Factory.define('tutors', Tutors, {
-  name: function() {
-    return faker.lorem.words(3).join(' ');
-  },
-  description: function() {
-  	return faker.lorem.sentences(3,3);
-  },
-  created_by: function () {
-  	return this.userId;
-  },
-  created_at: function () {
-  	return faker.date.past();
-  },
-  updated_at: function () {
-  	return faker.date.past();
-  }
-});

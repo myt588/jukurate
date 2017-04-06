@@ -16,7 +16,7 @@ class ReviewsCollection extends Mongo.Collection {
   }
 }
 
-this.Reviews = new ReviewsCollection('reviews');
+Reviews = new ReviewsCollection('reviews');
 
 Reviews.deny({
   insert: function() {
@@ -31,17 +31,30 @@ Reviews.deny({
 });
 
 ReviewsSchema = new SimpleSchema({
-	name: {
+	owner_type: {
 		type: String,
-		label: 'Name'
+	},
+	owner_id: {
+		type: String,
 	},
 	description: {
 		type: String,
-		label: 'Description'
+	},
+	overall: {
+		type: Number,
+		decimal:true,
+	},
+	location: {
+		type: Number,
+	},
+	environment: {
+		type: Number,
+	},
+	price: {
+		type: Number,
 	},
 	created_by: {
 		type: String,
-		optional: true,
 		autoValue: function() {
 			return this.userId
 		},
@@ -79,27 +92,16 @@ ReviewsSchema = new SimpleSchema({
 Reviews.attachSchema( ReviewsSchema );
 
 Reviews.publicFields = {
-  name: 1,
+	owner_id: 1,
+	owner_type: 1,
   description: 1,
+  overall: 1,
+  location: 1,
+  environment: 1,
+  price: 1,
   created_by: 1,
   created_at: 1,
   updated_at: 1
 };
 
-Factory.define('reviews', Reviews, {
-  name: function() {
-    return faker.lorem.words(3).join(' ');
-  },
-  description: function() {
-  	return faker.lorem.sentences(3,3);
-  },
-  created_by: function () {
-  	return this.userId;
-  },
-  created_at: function () {
-  	return faker.date.past();
-  },
-  updated_at: function () {
-  	return faker.date.past();
-  }
-});
+
