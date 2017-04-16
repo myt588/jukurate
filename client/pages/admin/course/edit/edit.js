@@ -10,7 +10,7 @@ AutoForm.hooks({
     onSubmit: function(insertDoc, updateDoc, currentDoc) {
       // You must call this.done()!
       this.event.preventDefault();
-      insertDoc.id = Router.current().params.id
+      insertDoc.id = Router.current().params.id;
       Meteor.call('courses.update', insertDoc);
       this.done();
       Router.go('course_list');

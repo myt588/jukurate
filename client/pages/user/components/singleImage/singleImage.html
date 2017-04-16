@@ -1,0 +1,13 @@
+<template name="singleImage">
+	{{#if id}}
+    <img src="{{image.link}}" alt="" class="{{class}}" height="{{height}}" width="{{width}}">
+	{{else}}
+	<div class="listing-item-title-centralizer">
+    <div class="listing-item-title">
+      {{image_title}}
+    </div>
+  </div>
+  <div class="listing-black-overlay"></div>
+  <img alt="" src="/assets/images/listings/2.jpg" />
+	{{/if}}
+</template>

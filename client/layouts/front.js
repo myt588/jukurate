@@ -12,6 +12,11 @@ Template.frontLayout.onRendered(function(){
   .append('<span class="icon-bar"></span>')
   .append('<span class="icon-bar"></span>');
   $(".search-popup,.review-popup,.pm-popup,.login-popup").prepend('<div class="back-site icon-arrow-left"></div>');
+  /* Init Tooltips */
+  $('.pg-user [data-toggle="tooltip"],.more-listing[data-toggle="tooltip"],.more-map-listing[data-toggle="tooltip"], .template-colors [data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="tooltip"]').not('[data-original-title]').tooltip({
+    container: 'body'
+  });
   setTooltips();
 });
 

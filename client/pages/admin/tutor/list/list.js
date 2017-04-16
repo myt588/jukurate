@@ -6,7 +6,7 @@ Template.tutorList.events({
   'click .reactive-table tbody tr'(e) {
     let post = this;
     console.log(e.target.className)
-    if (e.target.className == "btn btn-danger remove" | "fa fa-trash-o") {
+    if (e.target.className == "btn btn-danger remove" || e.target.className == "fa fa-trash-o") {
       Meteor.call('tutors.remove', post._id);
     }
   }

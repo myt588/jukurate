@@ -16,7 +16,11 @@ Template.registerHelper('roundToOne',(num)=>{
 	if (num == null) {
 		return;
 	}
-  return (Math.round( num * 10 ) / 10).toFixed(1);
+  return num.toPrecision(3);
+});
+
+Template.registerHelper('checkReviewCount',(a)=>{
+  return !(a == 0);
 });
 
 

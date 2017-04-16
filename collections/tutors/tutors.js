@@ -31,27 +31,54 @@ Tutors.deny({
 });
 
 TutorsSchema = new SimpleSchema({
+	school_id: {
+		type: String,
+		optional: true
+	},
 	name: {
 		type: String,
 		label: 'Name'
 	},
 	avatar_url: {
 		type: String,
-		label: 'Profile Photo',
+		optional: true,
+	},
+	thumbnail: {
+		type: String,
 		optional: true,
 	},
 	description: {
 		type: String,
 		label: 'Description'
 	},
-	graduated_school: {
+	college: {
 		type: String,
-		label: 'Graduated School',
+		label: 'College',
 		optional: true,
 	},
-	current_school: {
+	college_major: {
 		type: String,
-		label: 'Current School',
+		label: 'College Major',
+		optional: true,
+	},
+	grad: {
+		type: String,
+		label: 'Graduate',
+		optional: true,
+	},
+	grad_major: {
+		type: String,
+		label: 'Graduate Major',
+		optional: true,
+	},
+	phd: {
+		type: String,
+		label: 'Doctor',
+		optional: true,
+	},
+	phd_major: {
+		type: String,
+		label: 'Doctor Major',
 		optional: true,
 	},
 	tutor_subjects: {
@@ -59,12 +86,22 @@ TutorsSchema = new SimpleSchema({
 		label: 'Tutor Subjects',
 		optional: true,
 	},
-	overall: {
+	rating: {
 		type: Number,
 		decimal:true,
-		autoform: {
-			type: 'hidden'
-		}
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      }
+		},
+	},
+	rating_count: {
+		type: Number,
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      }
+		},
 	},
 	created_by: {
 		type: String,
@@ -72,47 +109,42 @@ TutorsSchema = new SimpleSchema({
 		autoValue: function() {
 			return this.userId
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	created_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	updated_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	removed_at: {
 		type: Date,
 		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
 	}
 })
 
 Tutors.attachSchema( TutorsSchema );
 
 Tutors.publicFields = {
+	school_id: 1,
   name: 1,
   description: 1,
-  graduated_school: 1,
-	current_school: 1,
+  college: 1,
+	college_major: 1,
+	grad: 1,
+	grad_major: 1,
+	phd: 1,
+	phd_major: 1,
 	tutor_subjects: 1,
-	overall: 1,
+	rating: 1,
+	rating_count: 1,
 	avatar_url: 1,
+	thumbnail: 1,
   created_by: 1,
   created_at: 1,
   updated_at: 1

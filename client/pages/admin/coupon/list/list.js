@@ -6,7 +6,7 @@ Template.couponList.events({
   'click .reactive-table tbody tr'(e) {
     let post = this;
     console.log(e.target.className)
-    if (e.target.className == "btn btn-danger remove" | "fa fa-trash-o") {
+    if (e.target.className == "btn btn-danger remove" || e.target.className == "fa fa-trash-o") {
       Meteor.call('coupons.remove', post._id);
     }
   }
@@ -24,7 +24,7 @@ Template.couponList.helpers({
   settings : function () {
     return {
       fields: [
-        { key: 'name', label: 'Name' },
+        { key: 'title', label: 'Title' },
         { key: 'description', label: 'Discription' },
         { key: 'created_at', label: 'Created Date' },
         { key: '_id', label: 'Actions', 

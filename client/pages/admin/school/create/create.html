@@ -1,7 +1,8 @@
 <template name='schoolCreate'>
 	<h1 class="page-header">
-      Create School Profile 
+    Create School Profile 
   </h1>
   {{> breadcrumb link='/admin/schools' baseView='Schools' currentView='Schools Create'}}
-	{{> quickForm collection='Schools' id='insertSchoolForm'}}
+	{{> schoolForm _id='insertSchoolForm'}}
+	
 </template>

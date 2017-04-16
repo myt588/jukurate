@@ -3,5 +3,5 @@
 		Edit Course Profile
   </h1>
   {{> breadcrumb link='/admin/courses' baseView='Courses' currentView='Courses Edit'}}
-	{{> quickForm collection='Courses' id='updateCourseForm' doc=course }}
+	{{> courseForm _id='updateCourseForm' _doc=course}}
 </template>

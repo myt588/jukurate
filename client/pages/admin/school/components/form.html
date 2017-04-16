@@ -1,0 +1,32 @@
+<template name="schoolForm">
+  {{#autoForm collection='Schools' id=_id doc=_doc}}
+    <fieldset>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='description' type='summernote' settings=_settings}}
+      {{> afQuickField name='ribbon'}}
+      {{> afQuickField name='logo_url' type='fileUpload' collection='Images' label='Choose filesssss'}}
+      {{> afQuickField name='district'}}
+      {{> afQuickField name='station'}}
+      {{> afQuickField name='walking_distance'}}
+      {{> afQuickField name='zipcode'}}
+      {{> afQuickField name='address'}}
+      {{> afQuickField name='phone'}}
+      {{> afQuickField name='fax'}}
+      {{> afQuickField name='mobile'}}
+      {{> afQuickField name='site'}}
+      {{> afQuickField name="amenities" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsAmen}}
+      {{> afQuickField name="tags" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsTag}}
+
+      {{> afQuickField name='top'}}
+      {{> afQuickField name='claimed'}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">
+    {{#if _doc}}
+      Update
+    {{else}}
+      Create
+    {{/if}}
+    </button>
+    <a href="{{pathFor route='school_list'}}">Cancel</a>
+  {{/autoForm}}
+</template>

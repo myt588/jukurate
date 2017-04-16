@@ -1,0 +1,14 @@
+<!-- Takes-in Variable-> education: Array  -->
+
+<template name="tutorEducation">
+	<div class="list-schools">
+	  {{#each edu in edus}}
+    <div class="list-school">
+    	{{edu.school}}
+    </div>
+    <div class="list-major">
+    	{{edu.major}}
+    </div>
+    {{/each}}
+  </div>
+</template>

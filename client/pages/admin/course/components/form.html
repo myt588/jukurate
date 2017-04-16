@@ -1,0 +1,24 @@
+<template name="courseForm">
+	{{#if Template.subscriptionsReady}}
+  	{{#autoForm collection='Courses' id=_id doc=_doc}}
+      <fieldset>
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='description' type='summernote' settings=_settings}}
+        {{> afQuickField name='cover_image' type='fileUpload' collection='Images' label='Choose filesssss'}}
+        {{> afQuickField name='price'}}
+        {{#if _optionsTutor != null}}
+          {{> afQuickField name="taught_by" type="selectize" multiple=true selectizeOptions=_selOptions options=_optionsTutor}}
+        {{/if}}
+        {{> afQuickField name="tags" type="selectize" multiple=true selectizeOptions=_selOptions options=_optionsTag}}
+      </fieldset>
+      <button type="submit" class="btn btn-primary">
+      {{#if _doc}}
+        Update
+      {{else}}
+        Create
+      {{/if}}
+      </button>
+      <a href="{{pathFor route='course_list'}}">Cancel</a>
+    {{/autoForm}}
+  {{/if}}
+</template>

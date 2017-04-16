@@ -1,0 +1,19 @@
+<template name="regularCouponList">
+  <div class='regularCouponList'>
+    <div class="row listing white">
+      {{#each item in items}}
+        {{> listItemStyle1 
+            item_id=item._id
+            route_name='coupon_detail_view'
+            rating=item.rating 
+            image_id=item.cover_image
+            image_title=item.subject 
+            title=item.title 
+            items=item.tags
+            icon_class='icon-book'
+        }}
+      {{/each}}
+    </div>
+    <div class="more-listing icon-plus" title="More Related Listings" data-toggle="tooltip" data-placement="top"></div>
+  </div>
+</template>

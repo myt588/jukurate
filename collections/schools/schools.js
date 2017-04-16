@@ -39,42 +39,16 @@ SchoolsSchema = new SimpleSchema({
 		type: String,
 		label: 'Description'
 	},
-	top: {
-		type: Boolean,
-		label: 'Top',
-		optional: true,
-	},
-	rating: {
-		type: Number,
-		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
-	},
 	ribbon: {
 		type: String,
 		label: 'Sell Point',
 		optional: true,
 	},
-  claimed: {
-    type: Boolean,
-    optional: true,
-    autoform: {
-      type: 'hidden'
-    }
-  },
   logo_url: {
     type: String,
     label: 'Logo',
     optional: true,
   },
-	image_url: {
-		type: String,
-		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
-	},
 	district: {
 		type: String,
 		label: 'District',
@@ -125,40 +99,63 @@ SchoolsSchema = new SimpleSchema({
 		label: 'Website',
 		optional: true,
 	},
-	created_by: {
+	amenities: {
+		type: [String],
+		optional: true,
+	},
+	tags: {
+    type: [String],
+    optional: true,
+  },
+  claimed: {
+    type: Boolean,
+    optional: true,
+  },
+  top: {
+		type: Boolean,
+		label: 'Top',
+		optional: true,
+	},
+	rating: {
+		type: Number,
+		optional: true,
+		decimal:true,
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      } 
+		},
+	},
+	rating_count: {
+		type: Number,
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      } 
+		},
+	},
+  created_by: {
 		type: String,
 		optional: true,
 		autoValue: function() {
 			return this.userId
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	created_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	updated_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	removed_at: {
 		type: Date,
 		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
 	}
 })
 
@@ -169,6 +166,7 @@ Schools.publicFields = {
   description: 1,
   top: 1,
 	rating: 1,
+	rating_count: 1,
 	ribbon: 1,
   claimed: 1,
   logo_url: 1,
@@ -183,6 +181,8 @@ Schools.publicFields = {
   site: 1,
   walking_distance: 1,
 	zipcode: 1,
+	amenities: 1,
+	tags: 1,
   created_by: 1,
   created_at: 1,
   updated_at: 1

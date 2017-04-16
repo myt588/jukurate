@@ -31,13 +31,88 @@ Coupons.deny({
 });
 
 CouponsSchema = new SimpleSchema({
-	name: {
+	school_id: {
 		type: String,
-		label: 'Name'
+		optional: true,
+		autoform: {
+			type: 'hidden'
+		}
+	},
+	course_ids: {
+		type: [String],
+		label: 'Course Package',
+		optional: true,
+	},
+	rating: {
+		type: Number,
+		decimal:true,
+		autoform: {
+			type: 'hidden'
+		},
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      }
+		},
+	},
+	rating_count: {
+		type: Number,
+		autoform: {
+			type: 'hidden'
+		},
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      }
+		},
+	},
+	cover_image: {
+		type: String,
+		optional: true,
+		autoform: {
+			afFieldInput: {
+	      type: 'fileUpload',
+	      collection: 'Images',
+	      accept: 'image/*',
+	      label: 'Choose file'
+	    }
+		}
+	},
+	thumbnail: {
+		type: String,
+		optional: true,
+	},
+	title: {
+		type: String,
+		label: 'Title'
 	},
 	description: {
 		type: String,
 		label: 'Description'
+	},
+	price: {
+		type: Number,
+		decimal:true,
+	},
+	tags: {
+		type: [String],
+		label: 'Tutor Subjects',
+		optional: true,
+		autoform: {
+      type: "selectize",
+      multiple: true,
+      options: function () {
+        return _.map(TAGS || [], function (item) {
+		      return {label: item, value: item};
+		    });
+      },
+      selectizeOptions: {
+        hideSelected: true,
+        plugins: {
+          "remove_button": {}
+        }
+      }
+    }
 	},
 	created_by: {
 		type: String,
@@ -79,8 +154,15 @@ CouponsSchema = new SimpleSchema({
 Coupons.attachSchema( CouponsSchema );
 
 Coupons.publicFields = {
-  name: 1,
+  school_id: 1,
+  course_ids: 1,
+	rating: 1,
+	rating_count: 1,
+  title: 1,
   description: 1,
+  cover_image: 1,
+  price: 1,
+  tags: 1,
   created_by: 1,
   created_at: 1,
   updated_at: 1

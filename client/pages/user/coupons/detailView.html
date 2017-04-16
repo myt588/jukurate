@@ -1,0 +1,54 @@
+<template name='couponDetailView'>
+	{{#if Template.subscriptionsReady}}
+	<div class='couponDetailView'>
+		{{> pageHeader }}
+		<div class="container-fluid blog single-block">
+			<div class="row">
+				<div class="col-md-9 text-center">
+					<div class="container listing-description" id="desc" style="margin-top: 0px">
+						<h2>Related Articles</h2>
+						<div class="row">
+							<div class="col-sm-3 text-center">
+								<div class="listing-avatar">
+									{{> singleImage id=coupon.cover_image class='center-block'}}
+								</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="description-container">
+									<table class="description-text table">
+										<tr>
+											<td class="description">
+												<h4 class="listing-subtitle text-left">
+													Bistro du Midi (MARC) - Luxury in the heart of Boston
+												</h4>
+												<p class="text-left"> {{coupon.description}} </p>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="listing-amenities">
+									<h5 class="amenities-title text-left">
+										Tags
+									</h5>
+									{{> tags items=coupon.tags }}
+								</div>
+							</div>
+						</div>
+					</div>
+					{{> priceList }}
+			    <div class="container-fluid related" id="tutor">
+			      <h2>Course Listings</h2>
+			      <div class="separator-medium"></div>
+			      {{> regularCourseList }}
+			    </div>
+				</div>
+				{{> rightSideBar}}
+			</div>
+		</div>
+		{{> reviewListView rating=coupon.rating id=coupon._id type='coupons'}}
+		{{> relatedArticleList}}
+	</div>
+	{{/if}}
+</template>
+
+

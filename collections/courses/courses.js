@@ -31,13 +31,74 @@ Courses.deny({
 });
 
 CoursesSchema = new SimpleSchema({
-	name: {
+	school_id: {
 		type: String,
-		label: 'Name'
+		optional: true,
+		autoform: {
+			type: 'hidden'
+		}
+	},
+	rating: {
+		type: Number,
+		decimal:true,
+		autoform: {
+			type: 'hidden'
+		},
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      }
+		},
+	},
+	rating_count: {
+		type: Number,
+		autoform: {
+			type: 'hidden'
+		},
+		autoValue: function() {
+			if (this.isInsert) {
+        return 0;
+      }
+		},
+	},
+	cover_image: {
+		type: String,
+		optional: true,
+		autoform: {
+			afFieldInput: {
+	      type: 'fileUpload',
+	      collection: 'Images',
+	      accept: 'image/*',
+	      label: 'Choose file'
+	    }
+		}
+	},
+	title: {
+		type: String,
+		label: 'Title'
 	},
 	description: {
 		type: String,
 		label: 'Description'
+	},
+	subject: {
+		type: String,
+		label: 'Subjects',
+		optional: true,
+	},
+	price: {
+		type: Number,
+		decimal:true,
+	},
+	tags: {
+		type: [String],
+		label: 'Tags',
+		optional: true
+	},
+	taught_by: {
+		type: [String],
+		label: 'Taught By',
+		optional: true
 	},
 	created_by: {
 		type: String,
@@ -49,6 +110,8 @@ CoursesSchema = new SimpleSchema({
 			type: 'hidden'
 		}
 	},
+
+	// Timestamps
 	created_at: {
 		type: Date,
 		autoValue: function() {
@@ -79,8 +142,16 @@ CoursesSchema = new SimpleSchema({
 Courses.attachSchema( CoursesSchema );
 
 Courses.publicFields = {
-  name: 1,
+	school_id: 1,
+	rating: 1,
+	rating_count: 1,
+  title: 1,
   description: 1,
+  subject: 1,
+  cover_image: 1,
+  price: 1,
+  tags: 1,
+  taught_by: 1,
   created_by: 1,
   created_at: 1,
   updated_at: 1

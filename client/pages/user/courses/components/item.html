@@ -1,0 +1,25 @@
+<template name="regularCourseItem">
+  <div class="col-sm-3">
+    <div class="listing-item">
+      <a href="#" class="category-icon icon-dinner"></a>
+      <div class="listing-item-rating">{{roundToOne course.overall}}</div>
+      <a href="{{pathFor route='course_detail_view' id=course._id }}" class="listing-item-link">
+        <img alt="" src="/assets/images/listings/1.jpg" />
+        <div class="listing-black-overlay"></div>
+      </a>
+      <div class="listing-item-data">
+        <a class="listing-item-address" href="#">
+          {{course.title}}
+        </a>
+        <div class="listing-item-excerpt">
+          Graduated From: {{course.graduated_school}}
+        </div>
+      </div>
+      <div class="listing-category-name">
+        {{#each item in course.course_subjects}}
+          <a href="#">{{item}} &nbsp; </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>

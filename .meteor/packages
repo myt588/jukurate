@@ -13,9 +13,9 @@ jquery@1.11.10                  # Helpful client-side library
 tracker@1.1.2                 # Meteor's client-side reactive programming library
 
 standard-minifier-css@1.3.4   # CSS minifier run for production mode
-standard-minifier-js@1.2.3    # JS minifier run for production mode
+standard-minifier-js@2.0.0    # JS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.6.3              # Enable ECMAScript2015+ syntax in app code
+ecmascript@0.7.2              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.3            # Server-side component of the `meteor shell` command
 
 
@@ -34,7 +34,6 @@ mdg:validated-method
 # MongoDB collection schema controls
 aldeed:simple-schema
 aldeed:collection2
-aldeed:autoform
 dburles:collection-helpers
 dburles:factory
 digilord:faker
@@ -43,28 +42,36 @@ digilord:faker
 iron:router
 zimme:active-route
 
+# Form
+jeremy:selectize
+aldeed:autoform
+jamiecollinson:selectize-bootstrap
+comerc:autoform-selectize
+mpowaga:autoform-summernote
+
 # Utility
 # erasaur:meteor-lodash
 spiderable@1.0.14-release-testing.0
 random@1.0.10
 momentjs:moment
 
-# Mobile
-# fastclick
-
 # Accounts
 alanning:roles
-accounts-base@1.2.15
-accounts-password@1.3.4
-accounts-facebook
-accounts-google
-accounts-twitter
+accounts-base@1.2.16
+accounts-password@1.3.5
+accounts-facebook@1.1.1
+accounts-google@1.1.2
+accounts-twitter@1.2.1
 zhaoyao91:accounts-wechat
 leonzhang1109:accounts-qq
-service-configuration
+service-configuration@1.0.11
 useraccounts:iron-routing
 useraccounts:bootstrap
 softwarerero:accounts-t9n
+
+# File System
+ostrio:files
+# ostrio:autoform-files
 
 # Frontend 
 meteortoys:allthings
@@ -74,10 +81,12 @@ fortawesome:fontawesome
 twbs:bootstrap
 aslagle:reactive-table
 mquandalle:jade
-stylus
+stylus@2.513.9
 czbaker:lightbox2
-reactive-dict
+reactive-dict@1.1.8
+mizzao:jquery-ui
 
 # Connect to React
-react-template-helper
-react-meteor-data
+# react-template-helper
+# react-meteor-data
+

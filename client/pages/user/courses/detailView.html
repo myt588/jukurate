@@ -1,0 +1,59 @@
+<template name='courseDetailView'>
+	{{#if Template.subscriptionsReady}}
+	<div class='courseDetailView'>
+		{{> pageHeader }}
+		<div class="container-fluid blog single-block">
+			<div class="row">
+				<div class="col-md-9 text-center">
+					<div class="container listing-description" id="desc" style="margin-top: 0px">
+						<h2>Related Articles</h2>
+						<div class="row">
+							<div class="col-sm-3 text-center">
+								<div class="listing-avatar">
+									{{> singleImage id=course.cover_image class='center-block'}}
+								</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="description-container">
+									<table class="description-text table">
+										<tr>
+											<td class="description">
+												<h4 class="listing-subtitle text-left">
+													Bistro du Midi (MARC) - Luxury in the heart of Boston
+												</h4>
+												<p class="text-left"> {{course.description}} </p>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="listing-amenities">
+									<h5 class="amenities-title text-left">
+										Tags
+									</h5>
+									{{> tags items=course.tags }}
+								</div>
+							</div>
+						</div>
+					</div>
+					{{> priceList }}
+					<div class="container-fluid related" id="tutor">
+			      <h2>Tutor Listings</h2>
+			      <div class="separator-medium"></div>
+			      {{> regularTutorList }}
+			    </div>
+			    <div class="container-fluid related" id="tutor">
+			      <h2>Coupon Listings</h2>
+			      <div class="separator-medium"></div>
+			      {{> regularCouponList }}
+			    </div>
+				</div>
+				{{> rightSideBar}}
+			</div>
+		</div>
+		{{> reviewListView rating=course.rating id=course._id type='courses'}}
+		{{> relatedArticleList}}
+	</div>
+	{{/if}}
+</template>
+
+

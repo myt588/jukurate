@@ -12,8 +12,8 @@
 const insert = new ValidatedMethod({
   name: 'courses.insert',
   validate: null,
-  run: function(cours) {
-    Courses.insert(cours);
+  run: function(course) {
+    Courses.insert(course);
   }
 });
 
@@ -52,7 +52,7 @@ const update = new ValidatedMethod({
   //   	optional: true
   //   },
   // }).validator(),
-  run: function(cours) {
+  run: function(course) {
   // 	if (!this.userId) {
 		//   throw new Meteor.Error('unauthorized', 'You must be logged in to update an item!');
 		// }

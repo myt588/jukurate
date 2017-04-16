@@ -1,0 +1,30 @@
+<template name="tutorForm">
+	{{#if Template.subscriptionsReady}}
+  	{{#autoForm collection='Tutors' id=_id doc=_doc}}
+      <fieldset>
+        {{#if _optionsSchool != null}}
+        {{> afQuickField name='school_id' type="selectize" selectizeOptions=_selOptions options=_optionsSchool}}
+        {{/if}}
+        {{> afQuickField name='name'}}
+        {{> afQuickField name='description' type='summernote' settings=_settings}}
+        {{> afQuickField name='avatar_url' type='fileUpload'}}
+        {{> afFieldInput name='thumbnail' type='hidden' id='thumbnail_input'}}
+        {{> afQuickField name='college'}}
+        {{> afQuickField name='college_major'}}
+        {{> afQuickField name='grad'}}
+        {{> afQuickField name='grad_major'}}
+        {{> afQuickField name='phd'}}
+        {{> afQuickField name='phd_major'}}
+        {{> afQuickField name="tutor_subjects" type="selectize" multiple=true selectizeOptions=_selOptions options=_optionsTag}}
+      </fieldset>
+      <button type="submit" class="btn btn-primary">
+      {{#if _doc}}
+        Update
+      {{else}}
+        Create
+      {{/if}}
+      </button>
+      <a href="{{pathFor route='tutor_list'}}">Cancel</a>
+    {{/autoForm}}
+  {{/if}}
+</template>

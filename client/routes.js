@@ -23,15 +23,15 @@ AccountsTemplates.configureRoute('signUp', {
 Router.route('/', { layoutTemplate: 'frontLayout', template: 'home', name: 'home' });
 Router.route('/schools', { layoutTemplate: 'frontLayout', template: 'schoolListView', name: 'school_list_view' });
 Router.route('/schools/:id', { layoutTemplate: 'frontLayout', template: 'schoolDetailView', name: 'school_detail_view' });
-Router.route('/schools/:school_id/tutors/', { layoutTemplate: 'frontLayout', template: 'tutorListView', name: 'tutor_list_view' });
-Router.route('/schools/:school_id/tutors/:id', { layoutTemplate: 'frontLayout', template: 'tutorDetailView', name: 'tutor_detail_view' });
+Router.route('/tutors/', { layoutTemplate: 'frontLayout', template: 'tutorListView', name: 'tutor_list_view' });
+Router.route('/tutors/:id', { layoutTemplate: 'frontLayout', template: 'tutorDetailView', name: 'tutor_detail_view' });
 Router.route('/courses/', { layoutTemplate: 'frontLayout', template: 'courseListView', name: 'course_list_view' });
 Router.route('/courses/:id', { layoutTemplate: 'frontLayout', template: 'courseDetailView', name: 'course_detail_view' });
 Router.route('/coupons/', { layoutTemplate: 'frontLayout', template: 'couponListView', name: 'coupon_list_view' });
 Router.route('/coupons/:id', { layoutTemplate: 'frontLayout', template: 'couponDetailView', name: 'coupon_detail_view' });
 Router.route('/contactus', { layoutTemplate: 'frontLayout', template: 'contactView', name: 'contact_view' });
 
-Router.route('/writeareview/:type/:id', { layoutTemplate: 'frontLayout', template: 'writeReviewView', name: 'write_review_view' });
+Router.route('/writeareview/:type/:id', { layoutTemplate: 'frontLayout', template: 'reviewComposeView', name: 'review_compose_view' });
 
 // admin route
 Router.route('/admin', { layoutTemplate: 'dashboardLayout', template: 'dashboard', name: 'dashboard' });
@@ -61,4 +61,9 @@ Router.route('/admin/reviews/create', { layoutTemplate: 'dashboardLayout', templ
 Router.route('/admin/reviews/:id', { layoutTemplate: 'dashboardLayout', template: 'reviewShow', name: 'review_show' });
 Router.route('/admin/reviews/:id/edit', { layoutTemplate: 'dashboardLayout', template: 'reviewEdit', name: 'review_edit' });
 
-
+Tracker.autorun(function () {
+  var current = Router.current();
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+});

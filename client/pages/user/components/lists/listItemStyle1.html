@@ -1,0 +1,41 @@
+<!-- 
+item_id: String
+rating: Number
+image_id: String // id
+image_class: String // html-class
+image_height: Number
+image_width: Number
+title: String
+subtitle: String
+items: Array // display at bottom 
+route_name: String
+icon_class: String
+image_title: String
+-->
+
+<template name="listItemStyle1">
+  <div class="col-sm-3">
+    <div class="listing-item">
+      <a href="#" class="category-icon {{icon_class}}"></a>
+      {{#if checkReviewCount rating}}
+      <div class="listing-item-rating">{{roundToOne rating}}</div>
+      {{/if}}
+      <a href="{{pathFor route=route_name id=item_id }}" class="listing-item-link">
+        {{> singleImage id=image_id class=image_class height=image_height width=image_width image_title=image_title}}
+      </a>
+      <div class="listing-item-data">
+        <a class="listing-item-address" href="#">
+          {{title}}
+        </a>
+        <div class="listing-item-excerpt">
+          {{subtitle}}
+        </div>
+      </div>
+      <div class="listing-category-name">
+        {{#each item in items}}
+          <a href="#">{{item}} &nbsp; </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,26 @@
+<template name="couponForm">
+  {{#if Template.subscriptionsReady}}
+  	{{#autoForm collection='Coupons' id=_id doc=_doc}}
+      <fieldset>
+        {{#if _optionsCourse != null}}
+      	 {{> afQuickField name="course_ids" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsCourse}}
+        {{/if}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='description' type='summernote' settings=_settings}}
+        {{> afQuickField name='cover_image' type='fileUpload' collection='Images' label='Choose filesssss'}}
+        {{> afQuickField name='price'}}
+        {{> afQuickField name="tags" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsTag}}
+
+      </fieldset>
+      <button type="submit" class="btn btn-primary">
+      {{#if _doc}}
+        Update
+      {{else}}
+        Create
+      {{/if}}
+      </button>
+      <a href="{{pathFor route='coupon_list'}}">Cancel</a>
+    {{/autoForm}}
+  {{/if}}
+</template>
+
