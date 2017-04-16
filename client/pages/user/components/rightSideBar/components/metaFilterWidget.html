@@ -1,0 +1,26 @@
+<template name="metaFilterWidget">
+	<div class="widget news-categories"> 
+		<div class="block">
+			<div class="widget-title">
+				<div class="the-title">
+					{{metaName}}
+				</div>
+			</div>
+			<div class="widget-content">
+				<ul>
+					<li class="item {{isActive 'all'}}">
+						<a id='meta_filter_all' href="#">All</a>
+					</li>
+					{{#each item in items}}
+					<li class="item {{isActive item}}">
+						<a id='meta_filter' href="#">{{item}}</a>
+					</li>
+					{{/each}}
+					<li class="item more-widget-item">
+						<a id='meta_load_more' href="#">{{paginationText}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</template>

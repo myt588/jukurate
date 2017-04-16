@@ -1,6 +1,6 @@
 Template.regularTutorList.onCreated(function(){
   this.autorun(() => {
-    this.subscribe('tutors.limit', 8, Session.get('schoolFilter'));
+    this.subscribe('tutors.limit', Session.get('load_more_tutors'), Session.get('filters'));
   });
 });
 

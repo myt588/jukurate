@@ -1,0 +1,27 @@
+<template name="schoolFilterWidget">
+	<div class="widget news-archive">
+		<div class="block">
+			<div class="widget-title">
+				<div class="the-title">
+					SCHOOL
+				</div>
+			</div>
+			<div class="widget-content">
+				<ul>
+					<li class="item {{isActive 'all'}}">
+						<a id='school_all' href="#">All</a>
+					</li>
+					{{#each school in schools}}
+					<li class="item {{isActive school.name}}">
+						<a id='school_filter' href="#">{{school.name}}</a>
+					</li>
+					{{/each}}
+					<li class="item more-widget-item">
+						<a id='load_more' href="#">{{paginationText}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</template>
+

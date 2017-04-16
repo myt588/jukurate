@@ -2,58 +2,10 @@
 	<div class="col-md-3 sidebar-right">
 		<div class="widget-area">
 			<div class="widget-container">
-				<!--Start Widget-->
-				<div class="widget news-archive"> <!--start widget-->
-					<div class="block">
-						<div class="widget-title">
-							<div class="the-title">
-								SCHOOL
-							</div>
-						</div>
-						<div class="widget-content">
-							<ul>
-								{{#each school in schools}}
-								<li class="item">
-									<a id='school_filter' href="#">{{school.name}}</a>
-								</li>
-								{{/each}}
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!--End Widget-->
-				<!--Start Widget-->
-				<div class="widget news-categories"> <!--start widget-->
-					<div class="block">
-						<div class="widget-title">
-							<div class="the-title">
-								SUBJECT
-							</div>
-						</div>
-						<div class="widget-content">
-							<ul>
-								<li class="item">
-									<a href="#">Tour</a>
-								</li>
-								<li class="item">
-									<a href="#">Eat</a>
-								</li>
-								<li class="item">
-									<a href="#">Relax</a>
-								</li>
-								<li class="item">
-									<a href="#">Buy</a>
-								</li>
-								<li class="item more-widget-item">
-									<a href="#">Show More</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!--End Widget-->
-				{{> sideRecent }}
+				{{> schoolFilterWidget}}
+				{{> metaFilterWidget metaName='Subjects' metaItems=subjects}}
 				{{> sideTag }}
+				<!-- {{> sideRecent }} -->
 			</div>
 		</div>
 	</div>

@@ -1,15 +1,13 @@
 <template name="regularTutorList">
-  <div class='regularTutorList'>
-    {{#each item in items}}
-      {{> listItemStyle1 
-      		item_id=item._id
-      		route_name='tutor_detail_view'
-      		rating=item.rating 
-      		image_id=item.avatar_url 
-      		title=item.name 
-      		items=item.tutor_subjects
-          icon_class='icon-book'
-      }}
-    {{/each}}
-  </div>
+  {{#each item in items}}
+    {{> listItemStyle1 
+    		item_id=item._id
+    		route_name='tutor_detail_view'
+    		rating=item.rating 
+    		image_id=item.thumbnail 
+    		title=item.name 
+    		items=item.tutor_subjects
+        icon_class='icon-book'
+    }}
+  {{/each}}
 </template>

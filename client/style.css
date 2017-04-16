@@ -6048,6 +6048,12 @@ div.list-online-data:hover{
     color: #202020;
     text-transform: uppercase;
 }
+
+.widget .widget-content .active {
+    background: #ececec;
+    text-decoration: none;
+}
+
 .widget .widget-content .item a .date{
     text-transform: none;
     font-size: 12px;

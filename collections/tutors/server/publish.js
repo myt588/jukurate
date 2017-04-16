@@ -1,3 +1,5 @@
+const MAX_LOAD = 1000;
+
 Meteor.publish('tutors.all', function() {
 	return Tutors.find({
 		removed_at: {$exists: false}
@@ -14,10 +16,10 @@ Meteor.publish('tutors.id', function(_id) {
 	});
 });
 
-Meteor.publish('tutors.limit', function(limit=10, filters) {
+Meteor.publish('tutors.limit', function(limit, filters) {
   const options = {
   	sort: {created_at: -1}, 
-  	limit: limit,
+  	limit: Math.min(limit ? limit : 8, MAX_LOAD),
 	};
 	const filtersCopy = filters ? filters : {};
 	filtersCopy.removed_at = {$exists: false};
