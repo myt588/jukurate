@@ -1,7 +1,11 @@
 <template name='courseEdit'>
-	<h1 class="page-header">
-		Edit Course Profile
-  </h1>
-  {{> breadcrumb link='/admin/courses' baseView='Courses' currentView='Courses Edit'}}
-	{{> courseForm _id='updateCourseForm' _doc=course}}
+	{{#if Template.subscriptionsReady}}
+		<h1 class="page-header">
+			Edit Course Profile
+	  </h1>
+	  {{> breadcrumb link='/admin/courses' baseView='Courses' currentView='Courses Edit'}}
+		{{> courseForm _id='updateCourseForm' _doc=course}}
+	{{else}}
+		{{> loading}}
+  {{/if}}
 </template>

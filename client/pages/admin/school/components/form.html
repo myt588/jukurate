@@ -4,21 +4,27 @@
       {{> afQuickField name='name'}}
       {{> afQuickField name='description' type='summernote' settings=_settings}}
       {{> afQuickField name='ribbon'}}
-      {{> afQuickField name='logo_url' type='fileUpload' collection='Images' label='Choose filesssss'}}
-      {{> afQuickField name='district'}}
-      {{> afQuickField name='station'}}
-      {{> afQuickField name='walking_distance'}}
-      {{> afQuickField name='zipcode'}}
-      {{> afQuickField name='address'}}
-      {{> afQuickField name='phone'}}
-      {{> afQuickField name='fax'}}
-      {{> afQuickField name='mobile'}}
-      {{> afQuickField name='site'}}
-      {{> afQuickField name="amenities" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsAmen}}
-      {{> afQuickField name="tags" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsTag}}
+      {{> afQuickField name='founded_on'}}
+      {{> afQuickField name='thumbnail' type='thumbnailUpload' hello='hell'}}
 
-      {{> afQuickField name='top'}}
+      {{> afQuickField name='contact.phone'}}
+      {{> afQuickField name='contact.fax'}}
+      {{> afQuickField name='contact.mobile'}}
+      {{> afQuickField name='contact.email'}}
+      {{> afQuickField name='contact.site'}}
+  
+      {{> afQuickField name='station'}}
+      {{> afQuickField name="location" type="map" searchBox=true zoom=13}}
+      
+      {{> tagSelect}}
+      {{> afQuickField name="amenities" type="selectize" multiple=true selectizeOptions=_selOptions options=_optionsAmen}}
       {{> afQuickField name='claimed'}}
+      
+      {{#if currentUser.isWebAdmin}}
+        {{> afQuickField name='sort.rating'}}
+        {{> afQuickField name='sort.rating_count'}}
+        {{> afQuickField name='sort.recommend_level'}}
+      {{/if}}
     </fieldset>
     <button type="submit" class="btn btn-primary">
     {{#if _doc}}
@@ -27,6 +33,8 @@
       Create
     {{/if}}
     </button>
-    <a href="{{pathFor route='school_list'}}">Cancel</a>
+    {{#unless hideCancel}}
+      <a href="{{pathFor route='school_list'}}">Cancel</a>
+    {{/unless}}
   {{/autoForm}}
 </template>

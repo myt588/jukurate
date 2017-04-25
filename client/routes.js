@@ -5,17 +5,24 @@ Router.configure({
 
 // login route
 AccountsTemplates.configureRoute('signIn', {
-    name: 'login',
-    path: '/login',
-    template: 'login',
-    layoutTemplate: 'frontLayout',
+  name: 'login',
+  path: '/login',
+  template: 'login',
+  layoutTemplate: 'frontLayout',
+  redirect: function(){
+    if (Meteor.user().isAdmin()) {
+      Router.go('dashboard');
+    } else {
+      Router.go('home');
+    }
+  }
 });
 
 AccountsTemplates.configureRoute('signUp', {
-    name: 'register',
-    path: '/register',
-    template: 'register',
-    layoutTemplate: 'frontLayout',
+  name: 'register',
+  path: '/register',
+  template: 'register',
+  layoutTemplate: 'frontLayout',
 });
 
 
@@ -35,6 +42,7 @@ Router.route('/writeareview/:type/:id', { layoutTemplate: 'frontLayout', templat
 
 // admin route
 Router.route('/admin', { layoutTemplate: 'dashboardLayout', template: 'dashboard', name: 'dashboard' });
+Router.route('/admin/profile', { layoutTemplate: 'dashboardLayout', template: 'adminProfile', name: 'admin_profile' });
 
 Router.route('/admin/coupons', { layoutTemplate: 'dashboardLayout', template: 'couponList', name: 'coupon_list' });
 Router.route('/admin/coupons/create', { layoutTemplate: 'dashboardLayout', template: 'couponCreate', name: 'coupon_create' });
@@ -50,6 +58,7 @@ Router.route('/admin/schools', { layoutTemplate: 'dashboardLayout', template: 's
 Router.route('/admin/schools/create', { layoutTemplate: 'dashboardLayout', template: 'schoolCreate', name: 'school_create' });
 Router.route('/admin/schools/:id', { layoutTemplate: 'dashboardLayout', template: 'schoolShow', name: 'school_show' });
 Router.route('/admin/schools/:id/edit', { layoutTemplate: 'dashboardLayout', template: 'schoolEdit', name: 'school_edit' });
+Router.route('/admin/schools/:id/assign', { layoutTemplate: 'dashboardLayout', template: 'schoolAssign', name: 'school_assign' });
 
 Router.route('/admin/tutors', { layoutTemplate: 'dashboardLayout', template: 'tutorList', name: 'tutor_list' });
 Router.route('/admin/tutors/create', { layoutTemplate: 'dashboardLayout', template: 'tutorCreate', name: 'tutor_create' });
@@ -67,3 +76,39 @@ Tracker.autorun(function () {
     $(window).scrollTop(0);
   });
 });
+
+
+
+
+
+
+// Router.onBeforeAction(function () {
+
+//   // if (Meteor.user() != undefined) {
+//   //   if ((Meteor.user().hasOwnProperty('roles')) && !Roles.userIsInRole(Meteor.user(), ['admin', 'school-admin'])) {
+//   //     console.log("user not admin", Meteor.userId())
+//   //     // if the user is not logged in, render the Login template
+//   //     Router.go('home');
+//   //   } else if (!Meteor.userId()) {
+//   //     console.log("not logged in", Meteor.userId())
+//   //     // if the user is not logged in, render the Login template
+//   //     Router.go('home');
+//   //   } else {
+//   //     // otherwise don't hold up the rest of hooks or our route/action function
+//   //     // from running
+//   //     this.next();
+//   //   }
+//   // } else {
+//   //   this.next();
+//   // }
+//   this.next()
+// }, {
+//   only: [
+//     'dashboard',
+//     'coupon_list','coupon_create','coupon_show','coupon_edit', 
+//     'course_list','course_create','course_show','course_edit',
+//     'school_list','school_create','school_show','school_edit',
+//     'tutor_list','tutor_create','tutor_show','tutor_edit',
+//     'review_list','review_create','review_show','review_edit',
+//     ]
+// });

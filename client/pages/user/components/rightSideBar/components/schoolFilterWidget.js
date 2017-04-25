@@ -2,8 +2,10 @@ Template.schoolFilterWidget.onCreated(function(){
 	this.limit = new ReactiveVar(3);
   this.paginationText = new ReactiveVar('Show More');
   this.selected = new ReactiveVar('all');
+  this.showLess = new ReactiveVar(false);
+  this.schools = new ReactiveVar([]);
   this.autorun(() => {
-    this.subscribe('schools.limit', this.limit.get(), {});
+    this.subscribe('schools.all');
   });
 });
 
@@ -35,7 +37,8 @@ Template.schoolFilterWidget.events({
 
 Template.schoolFilterWidget.helpers({
 	schools() {
-		return Schools.find({});
+    Template.instance().schools.set(Schools.find().fetch());
+		return Template.instance().schools.get().slice(0, Template.instance().limit.get());
 	},
   paginationText() {
     return Template.instance().paginationText.get();

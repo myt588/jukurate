@@ -18,7 +18,7 @@
 										<img class="media-object" src="http://placehold.it/50x50" alt="">
 									</span>
 									<div class="media-body">
-										<h5 class="media-heading"><strong>{{ currentUser._id }}</strong>
+										<h5 class="media-heading"><strong>{{ currentUser.name }}</strong>
 										</h5>
 										<p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
 										<p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -33,7 +33,7 @@
 				</li>
 				<li class="dropdown">
 					{{#if currentUser}}
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ currentUser._id }} <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ currentUser.name }} <b class="caret"></b></a>
 					{{else}}
 					{{> atNavButton }}
 					{{/if}}
@@ -49,7 +49,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+							<a id="logout" href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
 						</li>
 					</ul>
 				</li>
@@ -57,22 +57,29 @@
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li class="{{isActiveRoute 'dashboard'}}">
+					<li id="navbar_item" class="{{isActiveRoute 'dashboard'}}">
 						<a href="{{pathFor route='dashboard'}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
 					</li>
-					<li class="{{isActiveRoute 'school_list'}}">
+					{{#if currentUser.isSchoolAdmin }}
+					<li id="navbar_item" class="{{isActiveRoute 'admin_profile'}}">
+						<a href="{{pathFor route='admin_profile'}}"><i class="fa fa-fw fa-bar-chart-o"></i> Profile</a>
+					</li>
+					{{/if}}
+					{{#if currentUser.isWebAdmin }}
+					<li id="navbar_item" class="{{isActiveRoute 'school_list'}}">
 						<a href="{{pathFor route='school_list'}}"><i class="fa fa-fw fa-bar-chart-o"></i> Schools</a>
 					</li>
-					<li class="{{isActiveRoute 'tutor_list'}}">
+					{{/if}}
+					<li id="navbar_item" class="{{isActiveRoute 'tutor_list'}}">
 						<a href="{{pathFor route='tutor_list'}}"><i class="fa fa-fw fa-table"></i> Tutors</a>
 					</li>
-					<li class="{{isActiveRoute 'course_list'}}">
+					<li id="navbar_item" class="{{isActiveRoute 'course_list'}}">
 						<a href="{{pathFor route='course_list'}}"><i class="fa fa-fw fa-edit"></i> Courses</a>
 					</li>
-					<li class="{{isActiveRoute 'coupon_list'}}">
+					<li id="navbar_item" class="{{isActiveRoute 'coupon_list'}}">
 						<a href="{{pathFor route='coupon_list'}}"><i class="fa fa-fw fa-desktop"></i> Coupons</a>
 					</li>
-					<li class="{{isActiveRoute 'review_list'}}">
+					<li id="navbar_item" class="{{isActiveRoute 'review_list'}}">
 						<a href="{{pathFor route='review_list'}}"><i class="fa fa-fw fa-desktop"></i> Reviews</a>
 					</li>
 				</ul>

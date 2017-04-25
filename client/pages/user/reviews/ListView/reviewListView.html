@@ -1,46 +1,43 @@
 <template name='reviewListView'>
-  <div class="container listing-review" id="rev">
-    {{#if checkReviewCount rating}}
-    <div class="pg-header-icon icon-star"></div>
-    <div class="row">
-      <div class="col-sm-3 text-center">
-        <div class="average-review">
-          <div class="mood-icon {{mood}}"></div>
-          <div class="rating">{{roundToOne rating}}</div>
-          <div class="stars">
-            {{> reviewStars rating=rating }}
-          </div>
-          <div class="review-stats">
-            <div class="review-counter">14</div>
-            <div>Reviews</div>
-          </div>
-          <img alt="" src="/assets/images/miscellaneous/review-background-mask.png" />
+  {{#if checkReviewCount rating}}
+  <div class="pg-header-icon icon-star"></div>
+  <div class="row">
+    <div class="col-sm-3 text-center">
+      <div class="average-review">
+        <div class="mood-icon {{mood}}"></div>
+        <div class="rating">{{roundToOne rating}}</div>
+        <div class="stars">
+          {{> reviewStars rating=rating }}
         </div>
-        <div class="review-reputation text-center">
-          <div>
-            <h4>{{> reviewLabel rating=rating }}</h4>
-          </div>
+        <div class="review-stats">
+          <div class="review-counter">14</div>
+          <div>Reviews</div>
         </div>
-        <div class="write-review">
-          <a class="button" href="{{pathFor route='review_compose_view' type=type id=id}}">
-            Write a Review
-          </a>
+        <img alt="" src="/assets/images/miscellaneous/review-background-mask.png" />
+      </div>
+      <div class="review-reputation text-center">
+        <div>
+          <h4>{{> reviewLabel rating=rating }}</h4>
         </div>
       </div>
-      <div class="col-sm-9">
-        {{> regularReviewList type=type id=id}}
+      <div class="write-review">
+        <a class="button" href="{{pathFor route='review_compose_view' type=type id=id}}">
+          Write a Review
+        </a>
       </div>
     </div>
-    <div class="more-listing icon-plus" title="More Reviews" data-toggle="tooltip" data-placement="top"></div>
-    {{else}}
-    <h2>
-      No Reviews Yet. Click 
-      <a href="{{pathFor route='review_compose_view' type=type id=id}}">Here</a> 
-      to be the First Reviewer.
-    </h2>
-    {{/if}}
+    <div class="col-sm-9">
+      {{> regularReviewList type=type id=id}}
+    </div>
   </div>
-  
+  <div class="more-listing icon-plus" title="More Reviews" data-toggle="tooltip" data-placement="top"></div>
+  {{else}}
+  <h2>
+    No Reviews Yet. Click 
+    <a href="{{pathFor route='review_compose_view' type=type id=id}}">Here</a> 
+    to be the First Reviewer.
+  </h2>
+  {{/if}}
 </template>
 
 

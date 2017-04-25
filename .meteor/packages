@@ -32,7 +32,6 @@ reywood:publish-composite
 mdg:validated-method
 
 # MongoDB collection schema controls
-aldeed:simple-schema
 aldeed:collection2
 dburles:collection-helpers
 dburles:factory
@@ -48,6 +47,7 @@ aldeed:autoform
 jamiecollinson:selectize-bootstrap
 comerc:autoform-selectize
 mpowaga:autoform-summernote
+dburles:google-maps
 
 # Utility
 # erasaur:meteor-lodash
@@ -89,4 +89,3 @@ mizzao:jquery-ui
 # Connect to React
 # react-template-helper
 # react-meteor-data
-

@@ -2,15 +2,18 @@
   {{#if Template.subscriptionsReady}}
   	{{#autoForm collection='Coupons' id=_id doc=_doc}}
       <fieldset>
-        {{#if _optionsCourse != null}}
-      	 {{> afQuickField name="course_ids" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsCourse}}
-        {{/if}}
+        {{> schoolSelect}}
+        {{> courseSelect}}
+        {{> tagSelect}}
         {{> afQuickField name='title'}}
         {{> afQuickField name='description' type='summernote' settings=_settings}}
-        {{> afQuickField name='cover_image' type='fileUpload' collection='Images' label='Choose filesssss'}}
+        {{> afQuickField name='thumbnail' type='thumbnailUpload'}}
         {{> afQuickField name='price'}}
-        {{> afQuickField name="tags" type="selectize" multiple=true selectizeOptions=_sOptionsTag options=_optionsTag}}
-
+        {{#if currentUser.isWebAdmin}}
+          {{> afQuickField name='sort.rating'}}
+          {{> afQuickField name='sort.rating_count'}}
+          {{> afQuickField name='sort.recommend_level'}}
+        {{/if}}
       </fieldset>
       <button type="submit" class="btn btn-primary">
       {{#if _doc}}

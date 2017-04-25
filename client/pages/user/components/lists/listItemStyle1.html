@@ -11,10 +11,12 @@ items: Array // display at bottom
 route_name: String
 icon_class: String
 image_title: String
+item_per_line: String
 -->
 
 <template name="listItemStyle1">
-  <div class="col-sm-3">
+{{log data}}
+  <div class="{{itemPerLine item_per_line}}">
     <div class="listing-item">
       <a href="#" class="category-icon {{icon_class}}"></a>
       {{#if checkReviewCount rating}}
@@ -32,9 +34,9 @@ image_title: String
         </div>
       </div>
       <div class="listing-category-name">
-        {{#each item in items}}
+        <!-- {{#each item in items}}
           <a href="#">{{item}} &nbsp; </a>
-        {{/each}}
+        {{/each}} -->
       </div>
     </div>
   </div>

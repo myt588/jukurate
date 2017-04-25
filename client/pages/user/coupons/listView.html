@@ -1,7 +1,16 @@
 <template name='couponListView'>
-	{{> pageHeader}}
-  {{> listingFilters}}
-  <div class="container-fluid listing-block">
-    {{> regularCouponList}}
-  </div>
+  {{> pageHeader}}
+  {{> sortBar}}
+  <div class="container-fluid blog listing-block">
+  	<div class="row listing grid4 white">
+		  <div class="col-md-9 text-center">
+			  {{> regularList itemTemplate='listItemStyle1' collection='Coupons' }}
+			</div>
+			<div class="col-md-3 sidebar-right">
+				{{> rightSideFilter tagFilter=true}}
+			</div>
+		</div>
+		<div id="more_coupons" class="more-listing icon-plus" title="More Coupons" data-toggle="tooltip" data-placement="top"></div>
+	</div>
 </template>
+

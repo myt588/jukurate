@@ -1,5 +1,3 @@
-
-
 Template.reviewHeader.helpers({
 	image() {
 		if (Router.current().params.type == 'schools') {

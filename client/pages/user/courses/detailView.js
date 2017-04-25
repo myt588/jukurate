@@ -7,7 +7,14 @@ Template.courseDetailView.onCreated(function(){
 
 Template.courseDetailView.helpers({
 	course() {
-   	return Courses.findOne({_id: Router.current().params.id});
+		let course = Courses.findOne({});
+   	return course;
+  },
+  tutorFilter(course) {
+    return {_id: {$in: course.tutor_id}};
+  },
+  courseFilter(course) {
+    return {course_ids: {$in: [course._id]}};
   }
 });
 

@@ -1,0 +1,5 @@
+<template name="tagSelect">
+	{{#if _optionsTag != null}}
+    {{> afQuickField name="tags" type="selectize" multiple=true selectizeOptions=_sOptions options=_optionsTag}}
+  {{/if}}
+</template>

@@ -1,11 +1,16 @@
 Template.reviewList.onCreated(function () {
-  this.subscribe('reviews.all');
+  this.autorun(()=>{
+    if (Meteor.user().isSchoolAdmin()) {
+      this.subscribe('review.bySchool', Meteor.user().schoolId());
+    } else if (Meteor.user().isWebAdmin()) {
+      this.subscribe('review.all');
+    }
+  });
 });
 
 Template.reviewList.events({
   'click .reactive-table tbody tr'(e) {
     let post = this;
-    console.log(e.target.className)
     if (e.target.className == "btn btn-danger remove" || e.target.className == "fa fa-trash-o") {
       Meteor.call('reviews.remove', post._id);
     }
@@ -22,17 +27,25 @@ Template.reviewList.helpers({
     }
    },
    settings : function () {
-      return {
-          fields: [
-            { key: 'name', label: 'Name' },
-            { key: 'description', label: 'Discription' },
-            { key: 'created_at', label: 'Created Date' },
-            { key: '_id', label: 'Actions', 
-              fn: function (value) {
-                return new Spacebars.SafeString(adminActions('reviews', value));
-            }}
-          ]
-      };
+      if (Meteor.user().isWebAdmin()) {
+        return {
+            fields: [
+              { key: 'description', label: 'Discription' },
+              { key: 'created_at', label: 'Created Date' },
+              { key: '_id', label: 'Actions', 
+                fn: function (value) {
+                  return new Spacebars.SafeString(adminActions('reviews', value));
+              }}
+            ]
+        };
+      } else {
+        return {
+            fields: [
+              { key: 'description', label: 'Discription' },
+              { key: 'created_at', label: 'Created Date' }
+            ]
+        };
+      }
     },
 
 });

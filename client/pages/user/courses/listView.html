@@ -1,9 +1,15 @@
 <template name='courseListView'>
   {{> pageHeader}}
-  {{> listingFilters}}
-  <!-- Start Listings Container  -->
-  <div class="container-fluid listing-block">
-    {{> regularCourseList}}
-  </div>
-  <!-- End Listings Container  -->
+  {{> sortBar}}
+  <div class="container-fluid blog listing-block">
+  	<div class="row listing grid4 white">
+		  <div class="col-md-9 text-center">
+				{{> regularList itemTemplate='listItemStyle1' collection='Courses' }}
+			</div>
+			<div class="col-md-3 sidebar-right">
+				{{> rightSideFilter tagFilter=true}}
+			</div>
+		</div>
+		<div id="more_courses" class="more-listing icon-plus" title="More Courses" data-toggle="tooltip" data-placement="top"></div>
+	</div>
 </template>

@@ -9,22 +9,22 @@ template(name='header')
       .container
         #slidemenu
           ul.nav.navbar-nav.navbar-right
-            li
+            li.navbar_item
               a(href='{{pathFor route="home"}}')
                 | Home
-            li
+            li.navbar_item
               a(href='{{pathFor route="school_list_view"}}')
                 | Schools
-            li
+            li.navbar_item
               a(href='{{pathFor route="tutor_list_view"}}')
                 | Tutors
-            li
+            li.navbar_item
               a(href='{{pathFor route="course_list_view"}}')
                 | Courses
-            li
+            li.navbar_item
               a(href='{{pathFor route="coupon_list_view"}}')
                 | Coupons
-            li
+            li.navbar_item
               a(href='{{pathFor route="contact_view"}}')
                 | Contact
             if currentUser

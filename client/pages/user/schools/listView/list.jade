@@ -1,25 +1,11 @@
 template(name='schoolListView')
-  .container-fluid.map-listing.map-hidden
-    .row.page-head
-      .current-page-info
-        .breadcrumbs.text-left
-          ul
-            li
-              a(href='#') Home
-            li
-              a(href='#') Listings
-            li
-              a(href='#') Food
-            li
-              a(href='#') Restaurants
-        .current-category
-          i.current-page-icon.icon-platter
-          a(href='#') Restaurants
-        .listing-flag.icon-flag
-      .map-buttom
-        .map-button-text
-          | Show Map View
-    #map
-    .mapList
-  +schoolFilter
-  +schoolListStyle1
+  +pageHeader
+  +sortBar
+  .container-fluid.blog.listing-block
+    .row.listing.grid4.white
+      // Start Blog Listing
+      .col-md-9.text-center
+        +regularList itemTemplate='listItemStyle1' collection='Schools' initialLoad=3 col=4
+      .col-md-3.sidebar-right
+        +rightSideFilter tagFilter=true
+  .more-listing.icon-plus(title='More Listings', data-toggle='tooltip', data-placement='top')

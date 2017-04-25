@@ -2,20 +2,18 @@
 	{{#if Template.subscriptionsReady}}
   	{{#autoForm collection='Tutors' id=_id doc=_doc}}
       <fieldset>
-        {{#if _optionsSchool != null}}
-        {{> afQuickField name='school_id' type="selectize" selectizeOptions=_selOptions options=_optionsSchool}}
-        {{/if}}
+        {{> schoolSelect}}
+        {{> tagSelect}}
         {{> afQuickField name='name'}}
         {{> afQuickField name='description' type='summernote' settings=_settings}}
-        {{> afQuickField name='avatar_url' type='fileUpload'}}
-        {{> afFieldInput name='thumbnail' type='hidden' id='thumbnail_input'}}
-        {{> afQuickField name='college'}}
-        {{> afQuickField name='college_major'}}
-        {{> afQuickField name='grad'}}
-        {{> afQuickField name='grad_major'}}
-        {{> afQuickField name='phd'}}
-        {{> afQuickField name='phd_major'}}
-        {{> afQuickField name="tutor_subjects" type="selectize" multiple=true selectizeOptions=_selOptions options=_optionsTag}}
+        {{> afQuickField name='thumbnail' type='thumbnailUpload'}}
+        {{> afQuickField name='edu'}}
+
+        {{#if currentUser.isWebAdmin}}
+          {{> afQuickField name='sort.rating'}}
+          {{> afQuickField name='sort.rating_count'}}
+          {{> afQuickField name='sort.recommend_level'}}
+        {{/if}}
       </fieldset>
       <button type="submit" class="btn btn-primary">
       {{#if _doc}}

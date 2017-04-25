@@ -1,0 +1,7 @@
+<template name="schoolSelect">
+	{{#if _optionsSchool != null}}
+    {{#if currentUser.isWebAdmin}}
+      {{> afQuickField name='school_id' type="selectize" selectizeOptions=_sOptions options=_optionsSchool}}
+    {{/if}}
+  {{/if}}
+</template>

@@ -31,18 +31,13 @@ Reviews.deny({
 });
 
 ReviewsSchema = new SimpleSchema({
-	owner_type: {
-		type: String,
-	},
-	owner_id: {
-		type: String,
-	},
+	// Table Data
 	description: {
 		type: String,
 	},
 	overall: {
 		type: Number,
-		decimal:true,
+		decimal: true
 	},
 	location: {
 		type: Number,
@@ -53,55 +48,47 @@ ReviewsSchema = new SimpleSchema({
 	price: {
 		type: Number,
 	},
+
+	// Relation
+	owner_type: {
+		type: String,
+	},
+	owner_id: {
+		type: String,
+	},
+	school_id: {
+		type: String,
+	},
 	created_by: {
 		type: String,
 		autoValue: function() {
 			return this.userId
-		},
-		autoform: {
-			type: 'hidden'
 		}
 	},
+
+	// Timestamps
 	created_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
-		},
-		autoform: {
-			type: 'hidden'
 		}
 	},
 	updated_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
-		},
-		autoform: {
-			type: 'hidden'
 		}
 	},
 	removed_at: {
 		type: Date,
 		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
 	}
 })
 
 Reviews.attachSchema( ReviewsSchema );
 
 Reviews.publicFields = {
-	owner_id: 1,
-	owner_type: 1,
-  description: 1,
-  overall: 1,
-  location: 1,
-  environment: 1,
-  price: 1,
-  created_by: 1,
-  created_at: 1,
-  updated_at: 1
+	removed_at: 0
 };
 
 

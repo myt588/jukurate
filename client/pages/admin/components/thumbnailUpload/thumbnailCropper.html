@@ -1,0 +1,11 @@
+<template name="thumbnailCropper">
+  <div class="row">
+		<div class="col-md-4">
+	    <img id="image" src="{{original.link}}" alt="" style="{max-width: 100%; max-height: 500px}">
+	    <button id="upload" class="btn btn-primary">Crop your thumbnail</button>
+	  </div>
+	  <div id="result" class="col-md-8">
+			<img id="thumbnail" src="{{croppedFile.link}}" alt="" style="{max-width: 300px; max-height: 300px}">
+	  </div>
+	</div>
+</template>

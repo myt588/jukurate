@@ -1,0 +1,13 @@
+<template name="regularList">
+	{{#unless Template.subscriptionsReady}}
+		{{> loading}}
+	{{/unless}}
+	<div class="fadein">
+		{{#each item in items}}
+			<!-- {{log (itemData item)}} -->
+			{{log itemTemplate}}
+	    {{> Template.dynamic template=itemTemplate data=(itemData item) }}
+			
+	  {{/each}}
+	</div>
+</template>

@@ -1,0 +1,22 @@
+<!-- Takes-in Variable-> education: Array  -->
+
+<template name="edu">
+	<div class="list-schools">
+	  {{#each edu in edus}}
+      <div class="edu-list">
+        <h4>
+          {{edu.degree}}
+          {{#unless edu.graduated}}
+            (Pursuing)
+          {{/unless}}
+        </h4>
+        <div class="">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>{{edu.school}}
+        </div>
+        <div class="">
+          <i class="fa fa-pencil" aria-hidden="true"></i>{{edu.major}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</template>

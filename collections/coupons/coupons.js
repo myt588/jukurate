@@ -31,64 +31,13 @@ Coupons.deny({
 });
 
 CouponsSchema = new SimpleSchema({
-	school_id: {
-		type: String,
-		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
-	},
-	course_ids: {
-		type: [String],
-		label: 'Course Package',
-		optional: true,
-	},
-	rating: {
-		type: Number,
-		decimal:true,
-		autoform: {
-			type: 'hidden'
-		},
-		autoValue: function() {
-			if (this.isInsert) {
-        return 0;
-      }
-		},
-	},
-	rating_count: {
-		type: Number,
-		autoform: {
-			type: 'hidden'
-		},
-		autoValue: function() {
-			if (this.isInsert) {
-        return 0;
-      }
-		},
-	},
-	cover_image: {
-		type: String,
-		optional: true,
-		autoform: {
-			afFieldInput: {
-	      type: 'fileUpload',
-	      collection: 'Images',
-	      accept: 'image/*',
-	      label: 'Choose file'
-	    }
-		}
-	},
-	thumbnail: {
-		type: String,
-		optional: true,
-	},
+	// Table Data
 	title: {
 		type: String,
 		label: 'Title'
 	},
 	description: {
 		type: String,
-		label: 'Description'
 	},
 	price: {
 		type: Number,
@@ -96,23 +45,17 @@ CouponsSchema = new SimpleSchema({
 	},
 	tags: {
 		type: [String],
-		label: 'Tutor Subjects',
 		optional: true,
-		autoform: {
-      type: "selectize",
-      multiple: true,
-      options: function () {
-        return _.map(TAGS || [], function (item) {
-		      return {label: item, value: item};
-		    });
-      },
-      selectizeOptions: {
-        hideSelected: true,
-        plugins: {
-          "remove_button": {}
-        }
-      }
-    }
+	},
+
+	// Relation
+	school_id: {
+		type: String,
+		optional: true,
+	},
+	course_ids: {
+		type: [String],
+		optional: true,
 	},
 	created_by: {
 		type: String,
@@ -120,53 +63,74 @@ CouponsSchema = new SimpleSchema({
 		autoValue: function() {
 			return this.userId
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
+
+	// Shared 
+	thumbnail: {
+    type: Schema.Thumbnail,
+    optional: true,
+  },
+	sort: {
+		type: Schema.Sort,
+		autoValue: function() {
+			if (this.isInsert) {
+        return {
+        	rating: 0,
+					rating_count: 0,
+					recommend_level: 0,
+				};
+      } 
+		},
+	},
+
+	// Timestamps
 	created_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	updated_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	removed_at: {
 		type: Date,
 		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
 	}
 })
 
 Coupons.attachSchema( CouponsSchema );
 
 Coupons.publicFields = {
-  school_id: 1,
-  course_ids: 1,
-	rating: 1,
-	rating_count: 1,
-  title: 1,
-  description: 1,
-  cover_image: 1,
-  price: 1,
-  tags: 1,
-  created_by: 1,
-  created_at: 1,
-  updated_at: 1
+  removed_at: 0
 };
+
+Coupons.helpers({
+	coupon(id) {
+    return Coupons.find({ _id: id });
+  },
+  itemTitle() {
+    return this.title;
+  },
+  itemThumbnail() {
+    return this.thumbnail;
+  },
+  itemRating() {
+  	return this.sort.rating;
+  },
+  itemArray() {
+  	return this.tags;
+  },
+  itemSubtitle() {
+  	return this.description;
+  },
+  itemRibbon() {
+  	return 'love love love';
+  }
+});
 
 Factory.define('coupons', Coupons, {
   name: function() {
@@ -185,9 +149,3 @@ Factory.define('coupons', Coupons, {
   	return faker.date.past();
   }
 });
-
-Coupons.helpers({
-	coupon(id) {
-    return Coupons.find({ _id: id });
-  }
-})

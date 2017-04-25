@@ -1,12 +1,16 @@
 <template name="rightSideFilter">
-	<div class="col-md-3 sidebar-right">
-		<div class="widget-area">
-			<div class="widget-container">
+	<div class="widget-area">
+		<div class="widget-container">
+			{{#if schoolFilter}}
 				{{> schoolFilterWidget}}
-				{{> metaFilterWidget metaName='Subjects' metaItems=subjects}}
-				{{> sideTag }}
-				<!-- {{> sideRecent }} -->
-			</div>
+			{{/if}}
+			{{#if subjectFilter}}
+				{{> metaFilterWidget metaName='Subjects' metaItems=subjects metaFilter='subject'}}
+			{{/if}}
+			{{#if tagFilter}}
+				{{> tagFilterWidget }}
+			{{/if}}
+			<!-- {{> sideRecent }} -->
 		</div>
 	</div>
 </template>

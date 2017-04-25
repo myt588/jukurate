@@ -1,11 +1,16 @@
 Template.tutorList.onCreated(function () {
-  this.subscribe('tutors.all');
+  this.autorun(()=>{
+    if (Meteor.user().isSchoolAdmin()) {
+      this.subscribe('tutors.bySchool', Meteor.user().schoolId());
+    } else if (Meteor.user().isWebAdmin()) {
+      this.subscribe('tutors.all');
+    }
+  });
 });
 
 Template.tutorList.events({
   'click .reactive-table tbody tr'(e) {
     let post = this;
-    console.log(e.target.className)
     if (e.target.className == "btn btn-danger remove" || e.target.className == "fa fa-trash-o") {
       Meteor.call('tutors.remove', post._id);
     }

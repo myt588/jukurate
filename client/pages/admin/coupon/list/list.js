@@ -1,11 +1,16 @@
 Template.couponList.onCreated(function () {
-  this.subscribe('coupons.all');
+    this.autorun(()=>{
+    if (Meteor.user().isSchoolAdmin()) {
+      this.subscribe('coupons.bySchool', Meteor.user().schoolId());
+    } else if (Meteor.user().isWebAdmin()) {
+      this.subscribe('coupons.all');
+    }
+  });
 });
 
 Template.couponList.events({
   'click .reactive-table tbody tr'(e) {
     let post = this;
-    console.log(e.target.className)
     if (e.target.className == "btn btn-danger remove" || e.target.className == "fa fa-trash-o") {
       Meteor.call('coupons.remove', post._id);
     }

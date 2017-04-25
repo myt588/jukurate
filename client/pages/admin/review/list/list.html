@@ -1,9 +1,11 @@
 <template name='reviewList'>
   <h1 class="page-header">
       Reviews 
+      {{# if currentUser.isWebAdmin}}
       <a href='/admin/reviews/create' class='btn btn-primary'>
       	<i class="fa fa-plus" aria-hidden="true"></i>
       </a>
+      {{/if}}
   </h1>
   {{> breadcrumb link='/admin' baseView='Dashboard' currentView='Reviews'}}
 

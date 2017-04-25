@@ -1,0 +1,47 @@
+<!-- 
+item_id: String
+rating: Number
+image_id: String // id
+image_class: String // html-class
+image_height: Number
+image_width: Number
+title: String
+subtitle: String
+items: Array // display at bottom 
+route_name: String
+icon_class: String
+image_title: String
+item_per_line: String
+ribbon: String
+label: String
+-->
+<template name="listItemStyle2">
+	<div class="{{itemPerLine item_per_line}}">
+	  <div class="listing-item">
+	    <a href="#" class="category-icon {{icon_class}}"></a>
+	    {{#if checkReviewCount rating}}
+      <div class="listing-item-rating">{{roundToOne rating}}</div>
+      {{/if}}
+	    <a href="{{pathFor route=route_name id=item_id }}" class="listing-item-link">
+	      <div class="listing-item-title-centralizer">
+	        <div class="listing-item-title">
+	          {{title}}
+	          <div class="ribbon">{{ribbon}}</div>
+	        </div>
+	      </div>
+				{{> singleImage id=image_id class=image_class height=image_height width=image_width image_title=image_title}}
+	    </a>
+	    <div class="listing-item-data">
+	      <a class="listing-item-address" href="#">
+	        {{subtitle}}
+	      </a>
+	      <div class="listing-item-excerpt">
+	        Excellent wood-fired pizzas, salads, and croissants
+	      </div>
+	    </div>
+	    <div class="listing-category-name">
+	      <a href="#">{{label}}</a>
+	    </div>
+	  </div>
+	</div>
+</template>

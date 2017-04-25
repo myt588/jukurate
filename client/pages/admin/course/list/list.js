@@ -1,11 +1,16 @@
 Template.courseList.onCreated(function () {
-  this.subscribe('courses.all');
+  this.autorun(()=>{
+    if (Meteor.user().isSchoolAdmin()) {
+      this.subscribe('courses.bySchool', Meteor.user().schoolId());
+    } else if (Meteor.user().isWebAdmin()) {
+      this.subscribe('courses.all');
+    }
+  });
 });
 
 Template.courseList.events({
   'click .reactive-table tbody tr'(e) {
     let post = this;
-    console.log(e.target.className)
     if (e.target.className == "btn btn-danger remove" || e.target.className == "fa fa-trash-o") {
       Meteor.call('courses.remove', post._id);
     }

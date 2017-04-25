@@ -8,28 +8,8 @@
 	          <a class="verified-data" title="Verifyed Listing" data-toggle="tooltip" data-placement="right"></a>
             {{> singleImage id=tutor.thumbnail class='center-block'}}
 	        </div>
-	        <div class="listing-social">
-	          <div class="social-networks">
-	            <a href="#" class="fa fa-facebook"></a>
-	            <a href="#" class="fa fa-twitter"></a>
-	            <a href="#" class="fa fa-instagram"></a>
-	            <a href="#" class="fa fa-pinterest"></a>
-	          </div>
-	        </div>
 	        <div class="list-data">
-	          {{> tutorEducation edus=_edus}}
-	          <div class="list-online-data">
-	            <div class="list-email">
-	              <a href="mailto:sample@sample.com">
-	                sample@bistrodumidi.com
-	              </a>
-	            </div>
-	            <div class="list-website">
-	              <a href="http://bistrodumidi.com/" target="_blank">
-	                bistrodumidi.com
-	              </a>
-	            </div>
-	          </div>
+	          {{> edu edus=tutor.edu}}
 	        </div>
 	      </div>
 	      <div class="col-sm-9">
@@ -41,9 +21,6 @@
 	                	<h3 class="text-left">
 	                    {{tutor.name}}
 	                  </h3>
-	                  <h4 class="listing-subtitle text-left">
-	                    Bistro du Midi (MARC) - Luxury in the heart of Boston
-	                  </h4>
 	                  <p class="capitalize-initial">
 	                    {{tutor.description}}
 	                  </p>
@@ -55,13 +32,22 @@
 	            <h5 class="amenities-title text-left">
 	              Tags
 	            </h5>
-	            {{> tags items=tutor.tutor_subjects}}
+	            {{> tags items=tutor.tags}}
 	          </div>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
-	  {{> reviewListView rating=tutor.rating id=tutor._id type='tutors'}}
+
+	  <div class="container-fluid related" id="course">
+      <h2>Course Listings</h2>
+      <div class="row listing grid4 white">
+				{{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=4 filters=(filter tutor)}}
+			</div>
+    </div>
+	  <div class="container listing-review" id="rev">
+	  	{{> reviewListView rating=tutor.itemRating id=tutor._id type='tutors'}}
+	  </div>
 	</div>
 	{{/if}}
 </template>

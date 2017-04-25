@@ -8,13 +8,13 @@ Template.metaFilterWidget.onCreated(function(){
 Template.metaFilterWidget.events({
 	"click #meta_filter"(e, instance) {
     let filters = Session.get('filters') ? Session.get('filters') : {};
-    filters.tutor_subjects = { $all: [e.target.text] };
+    filters[instance.data.metaFilter] = { $all: [e.target.text] };
     Session.set('filters', filters);
     instance.selected.set(e.target.text);
   },
   "click #meta_filter_all"(e, instance) {
     let filters = Session.get('filters') ? Session.get('filters') : {};
-    delete filters.tutor_subjects;
+    delete filters[instance.data.metaFilter];
     Session.set('filters', filters);
     instance.selected.set('all');
   },

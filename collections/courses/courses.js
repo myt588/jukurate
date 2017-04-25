@@ -31,59 +31,15 @@ Courses.deny({
 });
 
 CoursesSchema = new SimpleSchema({
-	school_id: {
-		type: String,
-		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
-	},
-	rating: {
-		type: Number,
-		decimal:true,
-		autoform: {
-			type: 'hidden'
-		},
-		autoValue: function() {
-			if (this.isInsert) {
-        return 0;
-      }
-		},
-	},
-	rating_count: {
-		type: Number,
-		autoform: {
-			type: 'hidden'
-		},
-		autoValue: function() {
-			if (this.isInsert) {
-        return 0;
-      }
-		},
-	},
-	cover_image: {
-		type: String,
-		optional: true,
-		autoform: {
-			afFieldInput: {
-	      type: 'fileUpload',
-	      collection: 'Images',
-	      accept: 'image/*',
-	      label: 'Choose file'
-	    }
-		}
-	},
+	// Table Data
 	title: {
 		type: String,
-		label: 'Title'
 	},
 	description: {
 		type: String,
-		label: 'Description'
 	},
 	subject: {
-		type: String,
-		label: 'Subjects',
+		type: [String],
 		optional: true,
 	},
 	price: {
@@ -92,23 +48,36 @@ CoursesSchema = new SimpleSchema({
 	},
 	tags: {
 		type: [String],
-		label: 'Tags',
 		optional: true
 	},
-	taught_by: {
+
+	// Relation
+	school_id: {
+		type: String,
+		optional: true,
+	},
+	tutor_id: {
 		type: [String],
 		label: 'Taught By',
 		optional: true
 	},
-	created_by: {
-		type: String,
-		optional: true,
+
+	// Shared
+	thumbnail: {
+    type: Schema.Thumbnail,
+    optional: true,
+  },
+	sort: {
+		type: Schema.Sort,
 		autoValue: function() {
-			return this.userId
+			if (this.isInsert) {
+        return {
+        	rating: 0,
+					rating_count: 0,
+					recommend_level: 0,
+				};
+      } 
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 
 	// Timestamps
@@ -117,60 +86,42 @@ CoursesSchema = new SimpleSchema({
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	updated_at: {
 		type: Date,
 		autoValue: function() {
 			return new Date()
 		},
-		autoform: {
-			type: 'hidden'
-		}
 	},
 	removed_at: {
 		type: Date,
 		optional: true,
-		autoform: {
-			type: 'hidden'
-		}
 	}
 })
 
 Courses.attachSchema( CoursesSchema );
 
 Courses.publicFields = {
-	school_id: 1,
-	rating: 1,
-	rating_count: 1,
-  title: 1,
-  description: 1,
-  subject: 1,
-  cover_image: 1,
-  price: 1,
-  tags: 1,
-  taught_by: 1,
-  created_by: 1,
-  created_at: 1,
-  updated_at: 1
+	removed_at: 0
 };
 
-Factory.define('courses', Courses, {
-  name: function() {
-    return faker.lorem.words(3).join(' ');
+Courses.helpers({
+  itemTitle() {
+    return this.title;
   },
-  description: function() {
-  	return faker.lorem.sentences(3,3);
+  itemThumbnail() {
+    return this.thumbnail;
   },
-  created_by: function () {
-  	return this.userId;
+  itemRating() {
+  	return this.sort.rating;
   },
-  created_at: function () {
-  	return faker.date.past();
+  itemArray() {
+  	return [this.subject];
   },
-  updated_at: function () {
-  	return faker.date.past();
+  itemSubtitle() {
+  	return this.description;
+  },
+  itemRibbon() {
+  	return 'love love love';
   }
 });

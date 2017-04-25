@@ -11,13 +11,21 @@
 	    }
 		}
   </style>
-	<div class='dashboardLayout'>
-		<div id='wrapper'>
-			{{> nav}}
-			<div id="page-wrapper">
-				{{> yield}}
+  {{#if Template.subscriptionsReady}}
+  	{{#if currentUser.isAdmin }}
+			<div class='dashboardLayout'>
+				<div id='wrapper'>
+					{{> nav}}
+					<div id="page-wrapper">
+						<div class="container-fluid">
+							{{> yield}}
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
+		{{/if}}
+	{{else}}
+		{{> pageLoading}}
+	{{/if}}
 </template>
 

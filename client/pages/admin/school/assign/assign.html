@@ -1,0 +1,20 @@
+<template name="schoolAssign">
+	<h1 class="page-header">
+    Assign School Admin 
+  </h1>
+  {{#each user in users}}
+  	<div class="panel panel-default">
+		  <div class="panel-body" id="remove_user">
+				{{user.email}}
+				<a href="#"><i id="{{user.email}}" class="fa fa-times" aria-hidden="true" style="float: right"></i></a>
+		  </div>
+		</div>
+  {{/each}}
+	<form class="assignForm" role="search">
+	  <div class="form-group col-md-4">
+	    <input id="email" type="text" class="form-control" placeholder="User Email">
+	  </div>
+	  <button type="submit" class="btn btn-default">Assign</button>
+	</form>
+	<br>
+</template>

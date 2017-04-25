@@ -30,7 +30,108 @@ Schools.deny({
   }
 });
 
-SchoolsSchema = new SimpleSchema({
+Schema.BusinessHour = new SimpleSchema({
+	monday: {
+    type: [String],
+    optional: true,
+  },
+  tuesday: {
+    type: [String],
+    optional: true,
+  },
+  wednesday: {
+    type: [String],
+    optional: true,
+  },
+  thursday: {
+    type: [String],
+    optional: true,
+  },
+  friday: {
+    type: [String],
+    optional: true,
+  },
+  saturday: {
+    type: [String],
+    optional: true,
+  },
+  sunday: {
+    type: [String],
+    optional: true,
+  },
+  formatted: {
+  	type: [String],
+  }
+});
+
+Schema.Location = new SimpleSchema({
+  lat: {
+    type: String,
+    optional: true,
+  },
+  lng: {
+    type: String,
+    optional: true,
+  },
+  address: {
+		type: String,
+		optional: true,
+	},
+	locality: {
+		type: String,
+		optional: true,
+	},
+	city: {
+		type: String,
+		optional: true,
+	},
+	country: {
+		type: String,
+		optional: true,
+	},
+	postal_code: {
+		type: String,
+		optional: true,
+	}
+});
+
+Schema.Station = new SimpleSchema({
+	name: {
+		type: String,
+		optional: true,
+	},
+	distance: {
+		type: Number,
+		optional: true,
+	},
+});
+
+Schema.Contact = new SimpleSchema({
+	phone: {
+		type: String,
+		optional: true,
+	},
+	fax: {
+		type: String,
+		optional: true,
+	},
+	mobile: {
+		type: String,
+		optional: true,
+	},
+	email: {
+		type: String,
+		optional: true,
+	},
+	site: {
+		type: String,
+		label: 'Website',
+		optional: true,
+	},
+});
+
+Schema.School = new SimpleSchema({
+	// Table Data
 	name: {
 		type: String,
 		label: 'Name'
@@ -39,64 +140,13 @@ SchoolsSchema = new SimpleSchema({
 		type: String,
 		label: 'Description'
 	},
+	founded_on: {
+		type: Date,
+		optional: true,
+	},
 	ribbon: {
 		type: String,
-		label: 'Sell Point',
-		optional: true,
-	},
-  logo_url: {
-    type: String,
-    label: 'Logo',
-    optional: true,
-  },
-	district: {
-		type: String,
-		label: 'District',
-		optional: true,
-	},
-	station: {
-		type: String,
-		label: 'Station',
-		optional: true,
-	},
-	walking_distance: {
-		type: Number,
-		label: 'Walking Distance',
-		optional: true,
-	},
-	zipcode: {
-		type: String,
-		label: 'Zipcode',
-		optional: true,
-	},
-	address: {
-		type: String,
-		label: 'Address',
-		optional: true,
-	},
-	phone: {
-		type: String,
-		label: 'Phone',
-		optional: true,
-	},
-	fax: {
-		type: String,
-		label: 'Fax',
-		optional: true,
-	},
-	mobile: {
-		type: String,
-		label: 'Mobile',
-		optional: true,
-	},
-	email: {
-		type: String,
-		label: 'Email',
-		optional: true,
-	},
-	site: {
-		type: String,
-		label: 'Website',
+		label: 'Slogan',
 		optional: true,
 	},
 	amenities: {
@@ -111,36 +161,43 @@ SchoolsSchema = new SimpleSchema({
     type: Boolean,
     optional: true,
   },
-  top: {
-		type: Boolean,
-		label: 'Top',
+  hours: {
+    type: Schema.BusinessHour,
+    optional: true,
+  },
+
+	// Shared
+  thumbnail: {
+    type: Schema.Thumbnail,
+    optional: true,
+  },
+	station: {
+		type: [Schema.Station],
 		optional: true,
 	},
-	rating: {
-		type: Number,
+	location: {
+    type: Schema.Location,
+    optional: true,
+    blackbox: true
+  },
+	contact: {
+		type: Schema.Contact,
 		optional: true,
-		decimal:true,
+	},
+	sort: {
+		type: Schema.Sort,
 		autoValue: function() {
 			if (this.isInsert) {
-        return 0;
+        return {
+        	rating: 0,
+					rating_count: 0,
+					recommend_level: 0,
+				};
       } 
 		},
 	},
-	rating_count: {
-		type: Number,
-		autoValue: function() {
-			if (this.isInsert) {
-        return 0;
-      } 
-		},
-	},
-  created_by: {
-		type: String,
-		optional: true,
-		autoValue: function() {
-			return this.userId
-		},
-	},
+
+	// Timestamps
 	created_at: {
 		type: Date,
 		autoValue: function() {
@@ -159,34 +216,56 @@ SchoolsSchema = new SimpleSchema({
 	}
 })
 
-Schools.attachSchema( SchoolsSchema );
+Schools.attachSchema( Schema.School );
 
 Schools.publicFields = {
-  name: 1,
-  description: 1,
-  top: 1,
-	rating: 1,
-	rating_count: 1,
-	ribbon: 1,
-  claimed: 1,
-  logo_url: 1,
-	image_url: 1,
-	district: 1,
-	station: 1,
-	address: 1,
-  phone: 1,
-  fax: 1,
-  mobile: 1,
-  email: 1,
-  site: 1,
-  walking_distance: 1,
-	zipcode: 1,
-	amenities: 1,
-	tags: 1,
-  created_by: 1,
-  created_at: 1,
-  updated_at: 1
+	removed_at: 0
 };
+
+Schools.helpers({
+	phone() {
+		return this.contact.phone;
+	},
+	mobile() {
+		return this.contact.mobile;
+	},
+	fax() {
+		return this.contact.fax;
+	},
+	email() {
+		return this.contact.email;
+	},
+	site() {
+		return this.contact.site;
+	},
+	address() {
+		return this.location.address;
+	},
+	rating() {
+		return this.sort.rating;
+	},
+	ratingCount() {
+		return this.sort.rating_count;
+	},
+  itemTitle() {
+    return this.name;
+  },
+  itemThumbnail() {
+    return this.thumbnail ? this.thumbnail.cropped : false;
+  },
+  itemRating() {
+  	return this.sort.rating;
+  },
+  itemArray() {
+  	return this.tags;
+  },
+  itemSubtitle() {
+  	return this.location ? this.location.address : '';
+  },
+  itemRibbon() {
+  	return this.ribbon;
+  }
+});
 
 Factory.define('schools', Schools, {
   name: function() {
@@ -203,11 +282,5 @@ Factory.define('schools', Schools, {
   },
   updated_at: function () {
   	return faker.date.past();
-  }
-});
-
-Schools.helpers({
-  isOwner: function() {
-    return this.created_by === Meteor.userId();
   }
 });

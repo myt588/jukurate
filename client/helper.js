@@ -12,17 +12,16 @@ Template.registerHelper("log", function(something) {
   console.log('view:', something);
 });
 
-Template.registerHelper('roundToOne',(num)=>{
+Template.registerHelper('roundToOne', (num)=>{
 	if (num == null) {
 		return;
 	}
   return num.toPrecision(3);
 });
 
-Template.registerHelper('checkReviewCount',(a)=>{
+Template.registerHelper('checkReviewCount', (a)=>{
   return !(a == 0);
 });
-
 
 Object.size = function(obj) {
   var size = 0, key;

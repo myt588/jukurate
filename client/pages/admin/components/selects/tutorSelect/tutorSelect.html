@@ -1,0 +1,5 @@
+<template name="tutorSelect">
+	{{#if _optionsTutor != null}}
+    {{> afQuickField name="tutor_id" type="selectize" multiple=true selectizeOptions=_sOptions options=_optionsTutor}}
+  {{/if}}
+</template>

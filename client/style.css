@@ -2882,7 +2882,7 @@ input[type="submit" ] {
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    display: flex;
+    display: block;
     -webkit-flex-wrap: wrap;
     -moz-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
@@ -5000,8 +5000,8 @@ Notice: Cross browser placeholders need to be declared separately
     display: inline-block;
 }
 .listing-filter .dropdown-menu{
-    max-width: 350px;
-    min-width: 260px !important;
+    max-width: 200px;
+    min-width: 100px !important;
     float: right;
     left: auto;
     right: 0;
@@ -5307,6 +5307,16 @@ Notice: Cross browser placeholders need to be declared separately
     margin-bottom: 8px;
     color: #202020;
 }
+.tags a.selected{
+    position: relative;
+    display: inline-block;
+    border: 2px solid transparent;
+    padding: 3px 8px 2px 35px;
+    border: 2px solid rgb(38,163,135);
+    color: rgb(38,163,135);
+    margin-right: 3px;
+    margin-bottom: 8px;
+}
 .amenities a:hover,
 .tags a:hover{
     display: inline-block;
@@ -5573,7 +5583,7 @@ textarea.form-control{
     vertical-align: top;
 }
 #success_message,.alert-success,.alert-error {
-    display: none;
+    /*display: none;*/
 }
 .alert-error {
     background-color: #f0d9ca;
@@ -5955,7 +5965,7 @@ div.list-online-data:hover{
     position: relative;
     z-index: 5;
     margin-top: -11px;
-    margin-bottom: 90px;
+    /*margin-bottom: 90px;*/
     text-align: left;
 }
 .sidebar-right .widget-area {

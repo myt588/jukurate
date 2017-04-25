@@ -1,0 +1,5 @@
+<template name="courseSelect">
+	{{#if _optionsCourse != null}}
+		{{> afQuickField name="course_ids" type="selectize" multiple=true selectizeOptions=_sOptions options=_optionsCourse}}
+  {{/if}}
+</template>

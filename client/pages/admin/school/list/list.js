@@ -1,11 +1,15 @@
 Template.schoolList.onCreated(function () {
-  this.subscribe('schools.all');
+  this.autorun(() => {
+    this.subscribe('schools.all');
+    if (this.subscriptionsReady()) {
+      notAuthorized()
+    }
+  });
 });
 
 Template.schoolList.events({
   'click .reactive-table tbody tr'(e) {
     let post = this;
-    console.log(e.target.className)
     if (e.target.className == "btn btn-danger remove" || e.target.className == "fa fa-trash-o") {
       Meteor.call('schools.remove', post._id);
     }
@@ -25,7 +29,7 @@ Template.schoolList.helpers({
     return {
         fields: [
           { key: 'name', label: 'Name' },
-          { key: 'top', label: 'Top' },
+          { key: 'sort.recommend_level', label: 'Recommend Level' },
           { key: 'created_at', label: 'Created Date' },
           { key: '_id', label: 'Actions', 
             fn: function (value) {

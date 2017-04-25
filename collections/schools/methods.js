@@ -13,7 +13,7 @@ const insert = new ValidatedMethod({
   name: 'schools.insert',
   validate: null,
   run: function(school) {
-    Schools.insert(school);
+    return Schools.insert(school);
   }
 });
 
@@ -77,9 +77,9 @@ const remove = new ValidatedMethod({
   name: 'schools.remove',
   validate: null,
   run: function(id) {
-    console.log(id)
     Schools.update(id, {
       $set: { removed_at: new Date() }
     });
   }
 });
+

@@ -1,7 +1,11 @@
 <template name='schoolEdit'>
-	<h1 class="page-header">
-		Edit School Profile
-  </h1>
-  {{> breadcrumb link='/admin/schools' baseView='Schools' currentView='Schools Edit'}}
-  {{> schoolForm _id='updateSchoolForm' _doc=school}}
+	{{#if Template.subscriptionsReady}}
+		<h1 class="page-header">
+			Edit School Profile
+	  </h1>
+	  {{> breadcrumb link='/admin/schools' baseView='Schools' currentView='Schools Edit'}}
+	  {{> schoolForm _id='updateSchoolForm' _doc=school}}
+	{{else}}
+		{{> loading}}
+  {{/if}}
 </template>

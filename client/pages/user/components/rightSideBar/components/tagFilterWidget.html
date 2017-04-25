@@ -1,0 +1,20 @@
+<template name="tagFilterWidget">
+	<!--Start Widget-->
+	<div class="widget tags"> <!--start widget-->
+		<div class="block">
+			<div class="widget-title">
+				<div class="the-title">
+					TOP TAGS
+				</div>
+			</div>
+			<div class="widget-content list zoom-text">
+				<ul class="">
+					{{#each tag in tags}}
+						<li><a class='{{selected tag.name}}' id='tag_filter' href="#">{{tag.name}}</a></li>
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--End Widget-->
+</template>

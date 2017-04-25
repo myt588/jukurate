@@ -1,7 +1,11 @@
 <template name='tutorEdit'>
-	<h1 class="page-header">
-		Edit Tutor Profile
-  </h1>
-  {{> breadcrumb link='/admin/tutors' baseView='Tutors' currentView='Tutors Edit'}}
-	{{> tutorForm _id='updateTutorForm' _doc=tutor}}
+	{{#if Template.subscriptionsReady}}
+		<h1 class="page-header">
+			Edit Tutor Profile
+	  </h1>
+	  {{> breadcrumb link='/admin/tutors' baseView='Tutors' currentView='Tutors Edit'}}
+		{{> tutorForm _id='updateTutorForm' _doc=tutor}}
+	{{else}}
+		{{> loading}}
+  {{/if}}
 </template>

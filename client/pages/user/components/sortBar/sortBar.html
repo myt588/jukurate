@@ -1,0 +1,23 @@
+<template name="sortBar">
+  <div class="container-fluid">
+    <div class="row listing-results">
+      <div class="results-count">
+        <!-- <span class="counter">85</span> results -->
+      </div>
+      <div class="listing-filter">
+        <span class='sort-label'>Sort By</span>
+        <div class="btn-group" role="group" >
+          <button type="button" class="btn btn-default dropdown-toggle sort-button" data-toggle="dropdown">
+            {{selected}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            {{#each option in options}}
+              <li><a id="sort_option" href="#">{{option}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

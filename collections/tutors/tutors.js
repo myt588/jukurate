@@ -30,86 +30,63 @@ Tutors.deny({
   }
 });
 
+Schema.Edu = new SimpleSchema({
+	school: {
+		type: String,
+	},
+	major: {
+		type: String,
+	},
+	degree: {
+		type: String,
+	},
+	graduated: {
+		type: Boolean,
+	}
+});
+
 TutorsSchema = new SimpleSchema({
+	// Table Data
+	name: {
+		type: String,
+	},
+	description: {
+		type: String,
+	},
+	edu: {
+		type: [Schema.Edu],
+		optional: true,
+	},
+	tags: {
+		type: [String],
+		optional: true,
+	},
+	
+	// Relation
 	school_id: {
 		type: String,
 		optional: true
 	},
-	name: {
-		type: String,
-		label: 'Name'
-	},
-	avatar_url: {
-		type: String,
-		optional: true,
-	},
+
+	// Shared
 	thumbnail: {
-		type: String,
-		optional: true,
-	},
-	description: {
-		type: String,
-		label: 'Description'
-	},
-	college: {
-		type: String,
-		label: 'College',
-		optional: true,
-	},
-	college_major: {
-		type: String,
-		label: 'College Major',
-		optional: true,
-	},
-	grad: {
-		type: String,
-		label: 'Graduate',
-		optional: true,
-	},
-	grad_major: {
-		type: String,
-		label: 'Graduate Major',
-		optional: true,
-	},
-	phd: {
-		type: String,
-		label: 'Doctor',
-		optional: true,
-	},
-	phd_major: {
-		type: String,
-		label: 'Doctor Major',
-		optional: true,
-	},
-	tutor_subjects: {
-		type: [String],
-		label: 'Tutor Subjects',
-		optional: true,
-	},
-	rating: {
-		type: Number,
-		decimal:true,
+    type: Schema.Thumbnail,
+    optional: true,
+  },
+	sort: {
+		type: Schema.Sort,
 		autoValue: function() {
 			if (this.isInsert) {
-        return 0;
-      }
+        return {
+        	rating: 0,
+					rating_count: 0,
+					recommend_level: 0,
+				};
+      } 
 		},
 	},
-	rating_count: {
-		type: Number,
-		autoValue: function() {
-			if (this.isInsert) {
-        return 0;
-      }
-		},
-	},
-	created_by: {
-		type: String,
-		optional: true,
-		autoValue: function() {
-			return this.userId
-		},
-	},
+	
+	// Timestamps
 	created_at: {
 		type: Date,
 		autoValue: function() {
@@ -131,21 +108,26 @@ TutorsSchema = new SimpleSchema({
 Tutors.attachSchema( TutorsSchema );
 
 Tutors.publicFields = {
-	school_id: 1,
-  name: 1,
-  description: 1,
-  college: 1,
-	college_major: 1,
-	grad: 1,
-	grad_major: 1,
-	phd: 1,
-	phd_major: 1,
-	tutor_subjects: 1,
-	rating: 1,
-	rating_count: 1,
-	avatar_url: 1,
-	thumbnail: 1,
-  created_by: 1,
-  created_at: 1,
-  updated_at: 1
+	removed_at: 0
 };
+
+Tutors.helpers({
+  itemTitle() {
+    return this.name;
+  },
+  itemThumbnail() {
+    return this.thumbnail;
+  },
+  itemRating() {
+  	return this.sort.rating;
+  },
+  itemArray() {
+  	return this.subjects;
+  },
+  itemSubtitle() {
+  	return this.college;
+  },
+  itemRibbon() {
+  	return 'love love love';
+  }
+});

@@ -1,0 +1,12 @@
+<template name="adminProfile">
+	<h1 class="page-header">
+		Profile
+	</h1>
+	{{> breadcrumb link='/admin' baseView='Dashboard' currentView='Profile'}}
+	{{> alert }}
+	{{#if Template.subscriptionsReady}}
+		{{> schoolForm _id='updateSchoolForm' _doc=school hideCancel=true}}
+	{{else}}
+		{{> loading}}
+  {{/if}}
+</template>

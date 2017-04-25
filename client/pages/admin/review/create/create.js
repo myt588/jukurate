@@ -20,6 +20,8 @@ AutoForm.hooks({
   }
 });
 
-Template.reviewCreate.helpers({
-   
+Template.reviewCreate.onCreated(function() {
+  if (this.subscriptionsReady()) {
+		notAuthorized()
+	}
 });

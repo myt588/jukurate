@@ -1,11 +1,14 @@
 <template name='tutorListView'>
 	{{> pageHeader}}
-  <div class="container-fluid blog listing-block">
-  	<div class="row listing grid4 white">
+	{{> sortBar}}
+  <div class="container-fluid listing-block listings-has-sidebar">
+  	<div class="row listing grid2 white">
 		  <div class="col-md-9 text-center">
-			  {{> regularTutorList}}
+				{{> regularList itemTemplate='listItemStyle2' collection='Tutors' }}
 			</div>
-			{{> rightSideFilter}}
+			<div class="col-md-3 sidebar-right">
+				{{> rightSideFilter tagFilter=true}}
+			</div>
 		</div>
 		<div id="more_tutors" class="more-listing icon-plus" title="More Tutors" data-toggle="tooltip" data-placement="top"></div>
 	</div>

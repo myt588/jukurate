@@ -1,0 +1,10 @@
+.sort-label{
+	font-size: 15px; 
+	font-family: 'Capriola', sans-serif; 
+	display: inline-block;
+}
+.sort-button{
+	height: 42px;
+	max-width: 200px;
+  min-width: 100px !important;
+}

@@ -16,8 +16,10 @@
       <div class="row text-center">
         <h2>
           {{school.name}}
-          <a href="#" class="listing-item-rating">{{roundToOne school.rating}}</a>
-          <span class="rating-count">(14)</span>
+          {{#if checkReviewCount school.rating}}
+            <a href="#" class="listing-item-rating">{{roundToOne school.rating}}</a>
+            <span class="rating-count">({{school.ratingCount}})</span>
+          {{/if}}
         </h2>
       </div>
       <div class="pg-header-icon icon-focus"></div>
@@ -26,14 +28,28 @@
     {{> schoolGallery }}
     <!-- Description -->
     {{> schoolDescriptionList school=school }}
-    <!-- Tutor Listings -->
-    <div class="container-fluid listing-review" id="tutor">
-      <div class="pg-header-icon icon-star"></div>
+    <!-- Listings -->
+    <div class="container-fluid related" id="tutor">
       <h2>Tutor Listings</h2>
-      {{> regularTutorList }}
+      <div class="row listing grid4 white">
+        {{> regularList itemTemplate='listItemStyle1' collection='Tutors' initialLoad=4 filters=(filter school)}}
+      </div>
     </div>
-    <!-- Review Listings -->
-    {{> reviewListView rating=school.rating id=school._id type='schools'}}
+    <div class="container-fluid related" id="tutor">
+      <h2>Course Listings</h2>
+      <div class="row listing grid4 white">
+        {{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=4 filters=(filter school)}}
+      </div>
+    </div>
+    <div class="container-fluid related" id="tutor">
+      <h2>Coupon Listings</h2>
+      <div class="row listing grid4 white">
+        {{> regularList itemTemplate='listItemStyle1' collection='Coupons' initialLoad=4 filters=(filter school)}}
+      </div>
+    </div>
+    <div class="container listing-review" id="rev">
+      {{> reviewListView rating=school.rating id=school._id type='schools'}}
+    </div>
     <!-- {{> schoolMap }} -->
   {{/if}}
   </div>

@@ -44,15 +44,6 @@ template(name='schoolDescriptionList')
                     | {{school.ribbon}}
                   p.capitalize-initial
                     | {{school.description}}
-                td.listing-opening
-                  h5.opening-title.text-left
-                    | Opening
-                  p
-                    | Mon-Sat 
-                    span 11am-11pm
-                  p
-                    | Sun 
-                    span 12noon-10pm
           +amenities items=school.amenities
           .listing-amenities
             h5.amenities-title.text-left

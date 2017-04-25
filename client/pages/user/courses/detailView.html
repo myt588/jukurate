@@ -6,7 +6,7 @@
 			<div class="row">
 				<div class="col-md-9 text-center">
 					<div class="container listing-description" id="desc" style="margin-top: 0px">
-						<h2>Related Articles</h2>
+						<h2>{{course.itemTitle}}</h2>
 						<div class="row">
 							<div class="col-sm-3 text-center">
 								<div class="listing-avatar">
@@ -35,22 +35,28 @@
 							</div>
 						</div>
 					</div>
-					{{> priceList }}
+					<div class="container-fluid related" id="price">
+						{{> priceList }}
+					</div>
 					<div class="container-fluid related" id="tutor">
 			      <h2>Tutor Listings</h2>
-			      <div class="separator-medium"></div>
-			      {{> regularTutorList }}
+			      <div class="row listing grid4 white">
+			      	{{> regularList itemTemplate='listItemStyle1' collection='Tutors' initialLoad=4 filters=(tutorFilter course)}}
+			      </div>
 			    </div>
-			    <div class="container-fluid related" id="tutor">
+			    <div class="container-fluid related" id="coupon">
 			      <h2>Coupon Listings</h2>
-			      <div class="separator-medium"></div>
-			      {{> regularCouponList }}
+			      <div class="row listing grid4 white">
+							{{> regularList itemTemplate='listItemStyle1' collection='Coupons' initialLoad=4 filters=(courseFilter course)}}
+			      </div>
 			    </div>
 				</div>
 				{{> rightSideBar}}
 			</div>
 		</div>
-		{{> reviewListView rating=course.rating id=course._id type='courses'}}
+		<div class="container listing-review" id="rev">
+			{{> reviewListView rating=course.itemRating id=course._id type='courses'}}
+		</div>
 		{{> relatedArticleList}}
 	</div>
 	{{/if}}

@@ -2,6 +2,9 @@ Template.reviewEdit.onCreated(function() {
   this.getId = () => Router.current().params.id;
   this.autorun(() => {
     this.subscribe('reviews.id', this.getId());
+    if (this.subscriptionsReady()) {
+      notAuthorized()
+    }
   });
 });
 

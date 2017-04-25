@@ -12,27 +12,6 @@
 const update = new ValidatedMethod({
   name: 'users.update',
   validate: null,
-  // validate: new SimpleSchema({
-  //   name: { 
-  //   	type: String 
-  //   },
-  //   description: { 
-  //   	type: String,
-  //   	optional: true
-  //   },
-  //   created_by: {
-  //   	type: String,
-  //   	optional: true
-  //   },
-  //   created_at: {
-  //   	type: Date,
-  //   	optional: true
-  //   },
-  //   updated_at: {
-  //   	type: Date,
-  //   	optional: true
-  //   },
-  // }).validator(),
   run: function(user) {
   // 	if (!this.userId) {
 		//   throw new Meteor.Error('unauthorized', 'You must be logged in to update an item!');
@@ -41,4 +20,20 @@ const update = new ValidatedMethod({
   			$set: user
 			});
   	}
+});
+
+const updateRole = new ValidatedMethod({
+  name: 'users.updateRole',
+  validate: null,
+  run: function (targetUserId, roles, group) {
+    var loggedInUser = Meteor.user()
+
+    if (!loggedInUser ||
+        !Roles.userIsInRole(loggedInUser,
+                            ['admin'], Roles.GLOBAL_GROUP)) {
+      throw new Meteor.Error(403, "Access denied")
+    }
+
+    Roles.setUserRoles(targetUserId, roles, group)
+  }
 });

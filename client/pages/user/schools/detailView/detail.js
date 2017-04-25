@@ -42,8 +42,12 @@ Template.schoolDetailView.events({
 
 Template.schoolDetailView.helpers({
 	school() {
-		return Schools.findOne({_id: Router.current().params.id});
-	}
+		let school = Schools.findOne({_id: Router.current().params.id});
+		return school;
+	},
+	filter(school) {
+    return {school_id: {$in: [school._id]}};
+  },
 });
     
     
