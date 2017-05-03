@@ -1,0 +1,34 @@
+<template name="searchResult">
+	{{> pageHeader title='Search' subtitle='Find your match'}}
+	{{> sortBar}}
+	<div class="container-fluid blog listing-block" style="margin-top: 0px">
+		<div class="container-fluid related" id="tutor" style='margin-top: 0px; border-top: 0'>
+		  <h2>School Listings</h2>
+		  <div class="row listing grid4 white"> 
+		    {{> regularList itemTemplate='listItemStyle1' collection='Schools' initialLoad=4 }}
+		  </div>
+		  {{> loadMore name='schools'}}
+		</div>
+		<div class="container-fluid related" id="tutor">
+		  <h2>Tutor Listings</h2>
+		  <div class="row listing grid4 white">
+		    {{> regularList itemTemplate='listItemStyle1' collection='Tutors' initialLoad=4 }}
+		  </div>
+		  {{> loadMore name='tutors'}}
+		</div>
+		<div class="container-fluid related" id="course">
+		  <h2>Course Listings</h2>
+		  <div class="row listing grid4 white">
+		    {{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=4 }}
+		  </div>
+		  {{> loadMore name='courses'}}
+		</div>
+		<div class="container-fluid related" id="coupon">
+		  <h2>Coupon Listings</h2>
+		  <div class="row listing grid4 white">
+		    {{> regularList itemTemplate='listItemStyle1' collection='Coupons' initialLoad=4 }}
+		  </div>
+		  {{> loadMore name='coupons'}}
+		</div>
+	</div>
+</template>

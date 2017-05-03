@@ -1,0 +1,17 @@
+.like-count {
+	display: inline-block;
+  color: #fff;
+  font-size: 14px;
+  position: relative;
+  width: 100%;
+  background: rgba(0,0,0,0.10);
+  bottom: -4px;
+}
+
+.like {
+	color: white;
+}
+
+.unlike {
+	color: yellow;
+}

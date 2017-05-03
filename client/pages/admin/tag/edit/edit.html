@@ -1,0 +1,7 @@
+<template name='tagEdit'>
+	<h1 class="page-header">
+		Edit Tag Profile
+  </h1>
+  {{> breadcrumb link='/admin/tags' baseView='Tags' currentView='Tags Edit'}}
+	{{> quickForm collection='Tags' id='updateTagForm' doc=tag }}
+</template>

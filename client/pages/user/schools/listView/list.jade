@@ -1,5 +1,5 @@
 template(name='schoolListView')
-  +pageHeader
+  +pageHeader title='School' subtitle='Find the school that suits you the most'
   +sortBar
   .container-fluid.blog.listing-block
     .row.listing.grid4.white
@@ -7,5 +7,5 @@ template(name='schoolListView')
       .col-md-9.text-center
         +regularList itemTemplate='listItemStyle1' collection='Schools' initialLoad=3 col=4
       .col-md-3.sidebar-right
-        +rightSideFilter tagFilter=true
-  .more-listing.icon-plus(title='More Listings', data-toggle='tooltip', data-placement='top')
+        +rightSideFilter tagFilter=true collection='schools'
+  +loadMore name='schools'

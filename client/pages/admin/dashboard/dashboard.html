@@ -1,0 +1,51 @@
+<template name='dashboard'>
+  <h1 class="page-header">
+    Dashboard <small>Welcome Back! {{school.name}}~</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li class="active">
+      <i class="fa fa-dashboard"></i> Dashboard
+    </li>
+  </ol>
+  <div class="row">
+    {{> dashboardPanel title='Reviews' class='panel-primary' icon='fa-comments' link='review_list'}}
+    {{> dashboardPanel title='Tutors' class='panel-green' icon='fa-graduation-cap' link='tutor_list'}}
+    {{> dashboardPanel title='Courses' class='panel-yellow' icon='fa-book' link='course_list'}}
+    {{> dashboardPanel title='Coupons' class='panel-red' icon='fa-shopping-cart' link='coupon_list'}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Recommended Items</h3>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Recommendation Level</th>
+                    <th>Created Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#with school}}
+                    {{#each items}}
+                      <tr>
+                        <td>{{collectionName}}</td>
+                        <td>{{itemTitle}}</td>
+                        <td>{{sort.recommend_level}}</td>
+                        <td>{{created_at}}</td>
+                      </tr>
+                    {{/each}}
+                  {{/with}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+</template>

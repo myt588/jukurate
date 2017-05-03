@@ -1,0 +1,17 @@
+<template name='articleList'>
+  <h1 class="page-header">
+      Articles 
+      <a href='/admin/articles/create' class='btn btn-primary'>
+      	<i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+  </h1>
+  {{> breadcrumb link='/admin' baseView='Dashboard' currentView='articles'}}
+
+  {{#if $not articles}}
+    {{> empty name='articles' link='/admin/articles/create'}}
+  {{else}}
+    <div class="table-responsive">
+      {{> reactiveTable collection=articles settings=settings}}
+    </div>
+  {{/if}}
+</template>

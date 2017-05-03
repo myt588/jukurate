@@ -1,11 +1,12 @@
 let UserPublicFields = {
 	'profile': 1,
 	'roles': 1,
-  'emails': 1
+  'emails': 1,
+  'likes': 1
 };
 
-Meteor.publish('users.all', function() {
-  return Meteor.users.find({}, { fields: UserPublicFields });
+Meteor.publish('users.all', function(filters) {
+  return Meteor.users.find(filters, { fields: UserPublicFields });
 });
 
 Meteor.publish('users.schoolAdmin', function(_id) {

@@ -6,9 +6,12 @@
         {{> tagSelect}}
         {{> afQuickField name='name'}}
         {{> afQuickField name='description' type='summernote' settings=_settings}}
-        {{> afQuickField name='thumbnail' type='thumbnailUpload'}}
-        {{> afQuickField name='edu'}}
-
+        <label id="word_max" for=""></label>
+        {{> uploadForm ownerId=_doc._id}}
+        <div class="form-group">   
+          <label class="control-label"></label>     
+          {{> afQuickField name='edu'}}
+        </div>
         {{#if currentUser.isWebAdmin}}
           {{> afQuickField name='sort.rating'}}
           {{> afQuickField name='sort.rating_count'}}

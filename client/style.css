@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Capriola|Roboto');
-@import url('./assets/lib/bootstrap-select-master/dist/css/bootstrap-select.min.css');
-@import url('./assets/lib/lightbox2-master/dist/css/lightbox.min.css');
-@import url('./assets/lib/Leaflet-1.0.2/dist/leaflet.css');
 @import url('./assets/fonts/icons/css/import-icons.css');
 
 /*------------------------------------------------------------------------------
@@ -983,7 +980,6 @@ input[type="submit" ] {
     right: 0;
     bottom: 0;
     font-size: 12px;
-    display: none;
     cursor: pointer;
     color: rgb(38,163,135);
     background: #fff;
@@ -2023,6 +2019,7 @@ input[type="submit" ] {
 }
 #map{
     position: relative;
+    height: 180px;
     z-index: 0;
 }
 #map.in-color{
@@ -3884,7 +3881,6 @@ Notice: Cross browser placeholders need to be declared separately
     background: rgba(0,0,0,0.10);
     border-top: 1px dashed rgba(255,255,255,0.5);
     bottom: -4px;
-    border-radius: 0 0 5px 5px;
 }
 .fixed-pricing-button{
     position: fixed;
@@ -4110,11 +4106,16 @@ Notice: Cross browser placeholders need to be declared separately
     padding: 10px 0 10px 0;
 }
 .listing-description,
-.listing-map,
-.listing-review,
-.related{
+.listing-map{
     position: relative;
     margin-top: 120px;
+    padding: 80px 0 0;
+    border-top: 2px dashed #dfdfdf;
+}
+
+.related, 
+.listing-review{
+    position: relative;
     padding: 80px 0 0;
     border-top: 2px dashed #dfdfdf;
 }
@@ -5557,7 +5558,7 @@ textarea.form-control{
     left: 0;
     margin-left: -30px;
     height: 100%;
-    border-left: 1px dashed rgba(38,163,135,0.7);
+    /*border-left: 1px dashed rgba(38,163,135,0.7);*/
 }
 .blog .contact-form:before{
     content: none;
@@ -5828,7 +5829,7 @@ textarea {
     color: #fff;
 }
 .listing-description .list-data{
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .listing-description .list-address,
 .listing-description .list-phones,
@@ -6422,7 +6423,7 @@ div.list-online-data:hover{
 }
 .listing-review .more-listing{
     height: 145px;
-    top: 60px;
+    /*top: 60px;*/
 }
 .listing-review .author-title{
     display: block;

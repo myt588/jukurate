@@ -1,0 +1,10 @@
+.panel-thumbnail {
+	text-align: center; 
+	float: none;
+	padding-bottom: 5px;
+}
+
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}

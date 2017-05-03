@@ -1,0 +1,19 @@
+<template name='tagList'>
+  <h1 class="page-header">
+      Tags 
+      {{# if currentUser.isWebAdmin}}
+      <a href='/admin/tags/create' class='btn btn-primary'>
+      	<i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+      {{/if}}
+  </h1>
+  {{> breadcrumb link='/admin' baseView='Dashboard' currentView='Tags'}}
+
+  {{#if $not tags}}
+    {{> empty name='tags' link='/admin/tags/create'}}
+  {{else}}
+    <div class="table-responsive">
+      {{> reactiveTable collection=tags settings=settings}}
+    </div>
+  {{/if}}
+</template>

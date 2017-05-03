@@ -32,7 +32,7 @@ Coupons.deny({
 
 CouponsSchema = new SimpleSchema({
 	// Table Data
-	title: {
+	name: {
 		type: String,
 		label: 'Title'
 	},
@@ -78,6 +78,7 @@ CouponsSchema = new SimpleSchema({
         	rating: 0,
 					rating_count: 0,
 					recommend_level: 0,
+					likes: 0
 				};
       } 
 		},
@@ -109,11 +110,14 @@ Coupons.publicFields = {
 };
 
 Coupons.helpers({
+	collectionName(){
+		return 'COUPONS';
+	},
 	coupon(id) {
     return Coupons.find({ _id: id });
   },
   itemTitle() {
-    return this.title;
+    return this.name;
   },
   itemThumbnail() {
     return this.thumbnail;

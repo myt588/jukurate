@@ -1,64 +1,68 @@
 <template name='courseDetailView'>
 	{{#if Template.subscriptionsReady}}
+  <!-- Start Fixed Quick Menu -->
+  <div class="quick-menu">
+    <a id="top" href="#" class="icon-arrow-up" title="Go To Top" data-toggle="tooltip" data-placement="right"></a>
+    <a id="godesc" href="#" class="icon-copy" title="Description" data-toggle="tooltip" data-placement="right"></a>
+    <a id="goprice" href="#" class="icon-cash-yen" title="Price" data-toggle="tooltip" data-placement="right"></a>
+    <a id="gotutor" href="#" class="icon-graduation-hat" title="Tutor Listings" data-toggle="tooltip" data-placement="right"></a>
+    <a id="gocoupon" href="#" class="icon-link" title="Coupon Listings" data-toggle="tooltip" data-placement="right"></a>
+    <a id="gorev" href="#" class="icon-star" title="Reviews" data-toggle="tooltip" data-placement="right"></a>
+		{{> like collection='Courses' id=course._id likes=course.sort.likes}}
+  </div>
 	<div class='courseDetailView'>
-		{{> pageHeader }}
-		<div class="container-fluid blog single-block">
-			<div class="row">
-				<div class="col-md-9 text-center">
-					<div class="container listing-description" id="desc" style="margin-top: 0px">
-						<h2>{{course.itemTitle}}</h2>
-						<div class="row">
-							<div class="col-sm-3 text-center">
-								<div class="listing-avatar">
-									{{> singleImage id=course.cover_image class='center-block'}}
-								</div>
-							</div>
-							<div class="col-sm-9">
-								<div class="description-container">
-									<table class="description-text table">
-										<tr>
-											<td class="description">
-												<h4 class="listing-subtitle text-left">
-													Bistro du Midi (MARC) - Luxury in the heart of Boston
-												</h4>
-												<p class="text-left"> {{course.description}} </p>
-											</td>
-										</tr>
-									</table>
-								</div>
-								<div class="listing-amenities">
-									<h5 class="amenities-title text-left">
-										Tags
-									</h5>
-									{{> tags items=course.tags }}
-								</div>
-							</div>
+		{{> pageHeader title='Course'}}
+			<div class="container listing-description" id="desc" style="margin-top: 50px">
+				<h2>{{course.itemTitle}}</h2>
+				<div class="row">
+					<div class="col-sm-3 text-center">
+						<div class="listing-avatar">
+							{{> singleImage id=course.cover_image class='center-block'}}
 						</div>
 					</div>
-					<div class="container-fluid related" id="price">
-						{{> priceList }}
+					<div class="col-sm-9">
+						<div class="description-container text-center">
+							<table class="description-text table">
+								<tr>
+									<td class="description">
+										<h4 class="listing-subtitle text-left">
+											Bistro du Midi (MARC) - Luxury in the heart of Boston
+										</h4>
+										<div> {{course.description}} </div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="listing-amenities">
+							<h5 class="amenities-title text-left">
+								Tags
+							</h5>
+							{{> tags items=course.tags }}
+						</div>
 					</div>
-					<div class="container-fluid related" id="tutor">
-			      <h2>Tutor Listings</h2>
-			      <div class="row listing grid4 white">
-			      	{{> regularList itemTemplate='listItemStyle1' collection='Tutors' initialLoad=4 filters=(tutorFilter course)}}
-			      </div>
-			    </div>
-			    <div class="container-fluid related" id="coupon">
-			      <h2>Coupon Listings</h2>
-			      <div class="row listing grid4 white">
-							{{> regularList itemTemplate='listItemStyle1' collection='Coupons' initialLoad=4 filters=(courseFilter course)}}
-			      </div>
-			    </div>
 				</div>
-				{{> rightSideBar}}
 			</div>
+			<!-- <div class="container-fluid related" id="price">
+				{{> priceList }}
+			</div> -->
+			<div class="container-fluid related" id="tutor">
+	      <h2>Tutor Listings</h2>
+	      <div class="row listing grid4 white">
+	      	{{> regularList itemTemplate='listItemStyle1' collection='Tutors' initialLoad=4 filters=(tutorFilter course)}}
+	      </div>
+	      {{> loadMore name='tutors'}}
+	    </div>
+	    <div class="container-fluid related" id="coupon">
+	      <h2>Coupon Listings</h2>
+	      <div class="row listing grid4 white">
+					{{> regularList itemTemplate='listItemStyle1' collection='Coupons' initialLoad=4 filters=(courseFilter course)}}
+	      </div>
+	      {{> loadMore name='coupons'}}
+	    </div>
 		</div>
 		<div class="container listing-review" id="rev">
 			{{> reviewListView rating=course.itemRating id=course._id type='courses'}}
 		</div>
-		{{> relatedArticleList}}
-	</div>
 	{{/if}}
 </template>
 

@@ -1,9 +1,9 @@
 Template.reviewList.onCreated(function () {
   this.autorun(()=>{
     if (Meteor.user().isSchoolAdmin()) {
-      this.subscribe('review.bySchool', Meteor.user().schoolId());
+      this.subscribe('reviews.bySchool', Meteor.user().schoolId());
     } else if (Meteor.user().isWebAdmin()) {
-      this.subscribe('review.all');
+      this.subscribe('reviews.all');
     }
   });
 });

@@ -30,10 +30,13 @@ Template.tutorList.helpers({
       return {
           fields: [
             { key: 'name', label: 'Name' },
-            { key: 'description', label: 'Discription' },
-            { key: 'created_at', label: 'Created Date' },
-            { key: '_id', label: 'Actions', 
-              fn: function (value) {
+            { key: 'sort.recommend_level', label: 'Recommend Level' },
+            { key: 'sort.rating', label: 'Rating' },
+            { key: 'sort.rating_count', label: '# of Reviews' },
+            { key: 'created_at', label: 'Created Date', fn: function (value) {
+                return formatDate(value);
+            }},
+            { key: '_id', label: 'Actions', fn: function (value) {
                 return new Spacebars.SafeString(adminActions('tutors', value));
             }}
           ]

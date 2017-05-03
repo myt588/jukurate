@@ -1,15 +1,15 @@
 <template name='courseListView'>
-  {{> pageHeader}}
+  {{> pageHeader title='Course' subtitle='Grab a course and Start your journey'}}
   {{> sortBar}}
   <div class="container-fluid blog listing-block">
   	<div class="row listing grid4 white">
 		  <div class="col-md-9 text-center">
-				{{> regularList itemTemplate='listItemStyle1' collection='Courses' }}
+				{{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=3 col=4}}
 			</div>
 			<div class="col-md-3 sidebar-right">
-				{{> rightSideFilter tagFilter=true}}
+				{{> rightSideFilter tagFilter=true collection='courses'}}
 			</div>
 		</div>
-		<div id="more_courses" class="more-listing icon-plus" title="More Courses" data-toggle="tooltip" data-placement="top"></div>
+		{{> loadMore name='courses'}}
 	</div>
 </template>

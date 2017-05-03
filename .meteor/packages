@@ -24,6 +24,7 @@ shell-server@0.2.3            # Server-side component of the `meteor shell` comm
 #####################################
 # Lib
 coffeescript
+# easy:search
 
 # Server functions
 4commerce:env-settings
@@ -48,6 +49,7 @@ jamiecollinson:selectize-bootstrap
 comerc:autoform-selectize
 mpowaga:autoform-summernote
 dburles:google-maps
+email
 
 # Utility
 # erasaur:meteor-lodash
@@ -71,11 +73,11 @@ softwarerero:accounts-t9n
 
 # File System
 ostrio:files
-# ostrio:autoform-files
 
 # Frontend 
 meteortoys:allthings
 raix:handlebar-helpers
+raix:ui-dropped-event
 stolinski:stylus-multi
 fortawesome:fontawesome
 twbs:bootstrap
@@ -85,6 +87,8 @@ stylus@2.513.9
 czbaker:lightbox2
 reactive-dict@1.1.8
 mizzao:jquery-ui
+themeteorchef:bert
+chrisbutler:typed.js
 
 # Connect to React
 # react-template-helper

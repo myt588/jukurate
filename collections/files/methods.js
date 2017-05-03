@@ -9,11 +9,11 @@
 // #     {bool}      checked -> optional
 // #
 
-const insert = new ValidatedMethod({
-  name: 'images.insert',
+const uploadSingle = new ValidatedMethod({
+  name: 'files.singleUp',
   validate: null,
   run: function(file) {
-    Images.insert({
+    Files.insert({
     	file: file,
     	isBase64: true,
       fileName: 'pic.png',
@@ -22,3 +22,22 @@ const insert = new ValidatedMethod({
   	});
   }
 });
+
+const uploadMultiple = new ValidatedMethod({
+  name: 'files.multiUp',
+  validate: null,
+  run: function(files) {
+    let ids = [];
+    for (i in files) {
+      var id = Files.insert({
+        file: files[i],
+        name: files[i].name,
+        streams: 'dynamic',
+        chunkSize: 'dynamic'
+      });
+      ids.push(id);
+    }
+    return ids;
+  }
+});
+

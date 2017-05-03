@@ -1,57 +1,59 @@
 <template name='couponDetailView'>
 	{{#if Template.subscriptionsReady}}
+	 <!-- Start Fixed Quick Menu -->
+  <div class="quick-menu">
+    <a id="top" href="#" class="icon-arrow-up" title="Go To Top" data-toggle="tooltip" data-placement="right"></a>
+    <a id="godesc" href="#" class="icon-copy" title="Description" data-toggle="tooltip" data-placement="right"></a>
+    <a id="goprice" href="#" class="icon-cash-yen" title="Price" data-toggle="tooltip" data-placement="right"></a>
+    <a id="gocourse" href="#" class="icon-list" title="Course Listings" data-toggle="tooltip" data-placement="right"></a>
+    <a id="gorev" href="#" class="icon-star" title="Reviews" data-toggle="tooltip" data-placement="right"></a>
+		{{> like collection='Coupons' id=coupon._id likes=coupon.sort.likes}}
+  </div>
 	<div class='couponDetailView'>
-		{{> pageHeader }}
-		<div class="container-fluid blog single-block">
+		{{> pageHeader title='Coupon'}}
+		<div class="container listing-description" id="desc" style="margin-top: 0px">
+			<h2>{{coupon.itemTitle}}</h2>
 			<div class="row">
-				<div class="col-md-9 text-center">
-					<div class="container listing-description" id="desc" style="margin-top: 0px">
-						<h2>{{coupon.itemTitle}}</h2>
-						<div class="row">
-							<div class="col-sm-3 text-center">
-								<div class="listing-avatar">
-									{{> singleImage id=coupon.cover_image class='center-block'}}
-								</div>
-							</div>
-							<div class="col-sm-9">
-								<div class="description-container">
-									<table class="description-text table">
-										<tr>
-											<td class="description">
-												<h4 class="listing-subtitle text-left">
-													Bistro du Midi (MARC) - Luxury in the heart of Boston
-												</h4>
-												<p class="text-left"> {{coupon.description}} </p>
-											</td>
-										</tr>
-									</table>
-								</div>
-								<div class="listing-amenities">
-									<h5 class="amenities-title text-left">
-										Tags
-									</h5>
-									{{> tags items=coupon.tags }}
-								</div>
-							</div>
-						</div>
+				<div class="col-sm-3 text-center">
+					<div class="listing-avatar">
+						{{> singleImage id=coupon.cover_image class='center-block'}}
 					</div>
-					<div class="container-fluid related" id="price">
-						{{> priceList }}
-					</div>
-			    <div class="container-fluid related" id="tutor">
-			      <h2>Course Listings</h2>
-			      <div class="row listing grid4 white">
-			      	{{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=4 filters=(courseFilter coupon)}}
-			      </div>
-			    </div>
 				</div>
-				{{> rightSideBar}}
+				<div class="col-sm-9">
+					<div class="description-container">
+						<table class="description-text table">
+							<tr>
+								<td class="description">
+									<h4 class="listing-subtitle text-left">
+										Bistro du Midi (MARC) - Luxury in the heart of Boston
+									</h4>
+									<p class="text-left"> {{coupon.description}} </p>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="listing-amenities">
+						<h5 class="amenities-title text-left">
+							Tags
+						</h5>
+						{{> tags items=coupon.tags }}
+					</div>
+				</div>
 			</div>
 		</div>
+		<!-- <div class="container-fluid related" id="price">
+			{{> priceList }}
+		</div> -->
+    <div class="container-fluid related" id="course">
+      <h2>Course Listings</h2>
+      <div class="row listing grid4 white">
+      	{{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=4 filters=(courseFilter coupon)}}
+      </div>
+      {{> loadMore name='courses'}}
+    </div>
 		<div class="container listing-review" id="rev">
 			{{> reviewListView rating=coupon.itemRating id=coupon._id type='coupons'}}
 		</div>
-		{{> relatedArticleList}}
 	</div>
 	{{/if}}
 </template>

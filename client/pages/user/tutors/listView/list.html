@@ -1,5 +1,5 @@
 <template name='tutorListView'>
-	{{> pageHeader}}
+	{{> pageHeader title='Tutor' subtitle='Who is the best match for you?'}}
 	{{> sortBar}}
   <div class="container-fluid listing-block listings-has-sidebar">
   	<div class="row listing grid2 white">
@@ -7,9 +7,9 @@
 				{{> regularList itemTemplate='listItemStyle2' collection='Tutors' }}
 			</div>
 			<div class="col-md-3 sidebar-right">
-				{{> rightSideFilter tagFilter=true}}
+				{{> rightSideFilter tagFilter=true collection='tutors'}}
 			</div>
 		</div>
-		<div id="more_tutors" class="more-listing icon-plus" title="More Tutors" data-toggle="tooltip" data-placement="top"></div>
+		{{> loadMore name='tutors'}}
 	</div>
 </template>

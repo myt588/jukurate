@@ -81,6 +81,7 @@ TutorsSchema = new SimpleSchema({
         	rating: 0,
 					rating_count: 0,
 					recommend_level: 0,
+					likes: 0
 				};
       } 
 		},
@@ -112,6 +113,9 @@ Tutors.publicFields = {
 };
 
 Tutors.helpers({
+	collectionName(){
+		return 'TUTORS';
+	},
   itemTitle() {
     return this.name;
   },

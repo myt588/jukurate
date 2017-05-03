@@ -3,7 +3,7 @@ template(name='header')
     // Start Logo
     .logo
       a.logo-color-bg(href='{{pathFor route="home"}}')
-        img(alt='', src='/assets/images/logo.png')
+        img(alt='', src='/images/logo.png')
     // Start Navbar
     #slide-nav.navbar.navbar-inverse(role='navigation')
       .container
@@ -35,8 +35,9 @@ template(name='header')
                 ul.dropdown-menu
                   li
                     a(href='{{pathFor route="user_profile"}}') Profile
-                  li
-                    a(href='#') Pricing
+                  if currentUser.isAdmin
+                    li
+                      a(href='{{pathFor route="dashboard"}}') Dashboard
                   li
                     a#logout(href='#') Logout
             else 

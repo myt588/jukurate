@@ -3,9 +3,11 @@
     <fieldset>
       {{> afQuickField name='name'}}
       {{> afQuickField name='description' type='summernote' settings=_settings}}
+      <label id="word_max" for=""></label>
+      
+      {{> uploadForm ownerId=_doc._id}}
       {{> afQuickField name='ribbon'}}
       {{> afQuickField name='founded_on'}}
-      {{> afQuickField name='thumbnail' type='thumbnailUpload' hello='hell'}}
 
       {{> afQuickField name='contact.phone'}}
       {{> afQuickField name='contact.fax'}}

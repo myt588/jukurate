@@ -1,0 +1,7 @@
+<template name="likesUserProfileTab">
+	<div class="fadein">
+		{{#each item in currentUser.likes}}
+	    {{> likedItem collection=item.collection id=item.id}}
+	  {{/each}}
+	</div>
+</template>

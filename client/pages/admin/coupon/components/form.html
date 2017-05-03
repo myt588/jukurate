@@ -5,9 +5,10 @@
         {{> schoolSelect}}
         {{> courseSelect}}
         {{> tagSelect}}
-        {{> afQuickField name='title'}}
+        {{> afQuickField name='name'}}
         {{> afQuickField name='description' type='summernote' settings=_settings}}
-        {{> afQuickField name='thumbnail' type='thumbnailUpload'}}
+        <label id="word_max" for=""></label>
+        {{> uploadForm ownerId=_doc._id}}
         {{> afQuickField name='price'}}
         {{#if currentUser.isWebAdmin}}
           {{> afQuickField name='sort.rating'}}

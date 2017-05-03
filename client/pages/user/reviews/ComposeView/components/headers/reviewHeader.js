@@ -1,45 +1,34 @@
+Template.reviewHeader.onCreated(function() {
+	this.item = ReactiveVar(this.data.item || false);
+});
+
 Template.reviewHeader.helpers({
 	image() {
-		if (Router.current().params.type == 'schools') {
-			return Template.instance().data.item.logo_url;
-		}
-		if (Router.current().params.type == 'tutors') {
-			return Template.instance().data.item.avatar_url;
-		}
+		let item = Template.instance().item.get();
+		return item ? item._id : '';
 	},
 	title() {
-		if (Router.current().params.type == 'schools') {
-			return Template.instance().data.item.name;
-		}
-		if (Router.current().params.type == 'tutors') {
-			return Template.instance().data.item.name;
-		}
+		let item = Template.instance().item.get();
+		return item ? item.itemTitle() : '';
 	},
 	subtitle() {
-		if (Router.current().params.type == 'schools') {
-			return Template.instance().data.item.station;
-		}
-		if (Router.current().params.type == 'tutors') {
-			return Template.instance().data.item.college;
-		}
+		let item = Template.instance().item.get();
+		return item ? item.itemSubtitle() : '';
 	},
 	note() {
-		if (Router.current().params.type == 'schools') {
-			return Template.instance().data.item.walking_distance + ' min';
-		}
-		if (Router.current().params.type == 'tutors') {
-			return Template.instance().data.item.college_major;
-		}
+		let item = Template.instance().item.get();
+		return item ? item.itemRibbon() : '';
 	},
 	zipcode() {
 		if (Router.current().params.type == 'schools') {
-			return Template.instance().data.item.zipcode;
+			let item = Template.instance().item.get();
+			return item ? item.location.postal_code : '';
 		}
 	},
 	address() {
 		if (Router.current().params.type == 'schools') {
-			return Template.instance().data.item.address;
+			let item = Template.instance().item.get();
+			return item ? item.address() : '';
 		}
 	}
-
 });

@@ -1,0 +1,11 @@
+<template name='articleEdit'>
+	{{#if Template.subscriptionsReady}}
+		<h1 class="page-header">
+			Edit article Profile
+	  </h1>
+	  {{> breadcrumb link='/admin/articles' baseView='Articles' currentView='Articles Edit'}}
+		{{> articleForm _id='updateArticleForm' _doc=article}}
+	{{else}}
+		{{> loading}}
+  {{/if}}
+</template>

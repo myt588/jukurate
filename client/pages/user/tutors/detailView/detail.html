@@ -1,5 +1,13 @@
 <template name='tutorDetailView'>
 	{{#if Template.subscriptionsReady}}
+	<!-- Start Fixed Quick Menu -->
+  <div class="quick-menu">
+    <a id="top" href="#" class="icon-arrow-up" title="Go To Top" data-toggle="tooltip" data-placement="right"></a>
+    <a id="godesc" href="#" class="icon-copy" title="Description" data-toggle="tooltip" data-placement="right"></a>
+    <a id="gocourse" href="#" class="icon-list" title="Course Listings" data-toggle="tooltip" data-placement="right"></a>
+    <a id="gorev" href="#" class="icon-star" title="Reviews" data-toggle="tooltip" data-placement="right"></a>
+		{{> like collection='Tutors' id=tutor._id likes=tutor.sort.likes}}
+  </div>
 	<div class='tutorDetailView'>
 	  <div class="container listing-description" id="desc" style="margin-top: 0px">
 	    <div class="row">
@@ -18,11 +26,11 @@
 	            <table class="description-text table">
 	              <tr>
 	                <td class="description">
-	                	<h3 class="text-left">
-	                    {{tutor.name}}
-	                  </h3>
-	                  <p class="capitalize-initial">
-	                    {{tutor.description}}
+	                	<div class="tutor-name">
+						        	{{tutor.name}}
+						        </div>
+	                  <p>
+	                  	{{{tutor.description}}}
 	                  </p>
 	                </td>
 	              </tr>
@@ -44,6 +52,7 @@
       <div class="row listing grid4 white">
 				{{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=4 filters=(filter tutor)}}
 			</div>
+			{{> loadMore name='courses'}}
     </div>
 	  <div class="container listing-review" id="rev">
 	  	{{> reviewListView rating=tutor.itemRating id=tutor._id type='tutors'}}

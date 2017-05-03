@@ -1,51 +1,50 @@
 template(name='schoolDescriptionList')
-  #desc.container.listing-description
-    .pg-header-icon.icon-copy
-    .row
-      .col-sm-3.text-center
-        .listing-avatar
-          a.verified-data(title='Verifyed Listing', data-toggle='tooltip', data-placement='right')
-          +singleImage id=school.logo_url class='center-block'
-        .claimed.text-center
-          if school.claimed
-            .ribbon Claimed
-          else 
-            .ribbon Unclaimed
-        .listing-social
-          .social-networks
-            a.fa.fa-facebook(href='#')
-            a.fa.fa-twitter(href='#')
-            a.fa.fa-instagram(href='#')
-            a.fa.fa-pinterest(href='#')
-        .list-data
-          .list-address 
-            | {{school.address}}
-          .list-phones
-            .list-phone
-              | {{school.phone}}
-            .list-fax
-              | {{school.fax}}
-            .list-mobile
-              | {{school.mobile}}
-          .list-online-data
-            .list-email
-              a(href='mailto:{{school.email}}')
-                | {{school.email}}
-            .list-website
-              a(href='{{school.site}}', target='_blank')
-                | {{school.site}}
-      .col-sm-9
-        div
-          .description-container
-            table.description-text.table
-              tr
-                td.description
-                  h4.listing-subtitle.text-left
-                    | {{school.ribbon}}
-                  p.capitalize-initial
-                    | {{school.description}}
-          +amenities items=school.amenities
-          .listing-amenities
-            h5.amenities-title.text-left
-              | Tags
-            +tags items=school.tags
+  .pg-header-icon.icon-copy
+  .row
+    .col-sm-3.text-center
+      .listing-avatar
+        a.verified-data(title='Verifyed Listing', data-toggle='tooltip', data-placement='right')
+        +singleImage id=school._id class='center-block'
+      .claimed.text-center
+        if school.claimed
+          .ribbon Claimed
+        else 
+          .ribbon Unclaimed
+      .listing-social
+        .social-networks
+          a.fa.fa-facebook(href='#')
+          a.fa.fa-twitter(href='#')
+          a.fa.fa-instagram(href='#')
+          a.fa.fa-pinterest(href='#')
+      .list-data
+        .list-address 
+          | {{school.address}}
+        .list-phones
+          .list-phone
+            | {{school.phone}}
+          .list-fax
+            | {{school.fax}}
+          .list-mobile
+            | {{school.mobile}}
+        .list-online-data
+          .list-email
+            a(href='mailto:{{school.email}}')
+              | {{school.email}}
+          .list-website
+            a(href='{{school.site}}', target='_blank')
+              | {{school.site}}
+    .col-sm-9
+      div
+        .description-container
+          table.description-text.table
+            tr
+              td.description
+                h4.listing-subtitle.text-left
+                  | {{school.ribbon}}
+                p
+                  | {{{school.description}}}
+        +amenities items=school.amenities
+        .listing-amenities
+          h5.amenities-title.text-left
+            | Tags
+          +tags items=school.tags

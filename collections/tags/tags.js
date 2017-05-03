@@ -41,11 +41,11 @@ TagsSchema = new SimpleSchema({
 		type: String,
 		optional: true,
 	},
-	created_by: {
-		type: String,
+	recommend_level: {
+		type: Number,
 		optional: true,
 		autoValue: function() {
-			return this.userId
+			return 0
 		},
 	},
 	created_at: {

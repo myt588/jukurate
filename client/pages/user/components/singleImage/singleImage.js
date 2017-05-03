@@ -1,10 +1,19 @@
 Template.singleImage.onCreated(function(){
-  Meteor.subscribe('files.images.id', Template.instance().data.id);
+	this.default = ReactiveVar(this.data.default || 'DEFAULT');
+	this.autorun(() => {
+		Meteor.subscribe('files.images.thumbnail', Template.instance().data.id);
+	});
 });
 
 Template.singleImage.helpers({
   image: function () {
-  	const image = Images.findOne({_id:Template.instance().data.id})
+  	const image = Files.findOne({
+			'meta.ownerId': Template.instance().data.id, 
+			'meta.isThumbnail': true
+		});
     return image; 
+  },
+  defaultImage() {
+  	return DEFAULT_IMAGES[Template.instance().default.get()];
   }
 });

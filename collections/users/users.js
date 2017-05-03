@@ -50,6 +50,11 @@ Schema.User = new SimpleSchema({
     optional: true,
     blackbox: true
   },
+  likes: {
+    type: [Object],
+    optional: true,
+    blackbox: true
+  },
   // In order to avoid an 'Exception in setInterval callback' from Meteor
   heartbeat: {
     type: Date,
@@ -60,11 +65,17 @@ Schema.User = new SimpleSchema({
 Meteor.users.attachSchema( Schema.User );
 
 Meteor.users.helpers({
+  itemTitle() {
+    return this.name();
+  },
 	name() {
 		return this.profile.name;
 	},
   email() {
     return this.emails[0].address;
+  },
+  likesCount() {
+    return this.likes ? this.likes.length : 0;
   },
   isSchoolAdmin() {
     return Roles.userIsInRole(this, ['school-admin'], this.schoolId());
@@ -82,5 +93,8 @@ Meteor.users.helpers({
       break
     }
     return id;
+  },
+  liked(collection, id) {
+    return _.find(this.likes, function(like){ return like.collection == collection && like.id == id}) != undefined;
   }
 });

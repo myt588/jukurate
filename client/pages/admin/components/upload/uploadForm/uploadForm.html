@@ -1,0 +1,24 @@
+<template name="uploadForm">
+ 	<div class="form-group">
+    <label for="formGroupExampleInput">Upload Files</label>
+		<div id="dropzone" class="dropzone">
+			<input type="file" id="imgupload" multiple style="display:none"/>
+			<div class="col align-self-center" style="text-align: center; color: white; height: 200px; background-color: gray">
+		    <div style="padding-top: 90px">
+		    	{{#if currentFile}}
+				    {{#with currentFile}}
+				      <span id="progress">{{progress}}%</span>
+				    {{/with}}
+				  {{else}}
+						<a id="uploadButton" href="#" style="color: white">Drop file to upload</a>
+				  {{/if}}
+		    </div>
+	    </div>
+	    <br>
+	    <div class="col-md-12 row">
+				{{> fileList ownerId=ownerId}}
+	    </div>
+	  </div>
+	</div>
+</template>
+

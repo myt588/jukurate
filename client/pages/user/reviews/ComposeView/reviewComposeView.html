@@ -1,16 +1,16 @@
 <template name='reviewComposeView'>
 	{{#if Template.subscriptionsReady}}
 		<div class="reviewComposeView">
-			<div class="col-xs-4 col-xs-offset-4">	
+			<div class="col-md-6 col-md-offset-3">	
 				<div class="section-header underline">
 					<h3>Write a reivew</h3>
 				</div>
 				{{> reviewHeader item=review_item }}
-				{{> reviewForm attributes=review_attributes rating=review_item.rating rating_count=review_item.rating_count}}
+				{{> reviewForm attributes=review_attributes rating=review_item.sort.rating rating_count=review_item.sort.rating_count}}
 			</div>
 		</div>
   {{else}}
-    Loading...
+    {{> loading}}
   {{/if}}
 </template>
 

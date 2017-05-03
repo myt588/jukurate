@@ -1,0 +1,14 @@
+<template name="homeTagList">
+	<div class='search-categories'>
+    <div class='categories'>
+			{{#each tags}}
+				<a href="{{pathFor route=routeName}}">{{name}}</a>
+			{{/each}}
+		</div>
+		{{#if showedMore}}
+		<i class="minus-categories fa fa-minus"></i>
+		{{else}}
+		<i class="more-categories fa fa-plus"></i>
+		{{/if}}
+	</div>
+</template>

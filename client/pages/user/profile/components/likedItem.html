@@ -1,0 +1,22 @@
+<template name='likedItem'>
+  {{#with item}}
+  <div class="feat-post">
+    <a href="{{pathFor route=routeName id=_id }}" style='text-align: center;'>
+      <div class="feat-post-icon icon-bag"></div>
+      <div class="listing-item-rating">{{roundToOne itemRating}}</div>
+      <div class="ribbon">{{itemRibbon}}</div>
+      <div class="feat-post-pic">
+        <div>{{> singleImage id=_id class='center-block' default=collectionName}}</div>
+      </div>
+      <div class="feat-post-data">
+        <div class="feat-post-title">
+          {{itemTitle}}
+        </div>
+        <div class="feat-post-category">
+          {{itemSubtitle}}
+        </div>
+      </div>
+    </a>
+  </div>
+  {{/with}}
+</template>

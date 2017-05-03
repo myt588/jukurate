@@ -9,8 +9,8 @@
 			</div>
 			<div class="widget-content list zoom-text">
 				<ul class="">
-					{{#each tag in tags}}
-						<li><a class='{{selected tag.name}}' id='tag_filter' href="#">{{tag.name}}</a></li>
+					{{#each tags}}
+						<li><a class='{{selected _id}}' id='tag_filter' href="#">{{name}}</a></li>
 					{{/each}}
 				</ul>
 			</div>

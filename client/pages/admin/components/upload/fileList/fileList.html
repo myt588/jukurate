@@ -1,0 +1,18 @@
+<template name="fileList">
+	{{#unless Template.subscriptionsReady}}
+		{{> loading}}
+	{{/unless}}
+  {{#each image in images}}
+  	{{#with image}}
+		<div class="col-md-2">
+			<div class="img-wrap {{isThumbnail image}}">
+			  <span class="close">&times;</span>
+			  <img src="{{image.link}}" class='showCropper'>
+			</div>
+		</div>
+		{{/with}}
+	{{/each}}
+	{{#if toggle}}
+		{{> thumbnailCropper original=original ownerId=ownerId}}
+	{{/if}}
+</template>

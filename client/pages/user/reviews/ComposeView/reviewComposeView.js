@@ -11,34 +11,13 @@ Template.reviewComposeView.helpers({
 	},
 	review_item() {
 		let type = Router.current().params.type;
+		type = type[0].toUpperCase() + type.slice(1);
 		let id = Router.current().params.id;
-		if (type == 'schools') {
-			return Schools.findOne({_id: id});
-		}
-		if (type == 'courses') {
-			return Courses.findOne({_id: id});
-		}
-		if (type == 'coupons') {
-			return Coupons.findOne({_id: id});
-		}
-		if (type == 'tutors') {
-			return Tutors.findOne({_id: id});
-		}
+		return global[type].findOne({_id: id});
 	},
 	review_attributes() {
 		let type = Router.current().params.type;
 		let id = Router.current().params.id;
-		if (type == 'schools') {
-			return REVIEW_TYPE.SCHOOL;
-		}
-		if (type == 'courses') {
-			return REVIEW_TYPE.COURSE;
-		}
-		if (type == 'coupons') {
-			return REVIEW_TYPE.COUPON;
-		}
-		if (type == 'tutors') {
-			return REVIEW_TYPE.TUTOR;
-		}
+		return REVIEW_TYPE[type.toUpperCase()];
 	}
 });

@@ -11,21 +11,18 @@ template(name='footer')
         a.fa.fa-instagram(href='#')
         a.fa.fa-pinterest(href='#')
       .footer-col.footer-links
-        a(href='index-vimeo.html') Home
-        a(href='about.html') About
-        a.sign-in(href='#') Sign In
-        a(href='pricing.html') Pricing
-        a(href='blog-option-1.html') Blog
-        a(href='contact.html') Contact
+        a(href='{{pathFor route="home"}}l') Home
+        a(href='{{pathFor route="school_list_view"}}') Schools
+        a(href='{{pathFor route="tutor_list_view"}}') Tutors
+        a(href='{{pathFor route="course_list_view"}}') Courses
+        a(href='{{pathFor route="coupon_list_view"}}') Coupons
+        a(href='{{pathFor route="contact_view"}}') Contact
+        a(href='{{pathFor route="login"}}') Login
       .footer-col.footer-contact
-        .footer-address  Your Business Address Here 
-        .footer-contact-data  (99) 989-745-9922 
+        .footer-address  TBD 
+        .footer-contact-data  080-9542-3164 
     .row.footer-logo
       a(href='index-vimeo.html')
-        img(alt='', src='assets/images/logo.png')
+        img(alt='', src='/images/logo2.png')
     .row.footer-credits
-      .copyright  (C) 2017 Your Company, All right reserved 
-      .developer
-        | Developed with Passion for Coding by 
-        a(href='https://themeforest.net/user/webdesigntrade', target='_blank') Webdesign Trade
-        | .
+      .copyright  (C) 2017 Jukurate, All right reserved 

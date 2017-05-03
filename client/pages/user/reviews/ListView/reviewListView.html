@@ -27,14 +27,14 @@
       </div>
     </div>
     <div class="col-sm-9">
-      {{> regularReviewList type=type id=id}}
+      {{> regularReviewList type=type id=id inProfile=false}}
     </div>
   </div>
-  <div class="more-listing icon-plus" title="More Reviews" data-toggle="tooltip" data-placement="top"></div>
+  {{> loadMore name='reviews'}}
   {{else}}
   <h2>
     No Reviews Yet. Click 
-    <a href="{{pathFor route='review_compose_view' type=type id=id}}">Here</a> 
+    <a style="color: #333" href="{{pathFor route='review_compose_view' type=type id=id}}">Here</a> 
     to be the First Reviewer.
   </h2>
   {{/if}}

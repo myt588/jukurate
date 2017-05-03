@@ -27,7 +27,7 @@ Meteor.publish('courses.id', function(_id) {
 
 Meteor.publish('courses.limit', function(limit, filters, sort) {
   const options = {
-  	sort: sort ? sort : {recommend_level : -1}, 
+  	sort: sort ? sort : {'sort.recommend_level' : -1}, 
   	limit: Math.min(limit ? limit : 8, MAX_LOAD),
 	};
 	const filtersCopy = filters ? filters : {};

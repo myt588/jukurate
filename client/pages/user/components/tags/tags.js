@@ -1,5 +1,5 @@
 Template.tags.onCreated(function(){
-	this.subscribe('tags.schools');
+	this.subscribe('tags.limit');
 	this.tags = ReactiveVar(this.data.items);
 });
 

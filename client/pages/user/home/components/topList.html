@@ -1,0 +1,15 @@
+<template name='topList'>
+  <div class="feat-posts">
+    <div class="helper">
+      <div class="feat-posts-title">
+        Top Rated
+      </div>
+      <div class="feat-posts-list">
+        {{#each item in items}}
+          {{> topListItem item=item}}
+        {{/each}}
+        <a href="#" class="more-map-listing icon-plus" title="More Listings" data-toggle="tooltip" data-placement="top"></a>
+      </div>
+    </div>
+  </div>       
+</template>

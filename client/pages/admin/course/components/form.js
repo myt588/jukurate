@@ -5,6 +5,9 @@ Template.courseForm.helpers({
 	_settings() {
 		return textAreaSettings();
 	},
+  word_max() {
+    return DESCPTION_LENGTH;
+  }
 });
 
 AutoForm.hooks({

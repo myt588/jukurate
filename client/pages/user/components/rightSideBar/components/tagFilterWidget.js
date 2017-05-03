@@ -3,14 +3,22 @@ Template.tagFilterWidget.onCreated(function(){
   this.showLess = new ReactiveVar(false);
   this.paginationText = new ReactiveVar('Show More');
   this.selected = new ReactiveVar([]);
-	this.subscribe('tags.schools');
+  this.collectionName = () => {
+    return this.data.collection;
+  }
+  this.autorun(()=>{
+    const filters = {
+      type: this.collectionName()
+    };
+    this.subscribe('tags.limit', 12, filters);
+  });
 });
 
 Template.tagFilterWidget.events({
 	"click #tag_filter.deselected"(e, instance) {
     let filters = Session.get('filters');
     let selected = instance.selected.get();
-    selected.push(e.target.text);
+    selected.push(this._id);
     instance.selected.set(selected);
     filters.tags = { $all: selected };
     Session.set('filters', filters);
@@ -18,7 +26,7 @@ Template.tagFilterWidget.events({
   "click #tag_filter.selected"(e, instance) {
     let filters = Session.get('filters');
     let selected = instance.selected.get();
-		selected = _.without(selected, e.target.text);
+		selected = _.without(selected, this._id);
     instance.selected.set(selected);
     if (_.isEmpty(selected) ) {
 			delete filters.tags;
@@ -33,9 +41,11 @@ Template.tagFilterWidget.helpers({
 	tags() {
 		return Tags.find().fetch();
 	},
-	selected(name) {
+	selected(id) {
 		const filters = Session.get('filters');
-		const tags = filters.tags ? _.flatten(filters.tags) : {};
-		return _.contains(tags, name) ? 'selected' : 'deselected';
+    if (filters) {
+      const tags = filters.tags ? _.flatten(filters.tags) : {};
+      return _.contains(tags, id) ? 'selected' : 'deselected';
+    }
 	}
 });

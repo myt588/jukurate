@@ -1,42 +1,32 @@
 Template.schoolDetailView.onCreated(function(){
-	this.subscribe('schools.id', Router.current().params.id);
+	this.getId = () => Router.current().params.id;
+  this.autorun(() => {
+    this.subscribe('schools.id', this.getId());
+  });
 });
 
 Template.schoolDetailView.events({
-	"click .quick-menu a.top"(e) {
+	"click #top"(e) {
 		e.preventDefault();
     $('html, body').stop().animate({
 	    scrollTop: 0
 	  }, 600);
-	  $('[data-toggle="tooltip"]').tooltip('hide');
+	  // $('[data-toggle="tooltip"]').tooltip('hide');
 	},
-	"click .quick-menu a.gal"(e) {
+	"click #gogal"(e) {
 		e.preventDefault();
     $('html, body').stop().animate({
 	    scrollTop: $("#gal").offset().top - 112
 	  }, 600);
-	  $('[data-toggle="tooltip"]').tooltip('hide');
+	  // $('[data-toggle="tooltip"]').tooltip('hide');
 	},
-	"click .quick-menu a.desc"(e) {
+	"click #godesc, click #gotutor, click #gocourse, click #gocoupon, click #gorev, click #gomp"(e) {
 		e.preventDefault();
+		const id = '#'+ e.target.id.substring(2);
     $('html, body').stop().animate({
-      scrollTop: $("#desc").offset().top - 124
+      scrollTop: $(id).offset().top - 124
     }, 600);
-    $('[data-toggle="tooltip"]').tooltip('hide');
-	},
-	"click .quick-menu a.tutor"(e) {
-		e.preventDefault();
-    $('html, body').stop().animate({
-      scrollTop: $("#tutor").offset().top - 124
-    }, 600);
-    $('[data-toggle="tooltip"]').tooltip('hide');
-	},
-	"click .quick-menu a.rev"(e) {
-		e.preventDefault();
-		$('html, body').stop().animate({
-      scrollTop: $("#rev").offset().top - 124
-    }, 600);
-    $('[data-toggle="tooltip"]').tooltip('hide');
+    // $('[data-toggle="tooltip"]').tooltip('hide');
 	}
 }); 
 

@@ -1,0 +1,14 @@
+<template name="like">
+	<a id="like" href="#" class="pvt" title="{{title}} it" data-toggle="tooltip" data-placement="right">
+	{{#if currentUser}}
+		{{#if liked}}
+			<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+		{{else}}
+			<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+		{{/if}}
+	{{else}}
+		<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+	{{/if}}
+	</a>
+	<div class='like-count'>{{likes}}</div>
+</template>

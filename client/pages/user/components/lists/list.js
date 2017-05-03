@@ -6,7 +6,8 @@ Template.regularList.onCreated(function(){
     return this.collectionName().toLowerCase().slice(0, -1) + '_detail_view';
   }
   this.autorun(() => {
-    const load = this.data.initialLoad ? this.data.initialLoad : Session.get('load_more');
+    const name = 'load_more_' + this.collectionName().toLowerCase();
+    const load = Session.get(name) ? Session.get(name) : this.data.initialLoad;
     const sort = Session.get('sort_by') ? Session.get('sort_by') : {};
     const subscription = this.collectionName().toLowerCase() + '.limit';
     if (this.data.filters) {
@@ -30,7 +31,7 @@ Template.regularList.helpers({
       rating : item.itemRating(),
       image_id : item.itemThumbnail(),
       title : item.itemTitle(),
-      subtitle : item.itemSubtitle(),
+      subtitle : item.itemSubtitle() ? item.itemSubtitle() : 'TBD',
       ribbon : item.itemRibbon(),
       items : item.itemArray(),
       icon_class : 'icon-book',

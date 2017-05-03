@@ -1,7 +1,7 @@
 const sortList = [
-	{recommend_level : -1},
-	{rating_count : -1},
-	{rating : -1}
+	{'sort.recommend_level' : -1},
+	{'sort.rating_count' : -1},
+	{'sort.rating' : -1}
 ];
 
 Template.sortBar.onCreated(function() {

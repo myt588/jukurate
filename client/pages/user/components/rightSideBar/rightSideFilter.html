@@ -8,9 +8,8 @@
 				{{> metaFilterWidget metaName='Subjects' metaItems=subjects metaFilter='subject'}}
 			{{/if}}
 			{{#if tagFilter}}
-				{{> tagFilterWidget }}
+				{{> tagFilterWidget collection=collection}}
 			{{/if}}
-			<!-- {{> sideRecent }} -->
 		</div>
 	</div>
 </template>

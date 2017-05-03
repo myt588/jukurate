@@ -1,13 +1,20 @@
 <template name="singleImage">
-	{{#if id}}
+  {{#unless Template.subscriptionsReady}}
+    {{> loading}}
+  {{/unless}}
+	{{#if image}}
     <img src="{{image.link}}" alt="" class="{{class}}" height="{{height}}" width="{{width}}">
 	{{else}}
-	<div class="listing-item-title-centralizer">
-    <div class="listing-item-title">
-      {{image_title}}
+  {{#if image_title}}
+  	<div class="listing-item-title-centralizer">
+      <div class="listing-item-title">
+        {{image_title}}
+      </div>
     </div>
-  </div>
-  <div class="listing-black-overlay"></div>
-  <img alt="" src="/assets/images/listings/2.jpg" />
+  {{/if}}
+  {{#if overlay}}
+    <div class="listing-black-overlay"></div>
+  {{/if}}
+  <img id="default-image" class="{{class}}" height="{{height}}" width="{{width}}" alt="" src="{{defaultImage}}" />
 	{{/if}}
 </template>

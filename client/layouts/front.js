@@ -1,3 +1,9 @@
+Template.frontLayout.onCreated(function(){
+  this.autorun(() => {
+    this.subscribe('user.data');
+  });
+});
+
 Template.frontLayout.onRendered(function(){
 	var he = ".hero-header ",
   temp,
@@ -32,4 +38,10 @@ function setTooltips(){
 function isMobile(){
   var isMobile = ('ontouchstart' in document.documentElement || navigator.userAgent.match(/Mobi/)?true:false);
   return isMobile;
+}
+
+function checkNavbarToggle(){
+  if (viewport().width > 767 && $('.navbar-toggle').is(':hidden')) {
+      $(selected).removeClass('slide-active');
+  }
 }

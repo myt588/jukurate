@@ -1,26 +1,23 @@
+Template.schoolGallery.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe('files.images.byOwner', this.data.school._id);
+  })
+});
+
+Template.schoolGallery.helpers({
+  images() {
+    return Files.find().each();
+  }
+});
+
 Template.schoolGallery.onRendered(function() {
-  // Creating waving border
+  // // Creating waving border
   if($.isFunction($.fn.dragScroll))
     $('.gallery').before('<div class="wave-top-gallery"></div>').dragScroll({});
   
   // Photo Viewer lightbox
   if($(".gallery").length||$("a[data-lightbox='gallery']").length) 
     $(".lightbox").css({marginLeft:0});
-
-  // Listing all the items
-  $(".gallery .gallery-item a").each(function(){
-      var _ = $(this);
-      var title = _.attr("data-title");
-      if(title !== undefined && title !== "undefined" && title !== "" && title !== " "){
-        _.after('<div class="gallery-item-caption">' + title + '</div>');
-      }
-      if(!_.parent().find("img").length){
-        _.after('<img alt="" src="' + _.attr("href") + '" \/>');
-      }
-      else if(_.attr("href")===""||_.attr("href")===" "||_.attr("href")==="#"){
-        _.attr("href",_.parent().find("img").attr("src"));
-      }
-    });
 
   /* Mousewheel scroll to listing gallery */
   if($.isFunction($.fn.mousewheel))

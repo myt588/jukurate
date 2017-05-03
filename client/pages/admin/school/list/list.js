@@ -30,9 +30,12 @@ Template.schoolList.helpers({
         fields: [
           { key: 'name', label: 'Name' },
           { key: 'sort.recommend_level', label: 'Recommend Level' },
-          { key: 'created_at', label: 'Created Date' },
-          { key: '_id', label: 'Actions', 
-            fn: function (value) {
+          { key: 'sort.rating', label: 'Rating' },
+          { key: 'sort.rating_count', label: '# of Reviews' },
+          { key: 'created_at', label: 'Created Date', fn: function (value) {
+              return formatDate(value);
+          }},
+          { key: '_id', label: 'Actions', fn: function (value) {
               return new Spacebars.SafeString(adminActions('schools', value));
           }}
         ]

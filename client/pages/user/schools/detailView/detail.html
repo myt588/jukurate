@@ -3,13 +3,15 @@
   {{#if Template.subscriptionsReady}}
     <!-- Start Fixed Quick Menu -->
     <div class="quick-menu">
-      <a href="#" class="icon-arrow-up top" title="Go To Top" data-toggle="tooltip" data-placement="right"></a>
-      <a href="#" class="icon-focus gal" title="Gallery" data-toggle="tooltip" data-placement="right"></a>
-      <a href="#" class="icon-copy desc" title="Description" data-toggle="tooltip" data-placement="right"></a>
-      <a href="#" class="icon-link tutor" title="Tutor Listings" data-toggle="tooltip" data-placement="right"></a>
-      <a href="#" class="icon-star rev" title="Reviews" data-toggle="tooltip" data-placement="right"></a>
-      <a href="#" class="icon-map-marker mp" title="Map" data-toggle="tooltip" data-placement="right"></a>
-      <a href="#" class="icon-envelope pvt" title="Private Message" data-toggle="tooltip" data-placement="right"></a>
+      <a id="top" href="#" class="icon-arrow-up" title="Go To Top" data-toggle="tooltip" data-placement="right"></a>
+      <a id="gogal" href="#" class="icon-focus" title="Gallery" data-toggle="tooltip" data-placement="right"></a>
+      <a id="godesc" href="#" class="icon-copy" title="Description" data-toggle="tooltip" data-placement="right"></a>
+      <a id="gotutor" href="#" class="icon-graduation-hat" title="Tutor Listings" data-toggle="tooltip" data-placement="right"></a>
+      <a id="gocourse" href="#" class="icon-list" title="Course Listings" data-toggle="tooltip" data-placement="right"></a>
+      <a id="gocoupon" href="#" class="icon-link" title="Coupon Listings" data-toggle="tooltip" data-placement="right"></a>
+      <a id="gorev" href="#" class="icon-star" title="Reviews" data-toggle="tooltip" data-placement="right"></a>
+      <a id="gomp" href="#" class="icon-map-marker" title="Map" data-toggle="tooltip" data-placement="right"></a>
+      {{> like collection='Schools' id=school._id likes=school.sort.likes}}
     </div>
     <!-- Page Header -->
     <div class="container-fluid listing-title">
@@ -25,32 +27,44 @@
       <div class="pg-header-icon icon-focus"></div>
     </div>
     <!-- Gallery -->
-    {{> schoolGallery }}
+    <div class="container-fluid gallery" id="gal">
+      {{> schoolGallery school=school}}
+    </div>
     <!-- Description -->
-    {{> schoolDescriptionList school=school }}
+    <div class="container listing-description" id="desc">
+      {{> schoolDescriptionList school=school }}
+    </div>
     <!-- Listings -->
     <div class="container-fluid related" id="tutor">
       <h2>Tutor Listings</h2>
       <div class="row listing grid4 white">
         {{> regularList itemTemplate='listItemStyle1' collection='Tutors' initialLoad=4 filters=(filter school)}}
       </div>
+      {{> loadMore name='tutors'}}
     </div>
-    <div class="container-fluid related" id="tutor">
+    <div class="container-fluid related" id="course">
       <h2>Course Listings</h2>
       <div class="row listing grid4 white">
         {{> regularList itemTemplate='listItemStyle1' collection='Courses' initialLoad=4 filters=(filter school)}}
       </div>
+      {{> loadMore name='courses'}}
     </div>
-    <div class="container-fluid related" id="tutor">
+    <div class="container-fluid related" id="coupon">
       <h2>Coupon Listings</h2>
       <div class="row listing grid4 white">
         {{> regularList itemTemplate='listItemStyle1' collection='Coupons' initialLoad=4 filters=(filter school)}}
       </div>
+      {{> loadMore name='coupons'}}
     </div>
+    <!-- Reviews -->
     <div class="container listing-review" id="rev">
       {{> reviewListView rating=school.rating id=school._id type='schools'}}
     </div>
-    <!-- {{> schoolMap }} -->
+    <!-- Map -->
+    <div class="container-fluid listing-map" id="mp">
+      <div class="pg-header-icon icon-map-marker"></div>
+      {{> map lat=school.location.lat lng=school.location.lng}}
+    </div>
   {{/if}}
   </div>
 </template>

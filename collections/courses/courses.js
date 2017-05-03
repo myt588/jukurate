@@ -32,7 +32,7 @@ Courses.deny({
 
 CoursesSchema = new SimpleSchema({
 	// Table Data
-	title: {
+	name: {
 		type: String,
 	},
 	description: {
@@ -75,6 +75,7 @@ CoursesSchema = new SimpleSchema({
         	rating: 0,
 					rating_count: 0,
 					recommend_level: 0,
+					likes: 0
 				};
       } 
 		},
@@ -106,8 +107,11 @@ Courses.publicFields = {
 };
 
 Courses.helpers({
+	collectionName(){
+		return 'COURSES';
+	},
   itemTitle() {
-    return this.title;
+    return this.name;
   },
   itemThumbnail() {
     return this.thumbnail;

@@ -11,6 +11,26 @@ Template.home.onRendered(function(){
   	$(".texture").prepend('<div class="hero-texture"></div>');
   $(he).not(".search-popup").find(".overlay").css({display:"block"});
 	setCanvasEffect();
+  startTypingEffect();
+});
+
+Template.home.events({
+  'click .hero-search input[type="text"]': function(e){
+    if(e.target.value===""){
+      $(".typingEffect,.typed-cursor").remove();
+      $(this).addClass("inFocus");
+    }
+  },
+  'keyup #search': function(e){
+    e.preventDefault();
+    let filters = Session.get('filters') ? Session.get('filters') : {};
+    filters.name = {$regex: e.target.value, $options: 'i'};
+    Session.set('filters', filters);
+  },
+  'submit #searchForm': function(e){
+    e.preventDefault();
+    Router.go('search_result_view');
+  },
 });
 
 var image,
@@ -21,6 +41,15 @@ var image,
   lineCanvasContext,
   pointLifetime,
   points = [];
+
+  function viewport() {
+    var e = window, a = 'inner';
+    if (!('innerWidth' in window )) {
+        a = 'client';
+        e = document.documentElement || document.body;
+    }
+    return { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
+  }
 
   function start() {
     document.addEventListener('mousemove', onMouseMove);
@@ -189,4 +218,29 @@ var image,
         $(this).attr("src",$(this).attr("data-src")).removeAttr("data-src").removeClass("img-placeholder");
       }
     });
+  }
+
+  var typedAnimatedTexts = "";
+  function startTypingEffect(){
+    var field = '.hero-search input[type="text"]';
+    if(typedAnimatedTexts==="")
+    typedAnimatedTexts = $(".typingEffect").prop("outerHTML");
+    if($(field).val()==="" && viewport().width > 480){
+      $(field).attr("placeholder","");
+      $(field).removeClass("inFocus");
+      $(".typingEffect,.typed-cursor").remove();
+      $('.hero-search fieldset').append(typedAnimatedTexts);
+      $(".typingEffect").typed({
+          strings: $(".typingEffect").attr("data-title").split("//"),
+          typeSpeed: 100,
+          loop: true
+      });
+    }
+    else{
+      $(field).attr("placeholder",$(field).attr("data-placeholder"));
+    }
+    if($(field).val()!==""){
+      $(".typingEffect,.typed-cursor").remove();
+      $(field).addClass("inFocus");
+    }
   }

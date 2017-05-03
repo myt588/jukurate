@@ -1,6 +1,6 @@
 <template name='regularReviewList'>
-  {{#each items}}
-    {{> regularReviewItem}}
+  {{#each item in items}}
+    {{> regularReviewItem review=item inProfile=inProfile}}
   {{/each}}
 </template>
 

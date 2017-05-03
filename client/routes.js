@@ -25,9 +25,20 @@ AccountsTemplates.configureRoute('signUp', {
   layoutTemplate: 'frontLayout',
 });
 
+AccountsTemplates.configureRoute('resetPwd', {
+  template: 'resetPwd',
+  layoutTemplate: 'frontLayout',
+});
+
+AccountsTemplates.configureRoute('forgotPwd', {
+  template: 'forgotPwd',
+  layoutTemplate: 'frontLayout',
+});
+
 
 // user route
 Router.route('/', { layoutTemplate: 'frontLayout', template: 'home', name: 'home' });
+Router.route('/profile', { layoutTemplate: 'frontLayout', template: 'userProfile', name: 'user_profile' });
 Router.route('/schools', { layoutTemplate: 'frontLayout', template: 'schoolListView', name: 'school_list_view' });
 Router.route('/schools/:id', { layoutTemplate: 'frontLayout', template: 'schoolDetailView', name: 'school_detail_view' });
 Router.route('/tutors/', { layoutTemplate: 'frontLayout', template: 'tutorListView', name: 'tutor_list_view' });
@@ -39,10 +50,13 @@ Router.route('/coupons/:id', { layoutTemplate: 'frontLayout', template: 'couponD
 Router.route('/contactus', { layoutTemplate: 'frontLayout', template: 'contactView', name: 'contact_view' });
 
 Router.route('/writeareview/:type/:id', { layoutTemplate: 'frontLayout', template: 'reviewComposeView', name: 'review_compose_view' });
+Router.route('/search', { layoutTemplate: 'frontLayout', template: 'searchResult', name: 'search_result_view' });
+
 
 // admin route
 Router.route('/admin', { layoutTemplate: 'dashboardLayout', template: 'dashboard', name: 'dashboard' });
 Router.route('/admin/profile', { layoutTemplate: 'dashboardLayout', template: 'adminProfile', name: 'admin_profile' });
+Router.route('/admin/upload', { layoutTemplate: 'dashboardLayout', template: 'uploadForm', name: 'admin_upload' });
 
 Router.route('/admin/coupons', { layoutTemplate: 'dashboardLayout', template: 'couponList', name: 'coupon_list' });
 Router.route('/admin/coupons/create', { layoutTemplate: 'dashboardLayout', template: 'couponCreate', name: 'coupon_create' });
@@ -69,6 +83,16 @@ Router.route('/admin/reviews', { layoutTemplate: 'dashboardLayout', template: 'r
 Router.route('/admin/reviews/create', { layoutTemplate: 'dashboardLayout', template: 'reviewCreate', name: 'review_create' });
 Router.route('/admin/reviews/:id', { layoutTemplate: 'dashboardLayout', template: 'reviewShow', name: 'review_show' });
 Router.route('/admin/reviews/:id/edit', { layoutTemplate: 'dashboardLayout', template: 'reviewEdit', name: 'review_edit' });
+
+Router.route('/admin/articles', { layoutTemplate: 'dashboardLayout', template: 'articleList', name: 'article_list' });
+Router.route('/admin/articles/create', { layoutTemplate: 'dashboardLayout', template: 'articleCreate', name: 'article_create' });
+Router.route('/admin/articles/:id', { layoutTemplate: 'dashboardLayout', template: 'articleShow', name: 'article_show' });
+Router.route('/admin/articles/:id/edit', { layoutTemplate: 'dashboardLayout', template: 'articleEdit', name: 'article_edit' });
+
+Router.route('/admin/tags', { layoutTemplate: 'dashboardLayout', template: 'tagList', name: 'tag_list' });
+Router.route('/admin/tags/create', { layoutTemplate: 'dashboardLayout', template: 'tagCreate', name: 'tag_create' });
+Router.route('/admin/tags/:id', { layoutTemplate: 'dashboardLayout', template: 'tagShow', name: 'tag_show' });
+Router.route('/admin/tags/:id/edit', { layoutTemplate: 'dashboardLayout', template: 'tagEdit', name: 'tag_edit' });
 
 Tracker.autorun(function () {
   var current = Router.current();

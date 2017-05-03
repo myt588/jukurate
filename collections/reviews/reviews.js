@@ -41,12 +41,27 @@ ReviewsSchema = new SimpleSchema({
 	},
 	location: {
 		type: Number,
+		optional: true
 	},
 	environment: {
 		type: Number,
+		optional: true
 	},
 	price: {
 		type: Number,
+		optional: true
+	},
+	clarity: {
+		type: Number,
+		optional: true
+	},
+	skillful: {
+		type: Number,
+		optional: true
+	},
+	interest: {
+		type: Number,
+		optional: true
 	},
 
 	// Relation
@@ -54,9 +69,6 @@ ReviewsSchema = new SimpleSchema({
 		type: String,
 	},
 	owner_id: {
-		type: String,
-	},
-	school_id: {
 		type: String,
 	},
 	created_by: {

@@ -11,7 +11,45 @@
 
 const insert = new ValidatedMethod({
   name: 'reviews.insert',
-  validate: null,
+  validate: new SimpleSchema({
+    description: {
+      type: String,
+    },
+    overall: {
+      type: Number,
+      decimal: true
+    },
+    location: {
+      type: Number,
+      optional: true
+    },
+    environment: {
+      type: Number,
+      optional: true
+    },
+    price: {
+      type: Number,
+      optional: true
+    },
+    clarity: {
+      type: Number,
+      optional: true
+    },
+    skillful: {
+      type: Number,
+      optional: true
+    },
+    interest: {
+      type: Number,
+      optional: true
+    },
+    owner_type: {
+      type: String,
+    },
+    owner_id: {
+      type: String,
+    },
+  }).validator(),
   run: function(review) {
     Reviews.insert(review);
   }
@@ -37,7 +75,6 @@ const update = new ValidatedMethod({
   //   },
   //   description: { 
   //   	type: String,
-  //   	optional: true
   //   },
   //   created_by: {
   //   	type: String,

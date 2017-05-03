@@ -23,15 +23,13 @@ Meteor.publish('reviews.id', function(_id) {
 	});
 });
 
-Meteor.publish('reviews.limit', function(limit=4, type, id) {
+Meteor.publish('reviews.limit', function(limit, filters) {
   const options = {
   	sort: {created_at: -1}, 
   	limit: limit,
 	};
-  return Reviews.find({
-  	removed_at: {$exists: false},
-  	owner_type: type,
-  	owner_id: id,
-  }, options, { fields: Reviews.publicFields });
+	const filtersCopy = filters ? filters : {};
+	filtersCopy.removed_at = {$exists: false};
+  return Reviews.find(filtersCopy, options, { fields: Reviews.publicFields });
 });
 

@@ -15,7 +15,6 @@ item_per_line: String
 -->
 
 <template name="listItemStyle1">
-{{log data}}
   <div class="{{itemPerLine item_per_line}}">
     <div class="listing-item">
       <a href="#" class="category-icon {{icon_class}}"></a>
@@ -23,7 +22,7 @@ item_per_line: String
       <div class="listing-item-rating">{{roundToOne rating}}</div>
       {{/if}}
       <a href="{{pathFor route=route_name id=item_id }}" class="listing-item-link">
-        {{> singleImage id=image_id class=image_class height=image_height width=image_width image_title=image_title}}
+        {{> singleImage id=item_id class=image_class height=image_height width=image_width image_title=image_title}}
       </a>
       <div class="listing-item-data">
         <a class="listing-item-address" href="#">

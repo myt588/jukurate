@@ -192,6 +192,7 @@ Schema.School = new SimpleSchema({
         	rating: 0,
 					rating_count: 0,
 					recommend_level: 0,
+					likes: 0
 				};
       } 
 		},
@@ -214,7 +215,7 @@ Schema.School = new SimpleSchema({
 		type: Date,
 		optional: true,
 	}
-})
+});
 
 Schools.attachSchema( Schema.School );
 
@@ -223,6 +224,9 @@ Schools.publicFields = {
 };
 
 Schools.helpers({
+	collectionName(){
+		return 'SCHOOLS';
+	},
 	phone() {
 		return this.contact.phone;
 	},
